@@ -253,7 +253,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="DAO\CategoriasDAO.cs" />
+    <Compile Include="DAO\FamiliaProdutoDAO.cs" />
     <Compile Include="DAO\EnderecosDAO.cs" />
     <Compile Include="DAO\LojaContext.cs" />
     <Compile Include="DAO\ProdutosDAO.cs" />
@@ -266,8 +266,12 @@
     <Compile Include="Migrations\20180809183621_Tabelas.designer.cs">
       <DependentUpon>20180809183621_Tabelas.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\20180809191256_Ligacoes.cs" />
+    <Compile Include="Migrations\20180809191256_Ligacoes.designer.cs">
+      <DependentUpon>20180809191256_Ligacoes.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\LojaContextModelSnapshot.cs" />
-    <Compile Include="Models\CategoriaDoProduto.cs" />
+    <Compile Include="Models\FamiliaProduto.cs" />
     <Compile Include="Models\Endereco.cs" />
     <Compile Include="Models\Produto.cs" />
     <Compile Include="Models\Pessoa.cs" />

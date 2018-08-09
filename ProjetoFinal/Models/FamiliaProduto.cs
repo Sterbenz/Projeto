@@ -5,7 +5,7 @@ using System.Web;
 
 namespace ProjetoFinal.Models
 {
-    public class CategoriaDoProduto
+    public class FamiliaProduto
     {
         public int Id { get; set; }
 

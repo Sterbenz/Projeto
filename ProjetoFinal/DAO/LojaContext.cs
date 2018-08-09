@@ -11,7 +11,7 @@ namespace ProjetoFinal.DAO
     {
         public DbSet<Produto> Produtos { get; set; }
 
-        public DbSet<CategoriaDoProduto> Categorias { get; set; }
+        public DbSet<FamiliaProduto> Categorias { get; set; }
 
         public DbSet<Pessoa> Pessoas { get; set; }
 

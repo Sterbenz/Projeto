@@ -6,9 +6,9 @@ using System.Web;
 
 namespace ProjetoFinal.DAO
 {
-    public class CategoriasDAO
+    public class FamiliaProdutoDAO
     {
-        public void Adiciona(CategoriaDoProduto categoria)
+        public void Adiciona(FamiliaProduto categoria)
         {
             using (var context = new LojaContext())
             {
@@ -17,7 +17,7 @@ namespace ProjetoFinal.DAO
             }
         }
 
-        public IList<CategoriaDoProduto> Lista()
+        public IList<FamiliaProduto> Lista()
         {
             using (var contexto = new LojaContext())
             {
@@ -25,7 +25,7 @@ namespace ProjetoFinal.DAO
             }
         }
 
-        public CategoriaDoProduto BuscaPorId(int id)
+        public FamiliaProduto BuscaPorId(int id)
         {
             using (var contexto = new LojaContext())
             {
@@ -33,7 +33,7 @@ namespace ProjetoFinal.DAO
             }
         }
 
-        public void Atualiza(CategoriaDoProduto categoria)
+        public void Atualiza(FamiliaProduto categoria)
         {
             using (var contexto = new LojaContext())
             {

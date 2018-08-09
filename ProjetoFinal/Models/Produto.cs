@@ -17,5 +17,9 @@ namespace ProjetoFinal.Models
         public int Quantidade { get; set; }
 
         public string complemento { get; set; }
+
+        public int FamiliaProdutoId { get; set; }
+
+        public FamiliaProduto Familia { get; set; }
     }
 }

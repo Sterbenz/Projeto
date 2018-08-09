@@ -16,5 +16,9 @@ namespace ProjetoFinal.Models
         public DateTime DataDeNascimento { get; set; }
 
         public string Telefone { get; set; }
+
+        public int TipoPessoaID { get; set; }
+
+        public TipoPessoa tipoPessoa { get; set; }
     }
 }
