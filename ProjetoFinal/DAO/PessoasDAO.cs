@@ -10,7 +10,7 @@ namespace ProjetoFinal.DAO
     {
         public void Adiciona(Pessoa pessoa)
         {
-            using (var context = new EstoqueContext())
+            using (var context = new LojaContext())
             {
                 context.Pessoas.Add(pessoa);
                 context.SaveChanges();
@@ -19,7 +19,7 @@ namespace ProjetoFinal.DAO
 
         public IList<Pessoa> Lista()
         {
-            using (var contexto = new EstoqueContext())
+            using (var contexto = new LojaContext())
             {
                 return contexto.Pessoas.ToList();
             }
@@ -27,7 +27,7 @@ namespace ProjetoFinal.DAO
 
         public Pessoa BuscaPorId(int id)
         {
-            using (var contexto = new EstoqueContext())
+            using (var contexto = new LojaContext())
             {
                 return contexto.Pessoas.Find(id);
             }
@@ -35,9 +35,9 @@ namespace ProjetoFinal.DAO
 
         public void Atualiza(Pessoa pessoa)
         {
-            using (var contexto = new EstoqueContext())
+            using (var contexto = new LojaContext())
             {
-                contexto.Entry(pessoa).State = System.Data.Entity.EntityState.Modified;
+                contexto.Pessoas.Update(pessoa);
                 contexto.SaveChanges();
             }
         }

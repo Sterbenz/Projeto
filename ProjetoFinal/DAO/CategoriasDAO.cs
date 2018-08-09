@@ -10,7 +10,7 @@ namespace ProjetoFinal.DAO
     {
         public void Adiciona(CategoriaDoProduto categoria)
         {
-            using (var context = new EstoqueContext())
+            using (var context = new LojaContext())
             {
                 context.Categorias.Add(categoria);
                 context.SaveChanges();
@@ -19,7 +19,7 @@ namespace ProjetoFinal.DAO
 
         public IList<CategoriaDoProduto> Lista()
         {
-            using (var contexto = new EstoqueContext())
+            using (var contexto = new LojaContext())
             {
                 return contexto.Categorias.ToList();
             }
@@ -27,7 +27,7 @@ namespace ProjetoFinal.DAO
 
         public CategoriaDoProduto BuscaPorId(int id)
         {
-            using (var contexto = new EstoqueContext())
+            using (var contexto = new LojaContext())
             {
                 return contexto.Categorias.Find(id);
             }
@@ -35,9 +35,9 @@ namespace ProjetoFinal.DAO
 
         public void Atualiza(CategoriaDoProduto categoria)
         {
-            using (var contexto = new EstoqueContext())
+            using (var contexto = new LojaContext())
             {
-                contexto.Entry(categoria).State = System.Data.Entity.EntityState.Modified;
+                contexto.Categorias.Update(categoria);
                 contexto.SaveChanges();
             }
         }

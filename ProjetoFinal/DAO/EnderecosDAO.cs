@@ -6,38 +6,38 @@ using ProjetoFinal.Models;
 
 namespace ProjetoFinal.DAO
 {
-    public class TipoPessoasDAO
+    public class EnderecosDAO
     {
-        public void Adiciona(TipoPessoa tipoPessoa)
+        public void Adiciona(Endereco endereco)
         {
             using (var context = new LojaContext())
             {
-                context.TipoPessoas.Add(tipoPessoa);
+                context.Enderecos.Add(endereco);
                 context.SaveChanges();
             }
         }
 
-        public IList<TipoPessoa> Lista()
+        public IList<Endereco> Lista()
         {
             using (var contexto = new LojaContext())
             {
-                return contexto.TipoPessoas.ToList();
+                return contexto.Enderecos.ToList();
             }
         }
 
-        public TipoPessoa BuscaPorId(int id)
+        public Endereco BuscaPorId(int id)
         {
             using (var contexto = new LojaContext())
             {
-                return contexto.TipoPessoas.Find(id);
+                return contexto.Enderecos.Find(id);
             }
         }
 
-        public void Atualiza(TipoPessoa tipoPessoa)
+        public void Atualiza(Endereco endereco)
         {
             using (var contexto = new LojaContext())
             {
-                contexto.TipoPessoas.Update(tipoPessoa);
+                contexto.Enderecos.Update(endereco);
                 contexto.SaveChanges();
             }
         }

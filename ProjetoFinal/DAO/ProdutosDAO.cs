@@ -1,4 +1,5 @@
-﻿using ProjetoFinal.Models;
+﻿using Microsoft.EntityFrameworkCore;
+using ProjetoFinal.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +11,7 @@ namespace ProjetoFinal.DAO
     {
         public void Adiciona(Produto produto)
         {
-            using (var context = new EstoqueContext())
+            using (var context = new LojaContext())
             {
                 context.Produtos.Add(produto);
                 context.SaveChanges();
@@ -19,7 +20,7 @@ namespace ProjetoFinal.DAO
 
         public IList<Produto> Lista()
         {
-            using (var contexto = new EstoqueContext())
+            using (var contexto = new LojaContext())
             {
                 return contexto.Produtos.Include("Categoria").ToList();
             }
@@ -27,7 +28,7 @@ namespace ProjetoFinal.DAO
 
         public Produto BuscaPorId(int id)
         {
-            using (var contexto = new EstoqueContext())
+            using (var contexto = new LojaContext())
             {
                 return contexto.Produtos.Include("Categoria")
                     .Where(p => p.Id == id)
@@ -37,9 +38,9 @@ namespace ProjetoFinal.DAO
 
         public void Atualiza(Produto produto)
         {
-            using (var contexto = new EstoqueContext())
+            using (var contexto = new LojaContext())
             {
-                contexto.Entry(produto).State = System.Data.Entity.EntityState.Modified;
+                contexto.Produtos.Update(produto);
                 contexto.SaveChanges();
             }
         }
