@@ -19,6 +19,10 @@ namespace ProjetoFinal.DAO
 
         public DbSet<Endereco> Enderecos { get; set; }
 
+        public DbSet<LogProduto> LogProdutos { get; set; }
+
+        public DbSet<LogPessoa> LogPessoas { get; set; }
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlServer("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=LojaDB;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");

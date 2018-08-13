@@ -1,52 +1,52 @@
-﻿using ProjetoFinal.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using ProjetoFinal.Models;
 
 namespace ProjetoFinal.DAO
 {
-    public class FamiliaProdutoDAO
+    public class LogPessoasDAO
     {
-        public void Adiciona(FamiliaProduto categoria)
+        public void Adiciona(LogPessoa log)
         {
             using (var context = new LojaContext())
             {
-                context.Categorias.Add(categoria);
+                context.LogPessoas.Add(log);
                 context.SaveChanges();
             }
         }
 
-        public IList<FamiliaProduto> Lista()
+        public IList<LogPessoa> Lista()
         {
             using (var contexto = new LojaContext())
             {
-                return contexto.Categorias.ToList();
+                return contexto.LogPessoas.ToList();
             }
         }
 
-        public FamiliaProduto BuscaPorId(int id)
+        public LogPessoa BuscaPorId(int id)
         {
             using (var contexto = new LojaContext())
             {
-                return contexto.Categorias.Find(id);
+                return contexto.LogPessoas.Find(id);
             }
         }
 
-        public void Atualiza(FamiliaProduto categoria)
+        public void Atualiza(LogPessoa log)
         {
             using (var contexto = new LojaContext())
             {
-                contexto.Categorias.Update(categoria);
+                contexto.LogPessoas.Update(log);
                 contexto.SaveChanges();
             }
         }
 
-        public void Remover(FamiliaProduto categoria)
+        public void Remover(LogPessoa log)
         {
             using (var contexto = new LojaContext())
             {
-                contexto.Categorias.Remove(categoria);
+                contexto.LogPessoas.Remove(log);
                 contexto.SaveChanges();
             }
         }

@@ -41,5 +41,14 @@ namespace ProjetoFinal.DAO
                 contexto.SaveChanges();
             }
         }
+
+        public void Remover(TipoPessoa tipoPessoa)
+        {
+            using (var contexto = new LojaContext())
+            {
+                contexto.TipoPessoas.Remove(tipoPessoa);
+                contexto.SaveChanges();
+            }
+        }
     }
 }

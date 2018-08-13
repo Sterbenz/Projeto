@@ -41,5 +41,15 @@ namespace ProjetoFinal.DAO
                 contexto.SaveChanges();
             }
         }
+
+        public void Remover(Endereco endereco)
+        {
+            using (var contexto = new LojaContext())
+            {
+                contexto.Enderecos.Remove(endereco);
+                contexto.SaveChanges();
+            }
+
+        }
     }
 }
