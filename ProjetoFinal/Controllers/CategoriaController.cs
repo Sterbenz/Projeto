@@ -32,7 +32,7 @@ namespace ProjetoFinal.Controllers
             FamiliaProdutoDAO dao = new FamiliaProdutoDAO();
             dao.Adiciona(familia);
 
-            return View("Index");
+            return RedirectToAction("Index","Categoria");
         }
     }
 }

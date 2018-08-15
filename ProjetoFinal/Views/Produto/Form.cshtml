@@ -27,7 +27,7 @@
 <!-- BEGIN PAGE CONTENT-->
 <div class="row">
     <div class="col-md-12">
-        <form class="form-horizontal form-row-seperated" action="/Produtos/Adiciona" method="post">
+        <form class="form-horizontal form-row-seperated" action="/Produto/Adiciona" method="post">
             <div class="portlet">
                 <div class="portlet-title">
                     <div class="caption">
@@ -103,7 +103,7 @@
                                                         @foreach(var familia in ViewBag.Familias)
                                                         {
                                                             <li>
-                                                                <label><input type="checkbox" name="familia.CategoriaId" value="1">categoria.Nome</label>
+                                                                <label><input type="checkbox" name="familia.CategoriaId" value="1">@familia.Nome</label>
                                                             </li>
                                                         }
                                                     </ul>

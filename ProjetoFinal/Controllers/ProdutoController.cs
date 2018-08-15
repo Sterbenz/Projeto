@@ -8,7 +8,7 @@ using ProjetoFinal.Models;
 
 namespace ProjetoFinal.Controllers
 {
-    public class ProdutosController : Controller
+    public class ProdutoController : Controller
     {
         // GET: Produtos
         public ActionResult Index()
@@ -34,7 +34,7 @@ namespace ProjetoFinal.Controllers
             ProdutosDAO dao = new ProdutosDAO();
             dao.Adiciona(produto);
 
-            return View("Index");
+            return RedirectToAction("Index","Produto");
         }
     }
 }
