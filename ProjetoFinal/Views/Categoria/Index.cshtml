@@ -1,0 +1,21 @@
+﻿<table class="table table-striped table-hover">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Nome</th>
+            <th>Descricao</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var familia in ViewBag.Familias)
+        {
+            <tr>
+                <th>@familia.Id</th>
+                <th>@familia.Nome</th>
+                <th>@familia.Descricao</th>
+            </tr>
+        }
+
+    </tbody>
+
+</table>

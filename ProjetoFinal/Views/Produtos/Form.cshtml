@@ -1,1 +1,126 @@
-﻿
+﻿<div class="modal fade" id="portlet-config" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                <h4 class="modal-title">Modal title</h4>
+            </div>
+            <div class="modal-body">
+                Widget settings form goes here
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn blue">Save changes</button>
+                <button type="button" class="btn default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->
+<!-- END SAMPLE PORTLET CONFIGURATION MODAL FORM-->
+<!-- BEGIN PAGE HEADER-->
+<h3 class="page-title">
+    Editar produtos <small>criar e editar produtos</small>
+</h3>
+<!-- END PAGE HEADER-->
+<!-- BEGIN PAGE CONTENT-->
+<div class="row">
+    <div class="col-md-12">
+        <form class="form-horizontal form-row-seperated" action="/Produtos/Adiciona" method="post">
+            <div class="portlet">
+                <div class="portlet-title">
+                    <div class="caption">
+                        <i class="fa fa-shopping-cart"></i>Produto
+                    </div>
+                    <div class="actions btn-set">                        
+                        <button class="btn default"><i class="fa fa-reply"></i> Resetar</button>
+                        <button class="btn green" type="submit"><i class="fa fa-check"></i> Salvar</button>  
+                        <button class="btn grey"><i class="fa fa-times btn-action"></i> Deletar</button>                        
+                    </div>
+                </div>
+                <div class="portlet-body">
+                    <div class="tabbable">
+                        <ul class="nav nav-tabs">
+                           
+                        </ul>
+                        <div class="tab-content no-space">
+                            <div class="tab-pane active" id="tab_general">
+                                <div class="form-body">
+                                    <div class="form-group">
+                                        <label class="col-md-2 control-label">
+                                            Nome: <span class="required">
+                                                *
+                                            </span>
+                                        </label>
+                                        <div class="col-md-10">
+                                            <input type="text" class="form-control" name="produto.Nome" placeholder="">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-md-2 control-label">
+                                            Valor: <span class="required">
+                                                *
+                                            </span>
+                                        </label>
+                                        <div class="col-md-10">
+                                            <textarea style="resize:vertical"class="form-control" name="produto.Valor"></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-md-2 control-label">
+                                            Quantidade: <span class="required">
+                                                *
+                                            </span>
+                                        </label>
+                                        <div class="col-md-10">
+                                            <textarea style="resize:vertical" class="form-control" name="produto.Quantidade"></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-md-2 control-label">
+                                            Descrição: <span class="required">
+                                                *
+                                            </span>
+                                        </label>
+                                        <div class="col-md-10">
+                                            <textarea style="resize:vertical" class="form-control" name="produto.Descricao"></textarea>
+                                            <span class="help-block">
+                                                Mostrado na lista de produtos
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-md-2 control-label">
+                                            Categorias: <span class="required">
+                                                *
+                                            </span>
+                                        </label>
+                                        <div class="col-md-10">
+                                            <div class="form-control height-auto">
+                                                <div class="scroller" style="height:150px;" data-always-visible="1">
+                                                    <ul class="list-unstyled">
+                                                        @foreach(var categoria in ViewBag.Categorias)
+                                                        {
+                                                            <li>
+                                                                <label><input type="checkbox" name="produto.CategoriaId" value="1">categoria.Nome</label>
+                                                            </li>
+                                                        }
+                                                    </ul>
+
+                                                </div>
+                                                <span class="help-block">
+                                                    Seleciona apenas uma categoria
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+             </div>
+          </form>
+    </div>
+</div>

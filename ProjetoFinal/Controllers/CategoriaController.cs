@@ -6,16 +6,17 @@ using System.Web.Mvc;
 using ProjetoFinal.DAO;
 using ProjetoFinal.Models;
 
+
 namespace ProjetoFinal.Controllers
 {
-    public class ProdutosController : Controller
+    public class CategoriaController : Controller
     {
-        // GET: Produtos
+        // GET: Categoria
         public ActionResult Index()
         {
-            ProdutosDAO dao = new ProdutosDAO();
-            IList<Produto> produtos = dao.Lista();
-            ViewBag.Produtos = produtos;
+            FamiliaProdutoDAO dao = new FamiliaProdutoDAO();
+            IList<FamiliaProduto> familias = dao.Lista();
+            ViewBag.Familias = familias;
 
             return View();
         }
@@ -26,10 +27,10 @@ namespace ProjetoFinal.Controllers
         }
 
         [HttpPost]
-        public ActionResult Adiciona(Produto produto)
+        public ActionResult Adiciona(FamiliaProduto familia)
         {
-            ProdutosDAO dao = new ProdutosDAO();
-            dao.Adiciona(produto);
+            FamiliaProdutoDAO dao = new FamiliaProdutoDAO();
+            dao.Adiciona(familia);
 
             return View("Index");
         }
