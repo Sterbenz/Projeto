@@ -22,6 +22,9 @@ namespace ProjetoFinal.Controllers
 
         public ActionResult Form()
         {
+            FamiliaProdutoDAO dao = new FamiliaProdutoDAO();
+            IList<FamiliaProduto> familias = dao.Lista();
+            ViewBag.Familias = familias;
             return View();
         }
 
