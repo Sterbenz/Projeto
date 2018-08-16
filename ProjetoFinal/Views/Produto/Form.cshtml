@@ -64,7 +64,7 @@
                                             </span>
                                         </label>
                                         <div class="col-md-10">
-                                            <textarea style="resize:vertical"class="form-control" name="produto.Valor"></textarea>
+                                            <textarea style="resize:vertical"class="form-control" name="produto.PrecoPorUnidade"></textarea>
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -84,7 +84,7 @@
                                             </span>
                                         </label>
                                         <div class="col-md-10">
-                                            <textarea style="resize:vertical" class="form-control" name="produto.Descricao"></textarea>
+                                            <textarea style="resize:vertical" class="form-control" name="produto.Complemento"></textarea>
                                             <span class="help-block">
                                                 Mostrado na lista de produtos
                                             </span>
@@ -103,7 +103,7 @@
                                                         @foreach(var familia in ViewBag.Familias)
                                                         {
                                                             <li>
-                                                                <label><input type="checkbox" name="familia.CategoriaId" value="1">@familia.Nome</label>
+                                                                <label><input type="checkbox" name="produto.FamiliaProdutoId" value="1">@familia.Nome</label>
                                                             </li>
                                                         }
                                                     </ul>

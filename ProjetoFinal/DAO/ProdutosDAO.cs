@@ -22,7 +22,7 @@ namespace ProjetoFinal.DAO
         {
             using (var contexto = new LojaContext())
             {
-                return contexto.Produtos.Include("Categoria").ToList();
+                return contexto.Produtos.ToList();
             }
         }
 
