@@ -33,7 +33,6 @@ namespace ProjetoFinal.Controllers
         {
             ProdutosDAO dao = new ProdutosDAO();
             dao.Adiciona(produto);
-
             return RedirectToAction("Index","Produto");
         }
     }
