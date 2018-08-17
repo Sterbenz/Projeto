@@ -4261,6 +4261,7 @@
     <Content Include="Content\assets\global\scripts\datatable.js" />
     <Content Include="Content\assets\global\scripts\metronic.js" />
     <Content Include="Content\favicon.png" />
+    <Content Include="Content\Logo.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

@@ -23,17 +23,25 @@ namespace ProjetoFinal.Controllers
         public ActionResult Form()
         {
             FamiliaProdutoDAO dao = new FamiliaProdutoDAO();
-            IList<FamiliaProduto> familias = dao.Lista();
-            ViewBag.Familias = familias;
+            ViewBag.Familias = dao.Lista();             
             return View();
         }
 
         [HttpPost]
         public ActionResult Adiciona(Produto produto)
         {
-            ProdutosDAO dao = new ProdutosDAO();
-            dao.Adiciona(produto);
-            return RedirectToAction("Index","Produto");
+            if (ModelState.IsValid)
+            {   
+                ProdutosDAO dao = new ProdutosDAO();
+                dao.Adiciona(produto);
+                return RedirectToAction("Index","Produto");
+            }
+            else
+            {
+                FamiliaProdutoDAO familiaDao = new FamiliaProdutoDAO();
+                ViewBag.Familias = familiaDao.Lista();                
+                return View("Form");
+            }
         }
     }
 }

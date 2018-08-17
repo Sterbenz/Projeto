@@ -35,8 +35,7 @@
                     </div>
                     <div class="actions btn-set">                        
                         <button class="btn default"><i class="fa fa-reply"></i> Resetar</button>
-                        <button class="btn green" type="submit"><i class="fa fa-check"></i> Salvar</button>  
-                        <button class="btn grey"><i class="fa fa-times btn-action"></i> Deletar</button>                        
+                        <button class="btn green"><i class="fa fa-check"></i> Salvar</button>                                              
                     </div>
                 </div>
                 <div class="portlet-body">
@@ -55,8 +54,9 @@
                                         </label>
                                         <div class="col-md-10">
                                             <input type="text" class="form-control" name="produto.Nome" placeholder="">
+                                            @Html.ValidationMessage("produto.Nome")
                                         </div>
-                                    </div>
+                                    </div><br />
                                     <div class="form-group">
                                         <label class="col-md-2 control-label">
                                             Valor: <span class="required">
@@ -64,24 +64,24 @@
                                             </span>
                                         </label>
                                         <div class="col-md-10">
-                                            <textarea style="resize:vertical"class="form-control" name="produto.PrecoPorUnidade"></textarea>
+                                            <textarea style="resize:vertical" class="form-control" name="produto.PrecoPorUnidade"></textarea>
+                                            @Html.ValidationMessage("produto.PrecoPorUnidade")
                                         </div>
-                                    </div>
+                                    </div><br />
+                                          <div class="form-group">
+                                              <label class="col-md-2 control-label">
+                                                  Quantidade: <span class="required">
+                                                      *
+                                                  </span>
+                                              </label>
+                                              <div class="col-md-10">
+                                                  <textarea style="resize:vertical" class="form-control" name="produto.Quantidade"></textarea>
+                                                  @Html.ValidationMessage("produto.Quantidade")
+                                              </div>
+                                          </div><br />
                                     <div class="form-group">
                                         <label class="col-md-2 control-label">
-                                            Quantidade: <span class="required">
-                                                *
-                                            </span>
-                                        </label>
-                                        <div class="col-md-10">
-                                            <textarea style="resize:vertical" class="form-control" name="produto.Quantidade"></textarea>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="col-md-2 control-label">
-                                            Descrição: <span class="required">
-                                                *
-                                            </span>
+                                            Descrição: 
                                         </label>
                                         <div class="col-md-10">
                                             <textarea style="resize:vertical" class="form-control" name="produto.Complemento"></textarea>
@@ -89,28 +89,31 @@
                                                 Mostrado na lista de produtos
                                             </span>
                                         </div>
-                                    </div>
+                                    </div><br />
                                     <div class="form-group">
                                         <label class="col-md-2 control-label">
-                                            Categorias: <span class="required">
-                                                *
-                                            </span>
+                                            Categorias: 
+                                            
+                                            <span class="required"> * </span>
+
                                         </label>
                                         <div class="col-md-10">
                                             <div class="form-control height-auto">
-                                                <div class="scroller" style="height:150px;" data-always-visible="1">
-                                                    <ul class="list-unstyled">
-                                                        @foreach(var familia in ViewBag.Familias)
+                                                
+                                                    <select class="form-control" name="produto.FamiliaProdutoId">
+                                                        @foreach (var familia in ViewBag.Familias)
                                                         {
-                                                            <li>
-                                                                <label><input type="checkbox" name="produto.FamiliaProdutoId" value="1">@familia.Nome</label>
-                                                            </li>
-                                                        }
-                                                    </ul>
+                                                            
+                                                            <option value="@familia.Id">
+                                                                @familia.Nome
+                                                            </option>
 
-                                                </div>
+                                                        }
+                                                    </select>
+
+                                                
                                                 <span class="help-block">
-                                                    Seleciona apenas uma categoria
+                                                    @Html.ValidationMessage("produto.FamiliaProdutoId")
                                                 </span>
                                             </div>
                                         </div>
@@ -120,7 +123,7 @@
                         </div>
                     </div>
                 </div>
-             </div>
-          </form>
+            </div>
+        </form>
     </div>
 </div>
