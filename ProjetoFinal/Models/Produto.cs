@@ -24,10 +24,10 @@ namespace ProjetoFinal.Models
 
         public string Complemento { get; set; }
 
-        [Required]
+        
         public int FamiliaProdutoId { get; set; }
 
-        [Required]
+        
         public FamiliaProduto Familia { get; set; }
     }
 }

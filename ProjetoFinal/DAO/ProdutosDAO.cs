@@ -30,7 +30,7 @@ namespace ProjetoFinal.DAO
         {
             using (var contexto = new LojaContext())
             {
-                return contexto.Produtos.Include("Categoria")
+                return contexto.Produtos
                     .Where(p => p.Id == id)
                     .FirstOrDefault();
             }

@@ -4553,6 +4553,7 @@
     <Content Include="Views\Produto\Form.cshtml" />
     <Content Include="Views\Categoria\Index.cshtml" />
     <Content Include="Views\Categoria\Form.cshtml" />
+    <Content Include="Views\Produto\Editar.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

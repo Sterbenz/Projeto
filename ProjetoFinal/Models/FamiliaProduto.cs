@@ -9,7 +9,7 @@ namespace ProjetoFinal.Models
     public class FamiliaProduto
     {
 
-        [Required]
+        
         public int Id { get; set; }
 
         [Required]

@@ -43,5 +43,37 @@ namespace ProjetoFinal.Controllers
                 return View("Form");
             }
         }
+
+        public ActionResult Editar(int id)
+        {
+            ProdutosDAO dao = new ProdutosDAO();
+            Produto produto = dao.BuscaPorId(id);
+            FamiliaProdutoDAO familiaDao = new FamiliaProdutoDAO();
+            ViewBag.Familias = familiaDao.Lista();    
+            ViewBag.Produto = produto;
+            return View();
+        }
+
+        public ActionResult Edita(int id, Produto produto)
+        {
+            ProdutosDAO dao = new ProdutosDAO();
+            Produto p = dao.BuscaPorId(id);
+            p.Nome = produto.Nome;
+            p.PrecoPorUnidade = produto.PrecoPorUnidade;
+            p.Quantidade = produto.Quantidade;
+            p.Complemento = produto.Complemento;
+            p.FamiliaProdutoId = produto.FamiliaProdutoId;
+            dao.Atualiza(p);
+            return RedirectToAction("Index", "Produto");
+        }
+
+        public ActionResult Remover(int id)
+        {
+            ProdutosDAO dao = new ProdutosDAO();
+            Produto produto = dao.BuscaPorId(id);
+            dao.Remover(produto);
+
+            return RedirectToAction("Index", "Produto");
+        }
     }
 }

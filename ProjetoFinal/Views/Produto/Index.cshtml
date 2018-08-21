@@ -1,7 +1,19 @@
 ﻿<h3 class="page-title">
     Lista de produtos <small>Visualisar produtos</small>
 </h3>
-<ul class="nav nav-tabs"></ul>
+<ul class="nav nav-tabs">
+    <li style="bottom: 2px">
+        <form class="form-horizontal form-row-seperated" action="/Produto/Form" method="post">
+            <button class="btn default green" type="submit">Criar produto</button>
+        </form>
+    </li>
+    
+    <li style="left:10px; bottom: 2px">
+        <form class="form-horizontal form-row-seperated" action="#" method="post">
+            <button class="btn default grey" type="submit">Registros</button>
+        </form>
+    </li>
+</ul>
 
 <table class= "table table-striped table-hover">
     <thead>
@@ -12,18 +24,24 @@
             <th>Quantidade</th>
             <th>Complemento</th>
             <th>Familia</th>
+                
         </tr>
     </thead>
     <tbody>
         @foreach (var produto in ViewBag.Produtos)
         {
-        <tr>
+        <tr onclick="window.location='/Produto/Editar/@produto.Id'">
             <th>@produto.Id</th>
             <th>@produto.Nome</th>
             <th>R$ @produto.PrecoPorUnidade</th>
             <th>@produto.Quantidade</th>
             <th>@produto.Complemento</th>
-            <th>@produto.FamiliaProdutoId</th>
+            <th>@produto.FamiliaProdutoId</th>            
+            <th>
+                <form class="form-horizontal form-row-seperated" action="/Produto/Remover/@produto.Id" method="post">
+                    <button class="btn default red-flamingo" type="submit">Deletar</button>
+                </form>
+            </th>
         </tr>
         }
 
