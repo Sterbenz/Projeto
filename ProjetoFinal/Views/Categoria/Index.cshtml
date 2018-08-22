@@ -1,4 +1,21 @@
-﻿<table class="table table-striped table-hover">
+﻿<h3 class="page-title">
+    Lista de categorias <small>Visualisar categorias</small>
+</h3>
+<ul class="nav nav-tabs">
+    <li style="bottom: 2px">
+        <form class="form-horizontal form-row-seperated" action="@Url.Action("Form","Categoria") " method="post">
+            <button class="btn default green" type="submit">Criar categoria</button>
+        </form>
+    </li>
+
+    <li style="left:10px; bottom: 2px">
+        <form class="form-horizontal form-row-seperated" action="#" method="post">
+            <button class="btn default grey" type="submit">Registros</button>
+        </form>
+    </li>
+</ul>
+
+<table class="table table-striped table-hover">
     <thead>
         <tr>
             <th>Id</th>
@@ -9,11 +26,16 @@
     <tbody>
         @foreach (var familia in ViewBag.Familias)
         {
-            <tr>
-                <th>@familia.Id</th>
-                <th>@familia.Nome</th>
-                <th>@familia.Descricao</th>
-            </tr>
+        <tr>
+            <th>@familia.Id</th>
+            <th>@familia.Nome</th>
+            <th>@familia.Descricao</th>
+            <th>
+                <form class="form-horizontal form-row-seperated" action="@Url.Action("Remover","Categoria", new { familia.Id })" method="post">
+                    <button class="btn default red-flamingo" type="submit">Deletar</button>
+                </form>
+            </th>
+        </tr>
         }
 
     </tbody>

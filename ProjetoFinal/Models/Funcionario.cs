@@ -5,7 +5,7 @@ using System.Web;
 
 namespace ProjetoFinal.Models
 {
-    public class Pessoa
+    public class Funcionario
     {
         public int Id { get; set; }
 
@@ -20,5 +20,8 @@ namespace ProjetoFinal.Models
         public int TipoPessoaID { get; set; }
 
         public TipoPessoa tipoPessoa { get; set; }
+
+        public LoginFuncionarios Login { get; set; }
+
     }
 }

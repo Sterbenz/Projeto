@@ -10,7 +10,7 @@ namespace ProjetoFinal.Controllers
 {
     public class ProdutoController : Controller
     {
-        // GET: Produtos
+        
         public ActionResult Index()
         {
             ProdutosDAO dao = new ProdutosDAO();
@@ -56,15 +56,22 @@ namespace ProjetoFinal.Controllers
 
         public ActionResult Edita(int id, Produto produto)
         {
-            ProdutosDAO dao = new ProdutosDAO();
-            Produto p = dao.BuscaPorId(id);
-            p.Nome = produto.Nome;
-            p.PrecoPorUnidade = produto.PrecoPorUnidade;
-            p.Quantidade = produto.Quantidade;
-            p.Complemento = produto.Complemento;
-            p.FamiliaProdutoId = produto.FamiliaProdutoId;
-            dao.Atualiza(p);
-            return RedirectToAction("Index", "Produto");
+            if (ModelState.IsValid)
+            {            
+                ProdutosDAO dao = new ProdutosDAO();
+                Produto p = dao.BuscaPorId(id);
+                p.Nome = produto.Nome;
+                p.PrecoPorUnidade = produto.PrecoPorUnidade;
+                p.Quantidade = produto.Quantidade;
+                p.Complemento = produto.Complemento;
+                p.FamiliaProdutoId = produto.FamiliaProdutoId;
+                dao.Atualiza(p);
+                return RedirectToAction("Index", "Produto");
+            }
+            else
+            {
+                return RedirectToAction("Editar","Produto",new { id });
+            }
         }
 
         public ActionResult Remover(int id)

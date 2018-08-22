@@ -136,7 +136,7 @@ License: You must have a valid license purchased only from themeforest(the above
                     <!-- BEGIN QUICK SIDEBAR TOGGLER -->
                     <!-- DOC: Apply "dropdown-dark" class after below "dropdown-extended" to change the dropdown styte -->
                     <li class="dropdown dropdown-quick-sidebar-toggler">
-                        <a href="javascript:;" class="dropdown-toggle">
+                        <a href="#" class="dropdown-toggle">
                             <i class="icon-logout"></i>
                         </a>
                     </li>
@@ -173,171 +173,28 @@ License: You must have a valid license purchased only from themeforest(the above
                     </li>
 
                     <li>
-                        <a href="/Home"><i class="icon-home"></i><span class="title">Inicio</span></a>
+                        <a href="@Url.Action("Index","Home")"><i class="icon-home"></i><span class="title">Inicio</span></a>
                     </li>
                     <li>
-                        <a href="javascript:;">
-                            <i class="icon-book-open"></i>
-                            <span class="title">Produtos</span>
-                            <span class="selected"></span>
-                            <span class="arrow open"></span>
-                        </a>
-                        <ul class="sub-menu">
-                            <li class="active">
-                                <a href="/Produto/Index">
-                                    <i class="icon-book-open"></i>
-                                    Listar produtos
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <i class="icon-pencil"></i>
-                                    Criar produto
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <i class="icon-note"></i>
-                                    Registros
-                                </a>
-                            </li>
-                        </ul>
-                    <li>
-                        <a href="javascript:;">
-                            <i class="icon-layers"></i>
-                            <span class="title">Categorias</span>
-                            <span class="selected"></span>
-                            <span class="arrow open"></span>
-                        </a>
-                        <ul class="sub-menu">
-                            <li class="active">
-                                <a href="/Categoria/Index">
-                                    <i class="icon-book-open"></i>
-                                    Listar Categorias
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <i class="icon-pencil"></i>
-                                    Criar Categoria
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <i class="icon-note"></i>
-                                    Registros
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
+                        <a href="@Url.Action("Index","Produto")"><i class="icon-book-open"></i><span class="title">Produtos</span></a>
                     </li>
                     <li>
-                        <a href="#">
-                            <i class="icon-basket"></i>
-                            <span class="title">Compras</span>
-                            <span class="arrow "></span>
-                        </a>
-                        <ul class="sub-menu">
-                            <li>
-                                <a href="#">
-                                    <i class="icon-bag"></i>
-                                    Realizar compra
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <i class="icon-present"></i>
-                                    Realizar encomenda
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <i class="icon-note"></i>
-                                    Registro de compras
-                                </a>
-                            </li>
-                        </ul>
+                        <a href="@Url.Action("Index","Categoria")"><i class="icon-layers"></i><span class="title">Categorias</span></a>                       
+                    </li>
+                    
+                    <li>
+                        <a href="#"><i class="icon-basket"></i><span class="title">Compras</span></a>                        
                     </li>
                     <li>
-                        <a href="#">
-                            <img src="~/Content/assets/admin/layout/img/delivery-truck2.svg" width="25">
-                            <span class="title">Fornecedores</span>
-                            <span class="arrow "></span>
-                        </a>
-                        <ul class="sub-menu">
-                            <li>
-                                <a href="#">
-                                    <i class="icon-book-open"></i>
-                                    Lista dos fornecedores
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <i class="icon-pencil"></i>
-                                    Editar fornecedores
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <i class="icon-note"></i>
-                                    Registro de fornecedores
-                                </a>
-                            </li>
-                        </ul>
+                        <a href="#"><img src="~/Content/assets/admin/layout/img/delivery-truck2.svg" width="25">
+                        <span class="title">Fornecedores</span>                            
+                        </a>                        
                     </li>
                     <li>
-                        <a href="javascript:;">
-                            <i class="icon-users"></i>
-                            <span class="title">Funcionarios</span>
-                            <span class="arrow "></span>
-                        </a>
-                        <ul class="sub-menu">
-                            <li class="active">
-                                <a href="#">
-                                    <i class="icon-book-open"></i>
-                                    Lista de funcionarios
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <i class="icon-pencil"></i>
-                                    Editar funcionarios
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <i class="icon-note"></i>
-                                    Registro dos funcionarios
-                                </a>
-                            </li>
-                        </ul>
+                        <a href="#"><i class="icon-users"></i><span class="title">Funcionarios</span></a>                       
                     </li>
                     <li>
-                        <a href="javascript:;">
-                            <i class="icon-star"></i>
-                            <span class="title">Clientes</span>
-                            <span class="arrow "></span>
-                        </a>
-                        <ul class="sub-menu">
-                            <li class="active">
-                                <a href="#">
-                                    <i class="icon-book-open"></i>
-                                    Lista de clientes
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <i class="icon-pencil"></i>
-                                    Editar clientes
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <i class="icon-note"></i>
-                                    Registro dos clientes
-                                </a>
-                            </li>
-                        </ul>
+                        <a href="#"><i class="icon-star"></i><span class="title">Clientes</span></a>                        
                     </li>
                     <!-- END ANGULARJS LINK -->
                 </ul>

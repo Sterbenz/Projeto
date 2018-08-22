@@ -29,10 +29,53 @@ namespace ProjetoFinal.Controllers
         [HttpPost]
         public ActionResult Adiciona(FamiliaProduto familia)
         {
-            FamiliaProdutoDAO dao = new FamiliaProdutoDAO();
-            dao.Adiciona(familia);
+            if (ModelState.IsValid)
+            {
+                FamiliaProdutoDAO dao = new FamiliaProdutoDAO();
+                dao.Adiciona(familia);
 
-            return RedirectToAction("Index","Categoria");
+                return RedirectToAction("Index", "Categoria");
+            }
+            else
+            {
+                return View("Form");
+            }
+        }
+
+        public ActionResult Editar(int id)
+        {
+            FamiliaProdutoDAO dao = new FamiliaProdutoDAO();
+            FamiliaProduto familia = dao.BuscaPorId(id);           
+            ViewBag.Familia = familia;
+
+            return View();
+        }
+
+        public ActionResult Edita(int id, FamiliaProduto familia)
+        {
+            if (ModelState.IsValid)
+            {
+                FamiliaProdutoDAO dao = new FamiliaProdutoDAO();
+                FamiliaProduto f = dao.BuscaPorId(id);
+                f.Nome = familia.Nome;                
+                f.Descricao = familia.Descricao;                
+                dao.Atualiza(f);
+
+                return RedirectToAction("Index", "Categoria");
+            }
+            else
+            {
+                return RedirectToAction("Editar", "Categoria", new { id });
+            }
+        }
+
+        public ActionResult Remover(int id)
+        {
+            FamiliaProdutoDAO dao = new FamiliaProdutoDAO();
+            FamiliaProduto familia = dao.BuscaPorId(id);
+            dao.Remover(familia);
+
+            return RedirectToAction("Index", "Categoria");
         }
     }
 }

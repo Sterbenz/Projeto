@@ -6,47 +6,47 @@ using System.Web;
 
 namespace ProjetoFinal.DAO
 {
-    public class PessoasDAO
+    public class ClientesDAO
     {
-        public void Adiciona(Pessoa pessoa)
+        public void Adiciona(Cliente cliente)
         {
             using (var context = new LojaContext())
             {
-                context.Pessoas.Add(pessoa);
+                context.Clientes.Add(cliente);
                 context.SaveChanges();
             }
         }
 
-        public IList<Pessoa> Lista()
+        public IList<Cliente> Lista()
         {
             using (var contexto = new LojaContext())
             {
-                return contexto.Pessoas.ToList();
+                return contexto.Clientes.ToList();
             }
         }
 
-        public Pessoa BuscaPorId(int id)
+        public Cliente BuscaPorId(int id)
         {
             using (var contexto = new LojaContext())
             {
-                return contexto.Pessoas.Find(id);
+                return contexto.Clientes.Find(id);
             }
         }
 
-        public void Atualiza(Pessoa pessoa)
+        public void Atualiza(Cliente cliente)
         {
             using (var contexto = new LojaContext())
             {
-                contexto.Pessoas.Update(pessoa);
+                contexto.Clientes.Update(cliente);
                 contexto.SaveChanges();
             }
         }
 
-        public void Remover(Pessoa pessoa)
+        public void Remover(Cliente cliente)
         {
             using (var contexto = new LojaContext())
             {
-                contexto.Pessoas.Remove(pessoa);
+                contexto.Clientes.Remove(cliente);
                 contexto.SaveChanges();
             }
                 
