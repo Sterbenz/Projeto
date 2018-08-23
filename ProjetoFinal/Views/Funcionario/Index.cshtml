@@ -1,0 +1,50 @@
+﻿<h3 class="page-title">
+    Lista de funcionarios <small>Visualisar funcionarios</small>
+</h3>
+<ul class="nav nav-tabs">
+    <li style="bottom: 2px">
+        <form class="form-horizontal form-row-seperated" action="@Url.Action("Form","Funcionario")" method="post">
+            <button class="btn default green" type="submit">Registrar funcionario</button>
+        </form>
+    </li>
+
+    <li style="left:10px; bottom: 2px">
+        <form class="form-horizontal form-row-seperated" action="#" method="post">
+            <button class="btn default grey" type="submit">Registros</button>
+        </form>
+    </li>
+</ul>
+
+<table class="table table-striped table-hover">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Nome</th>
+            <th>CPF</th>
+            <th>Data de nascimento</th>
+            <th>Telefone</th>
+            <th>Cargo</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var funcionario in ViewBag.Funcionarios)
+        {
+        <tr onclick="window.location='@Url.Action("Editar","Funcionario", new { @funcionario.Id })'">
+            <th>@funcionario.Id</th>
+            <th>@funcionario.Nome</th>
+            <th>R$ @funcionario.CPF</th>
+            <th>@funcionario.DataDeNascimento</th>
+            <th>@funcionario.Telefone</th>
+            <th>@funcionario.TipoPessoaId</th>
+            <th>
+                <form class="form-horizontal form-row-seperated" action="@Url.Action("Remover","Funcionario", new { @funcionario.Id })" method="post">
+                    <button class="btn default red-flamingo" type="submit">Deletar</button>
+                </form>
+            </th>
+        </tr>
+        }
+
+    </tbody>
+
+</table>

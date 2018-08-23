@@ -4279,12 +4279,13 @@
     <Compile Include="Controllers\ProdutoController.cs" />
     <Compile Include="DAO\FamiliaProdutoDAO.cs" />
     <Compile Include="DAO\EnderecosDAO.cs" />
+    <Compile Include="DAO\FuncionariosDAO.cs" />
     <Compile Include="DAO\LogPessoasDAO.cs" />
     <Compile Include="DAO\LogProdutosDAO.cs" />
     <Compile Include="DAO\LojaContext.cs" />
     <Compile Include="DAO\ProdutosDAO.cs" />
     <Compile Include="DAO\ClientesDAO.cs" />
-    <Compile Include="DAO\TipoPessoasDAO.cs" />
+    <Compile Include="DAO\CargosDAO.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -4304,17 +4305,25 @@
     <Compile Include="Migrations\20180822202015_Pessoas.designer.cs">
       <DependentUpon>20180822202015_Pessoas.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\20180823170808_semTipoPessoaCliente.cs" />
+    <Compile Include="Migrations\20180823170808_semTipoPessoaCliente.designer.cs">
+      <DependentUpon>20180823170808_semTipoPessoaCliente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\20180823184804_ModificacoesFuncionarios.cs" />
+    <Compile Include="Migrations\20180823184804_ModificacoesFuncionarios.designer.cs">
+      <DependentUpon>20180823184804_ModificacoesFuncionarios.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\LojaContextModelSnapshot.cs" />
     <Compile Include="Models\FamiliaProduto.cs" />
     <Compile Include="Models\Endereco.cs" />
-    <Compile Include="Controllers\FuncionariosController.cs" />
+    <Compile Include="Controllers\FuncionarioController.cs" />
     <Compile Include="Models\Funcionario.cs" />
     <Compile Include="Models\LoginFuncionarios.cs" />
     <Compile Include="Models\LogPessoa.cs" />
     <Compile Include="Models\LogProduto.cs" />
     <Compile Include="Models\Produto.cs" />
     <Compile Include="Models\Cliente.cs" />
-    <Compile Include="Models\TipoPessoa.cs" />
+    <Compile Include="Models\Cargo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -4563,6 +4572,12 @@
     <Content Include="Views\Categoria\Form.cshtml" />
     <Content Include="Views\Produto\Editar.cshtml" />
     <Content Include="Views\Categoria\Editar.cshtml" />
+    <Content Include="Views\Funcionario\Index.cshtml" />
+    <Content Include="Views\Funcionario\Form.cshtml" />
+    <Content Include="Views\Funcionario\Editar.cshtml" />
+    <Content Include="Views\Cliente\Index.cshtml" />
+    <Content Include="Views\Cliente\Form.cshtml" />
+    <Content Include="Views\Cliente\Editar.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -4573,8 +4588,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Scripts\" />
-    <Folder Include="Views\Cliente\" />
-    <Folder Include="Views\Funcionarios\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

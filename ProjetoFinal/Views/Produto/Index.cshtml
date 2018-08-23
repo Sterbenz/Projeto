@@ -30,7 +30,7 @@
     <tbody>
         @foreach (var produto in ViewBag.Produtos)
         {
-        <tr onclick="window.location='/Produto/Editar/@produto.Id'">
+        <tr onclick="window.location='@Url.Action("Editar","Produto", new { @produto.Id })'">
             <th>@produto.Id</th>
             <th>@produto.Nome</th>
             <th>R$ @produto.PrecoPorUnidade</th>

@@ -46,7 +46,7 @@ namespace ProjetoFinal.Controllers
         {
             FamiliaProdutoDAO dao = new FamiliaProdutoDAO();
             FamiliaProduto familia = dao.BuscaPorId(id);           
-            ViewBag.Familia = familia;
+            ViewBag.Familias = familia;
 
             return View();
         }

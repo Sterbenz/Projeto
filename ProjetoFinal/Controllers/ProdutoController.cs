@@ -50,7 +50,7 @@ namespace ProjetoFinal.Controllers
             Produto produto = dao.BuscaPorId(id);
             FamiliaProdutoDAO familiaDao = new FamiliaProdutoDAO();
             ViewBag.Familias = familiaDao.Lista();    
-            ViewBag.Produto = produto;
+            ViewBag.Produtos = produto;
             return View();
         }
 

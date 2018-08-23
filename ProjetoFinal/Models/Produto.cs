@@ -15,11 +15,11 @@ namespace ProjetoFinal.Models
         public string Nome { get; set; }
 
         [Required]
-        [Range(1,999.99)]
+        [Range(0.1,999.99)]
         public float PrecoPorUnidade { get; set; }
 
         [Required]
-        [Range(1, 999.99)]
+        [Range(0.1, 999.99)]
         public int Quantidade { get; set; }
 
         public string Complemento { get; set; }

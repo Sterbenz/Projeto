@@ -13,17 +13,17 @@ namespace ProjetoFinal.DAO
 
         public DbSet<FamiliaProduto> Categorias { get; set; }
 
-        public DbSet<Cliente> Clientes { get; set; }
+        public DbSet<Cliente> Clientes { get; set; }        
 
-        public DbSet<Cliente> Funcionarios { get; set; }
-
-        public DbSet<TipoPessoa> TipoPessoas { get; set; }
+        public DbSet<Cargo> Cargos { get; set; }
 
         public DbSet<Endereco> Enderecos { get; set; }
 
         public DbSet<LogProduto> LogProdutos { get; set; }
 
         public DbSet<LogPessoa> LogPessoas { get; set; }
+
+        public DbSet<Funcionario> Funcionarios { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

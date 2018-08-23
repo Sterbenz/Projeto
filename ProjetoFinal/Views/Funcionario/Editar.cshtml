@@ -21,17 +21,17 @@
 <!-- END SAMPLE PORTLET CONFIGURATION MODAL FORM-->
 <!-- BEGIN PAGE HEADER-->
 <h3 class="page-title">
-    Editar funcionarios. <small>criar e editar funcionarios.</small>
+    Funcionarios <small>registrar e editar funcionarios</small>
 </h3>
 <!-- END PAGE HEADER-->
 <!-- BEGIN PAGE CONTENT-->
 <div class="row">
     <div class="col-md-12">
-        <form class="form-horizontal form-row-seperated" action="@Url.Action("Edita","Produto", new { ViewBag.Produtos.Id })" method="post">
+        <form class="form-horizontal form-row-seperated" action="@Url.Action("Edita","Cliente", new { ViewBag.Clientes.Id })" method="post">
             <div class="portlet">
                 <div class="portlet-title">
                     <div class="caption">
-                        <i class="fa fa-shopping-cart"></i>Produto
+                        <i class="fa fa-shopping-cart"></i>Funcionario
                     </div>
                     <div class="actions btn-set">
                         <button class="btn default" type="reset"><i class="fa fa-reply"></i> Resetar</button>
@@ -51,8 +51,8 @@
                                             </span>
                                         </label>
                                         <div class="col-md-10">
-                                            <input type="text" class="form-control" name="funcionarios.Nome"  value="@ViewBag.Funcionarios.Nome"  placeholder="">
-                                            @Html.ValidationMessage("funcionarios.Nome")
+                                            <input type="text" class="form-control" name="funcionario.Nome" value="@ViewBag.Clientes.Nome" placeholder="">
+                                            @Html.ValidationMessage("funcionario.Nome")
                                         </div>
                                     </div><br />
                                     <div class="form-group">
@@ -62,19 +62,19 @@
                                             </span>
                                         </label>
                                         <div class="col-md-10">
-                                            <textarea style="resize:vertical" class="form-control" name="funcionarios.CPF">@ViewBag.Funcionarios.CPF</textarea>
-                                            @Html.ValidationMessage("funcionarios.CPF")
+                                            <textarea style="resize:vertical" class="form-control" name="funcionario.CPF">@ViewBag.Funcionarios.CPF</textarea>
+                                            @Html.ValidationMessage("funcionario.CPF")
                                         </div>
                                     </div><br />
                                     <div class="form-group">
                                         <label class="col-md-2 control-label">
-                                            Data de nascimento: <span class="required">
+                                            Quantidade: <span class="required">
                                                 *
                                             </span>
                                         </label>
                                         <div class="col-md-10">
-                                            <textarea style="resize:vertical" class="form-control" name="funcionarios.DataDeNascimento">@ViewBag.Funcionarios.DataDeNascimento</textarea>
-                                            @Html.ValidationMessage("funcionarios.DataDeNascimento")
+                                            <textarea style="resize:vertical" class="form-control" name="funcionario.DataDeNascimento">@ViewBag.Funcionarios.DataDeNascimento</textarea>
+                                            @Html.ValidationMessage("funcionario.DataDeNascimento")
                                         </div>
                                     </div><br />
                                     <div class="form-group">
@@ -82,23 +82,20 @@
                                             Telefone:
                                         </label>
                                         <div class="col-md-10">
-                                            <textarea style="resize:vertical" class="form-control" name="funcionarios.Telefone">@ViewBag.Funcionarios.Telefone</textarea>                                          
+                                            <textarea style="resize:vertical" class="form-control" name="funcionario.Telefone">@ViewBag.Funcionarios.Telefone</textarea>
                                         </div>
                                     </div><br />
                                     <div class="form-group">
                                         <label class="col-md-2 control-label">
-                                            Cargo:
-
-                                            <span class="required"> * </span>
-
+                                            Telefone:
                                         </label>
                                         <div class="col-md-10">
                                             <div class="form-control height-auto">
 
-                                                <select class="form-control" name="funcionarios.FamiliaProdutoId">
+                                                <select class="form-control" name="funcionario.CargoId">
                                                     @foreach (var cargo in ViewBag.Cargos)
                                                     {
-                                                        if (@ViewBag.Funcionarios.CargoId == cargo.Id)
+                                                        if (@ViewBag.Produto.FamiliaProdutoId == cargo.Id)
                                                         {
                                                             <option value="@cargo.Id" selected>
                                                                 @cargo.Nome
@@ -106,8 +103,9 @@
                                                         }
 
                                                         else
-                                                        { <option value="@cargo.Id">@cargo.Nome</option>}
-                                                        
+                                                        {
+                                                            <option value="@cargo.Id">@cargo.Nome</option>}
+
 
 
                                                     }

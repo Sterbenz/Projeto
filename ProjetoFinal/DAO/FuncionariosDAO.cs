@@ -6,47 +6,47 @@ using ProjetoFinal.Models;
 
 namespace ProjetoFinal.DAO
 {
-    public class TipoPessoasDAO
+    public class FuncionariosDAO
     {
-        public void Adiciona(TipoPessoa tipoPessoa)
+        public void Adiciona(Funcionario funcionario)
         {
             using (var context = new LojaContext())
             {
-                context.TipoPessoas.Add(tipoPessoa);
+                context.Funcionarios.Add(funcionario);
                 context.SaveChanges();
             }
         }
 
-        public IList<TipoPessoa> Lista()
+        public IList<Funcionario> Lista()
         {
             using (var contexto = new LojaContext())
             {
-                return contexto.TipoPessoas.ToList();
+                return contexto.Funcionarios.ToList();
             }
         }
 
-        public TipoPessoa BuscaPorId(int id)
+        public Funcionario BuscaPorId(int id)
         {
             using (var contexto = new LojaContext())
             {
-                return contexto.TipoPessoas.Find(id);
+                return contexto.Funcionarios.Find(id);
             }
         }
 
-        public void Atualiza(TipoPessoa tipoPessoa)
+        public void Atualiza(Funcionario funcionario)
         {
             using (var contexto = new LojaContext())
             {
-                contexto.TipoPessoas.Update(tipoPessoa);
+                contexto.Funcionarios.Update(funcionario);
                 contexto.SaveChanges();
             }
         }
 
-        public void Remover(TipoPessoa tipoPessoa)
+        public void Remover(Funcionario funcionario)
         {
             using (var contexto = new LojaContext())
             {
-                contexto.TipoPessoas.Remove(tipoPessoa);
+                contexto.Funcionarios.Remove(funcionario);
                 contexto.SaveChanges();
             }
         }

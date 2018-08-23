@@ -21,21 +21,21 @@
 <!-- END SAMPLE PORTLET CONFIGURATION MODAL FORM-->
 <!-- BEGIN PAGE HEADER-->
 <h3 class="page-title">
-    Editar funcionarios. <small>criar e editar funcionarios.</small>
+    Funcionarios <small>registrar e editar funcionarios.</small>
 </h3>
 <!-- END PAGE HEADER-->
 <!-- BEGIN PAGE CONTENT-->
 <div class="row">
     <div class="col-md-12">
-        <form class="form-horizontal form-row-seperated" action="@Url.Action("Edita","Produto", new { ViewBag.Produtos.Id })" method="post">
+        <form class="form-horizontal form-row-seperated" action="@Url.Action("Adiciona","Funcionario")" method="post">
             <div class="portlet">
                 <div class="portlet-title">
                     <div class="caption">
-                        <i class="fa fa-shopping-cart"></i>Produto
+                        <i class="fa fa-shopping-cart"></i>Funcionario
                     </div>
                     <div class="actions btn-set">
-                        <button class="btn default" type="reset"><i class="fa fa-reply"></i> Resetar</button>
-                        <button class="btn green" type="submit"><i class="fa fa-check"></i> Salvar</button>
+                        <button class="btn default"><i class="fa fa-reply"></i> Resetar</button>
+                        <button class="btn green"><i class="fa fa-check"></i> Salvar</button>
                     </div>
                 </div>
                 <div class="portlet-body">
@@ -51,7 +51,7 @@
                                             </span>
                                         </label>
                                         <div class="col-md-10">
-                                            <input type="text" class="form-control" name="funcionarios.Nome"  value="@ViewBag.Funcionarios.Nome"  placeholder="">
+                                            <input type="text" class="form-control" name="funcionarios.Nome" placeholder="">
                                             @Html.ValidationMessage("funcionarios.Nome")
                                         </div>
                                     </div><br />
@@ -62,7 +62,7 @@
                                             </span>
                                         </label>
                                         <div class="col-md-10">
-                                            <textarea style="resize:vertical" class="form-control" name="funcionarios.CPF">@ViewBag.Funcionarios.CPF</textarea>
+                                            <textarea style="resize:vertical" maxlength="11" class="form-control" name="funcionarios.CPF"></textarea>
                                             @Html.ValidationMessage("funcionarios.CPF")
                                         </div>
                                     </div><br />
@@ -73,7 +73,7 @@
                                             </span>
                                         </label>
                                         <div class="col-md-10">
-                                            <textarea style="resize:vertical" class="form-control" name="funcionarios.DataDeNascimento">@ViewBag.Funcionarios.DataDeNascimento</textarea>
+                                            <textarea style="resize:vertical" class="form-control" maxlength="10" name="funcionarios.DataDeNascimento"></textarea>
                                             @Html.ValidationMessage("funcionarios.DataDeNascimento")
                                         </div>
                                     </div><br />
@@ -82,9 +82,9 @@
                                             Telefone:
                                         </label>
                                         <div class="col-md-10">
-                                            <textarea style="resize:vertical" class="form-control" name="funcionarios.Telefone">@ViewBag.Funcionarios.Telefone</textarea>                                          
+                                            <textarea style="resize:vertical" class="form-control" name="funcionarios.Telefone"></textarea>
                                         </div>
-                                    </div><br />
+                                    </div><br />                                    
                                     <div class="form-group">
                                         <label class="col-md-2 control-label">
                                             Cargo:
@@ -95,22 +95,15 @@
                                         <div class="col-md-10">
                                             <div class="form-control height-auto">
 
-                                                <select class="form-control" name="funcionarios.FamiliaProdutoId">
+                                                <select class="form-control" name="funcionarios.CargoId">
                                                     @foreach (var cargo in ViewBag.Cargos)
-                                                    {
-                                                        if (@ViewBag.Funcionarios.CargoId == cargo.Id)
-                                                        {
-                                                            <option value="@cargo.Id" selected>
-                                                                @cargo.Nome
-                                                            </option>
-                                                        }
+                                                     {
 
-                                                        else
-                                                        { <option value="@cargo.Id">@cargo.Nome</option>}
-                                                        
+                                                        <option value="@cargo.Id">
+                                                            @cargo.Nome
+                                                        </option>
 
-
-                                                    }
+                                                     }
                                                 </select>
                                             </div>
                                         </div>
