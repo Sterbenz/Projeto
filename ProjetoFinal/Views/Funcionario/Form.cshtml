@@ -21,7 +21,7 @@
 <!-- END SAMPLE PORTLET CONFIGURATION MODAL FORM-->
 <!-- BEGIN PAGE HEADER-->
 <h3 class="page-title">
-    Funcionarios <small>registrar e editar funcionarios.</small>
+    Funcionarios <small>registrar e editar funcionario.</small>
 </h3>
 <!-- END PAGE HEADER-->
 <!-- BEGIN PAGE CONTENT-->
@@ -51,8 +51,8 @@
                                             </span>
                                         </label>
                                         <div class="col-md-10">
-                                            <input type="text" class="form-control" name="funcionarios.Nome" placeholder="">
-                                            @Html.ValidationMessage("funcionarios.Nome")
+                                            <input type="text" class="form-control" name="funcionario.Nome" placeholder="">
+                                            @Html.ValidationMessage("funcionario.Nome")
                                         </div>
                                     </div><br />
                                     <div class="form-group">
@@ -62,19 +62,18 @@
                                             </span>
                                         </label>
                                         <div class="col-md-10">
-                                            <textarea style="resize:vertical" maxlength="11" class="form-control" name="funcionarios.CPF"></textarea>
-                                            @Html.ValidationMessage("funcionarios.CPF")
+                                            <input type="number" class="form-control" id="cpf" onblur="validaCPF()" maxlength="11" name="funcionario.Cpf" placeholder="Apenas numeros">
+                                            @Html.ValidationMessage("funcionario.Cpf")
                                         </div>
                                     </div><br />
                                     <div class="form-group">
-                                        <label class="col-md-2 control-label">
-                                            Data de nascimento: <span class="required">
-                                                *
+                                        <label style="right:15px" class="col-md-2 control-label">
+                                            Data de nascimento: <span class="required">*
                                             </span>
                                         </label>
                                         <div class="col-md-10">
-                                            <textarea style="resize:vertical" class="form-control" maxlength="10" name="funcionarios.DataDeNascimento"></textarea>
-                                            @Html.ValidationMessage("funcionarios.DataDeNascimento")
+                                            <input type="date" class="form-control" maxlength="10" name="funcionario.DataDeNascimento">
+                                            @Html.ValidationMessage("funcionario.DataDeNascimento")
                                         </div>
                                     </div><br />
                                     <div class="form-group">
@@ -82,7 +81,7 @@
                                             Telefone:
                                         </label>
                                         <div class="col-md-10">
-                                            <textarea style="resize:vertical" class="form-control" name="funcionarios.Telefone"></textarea>
+                                            <input type="tel" class="form-control" name="funcionario.Telefone">
                                         </div>
                                     </div><br />                                    
                                     <div class="form-group">
@@ -95,7 +94,7 @@
                                         <div class="col-md-10">
                                             <div class="form-control height-auto">
 
-                                                <select class="form-control" name="funcionarios.CargoId">
+                                                <select class="form-control" name="funcionario.CargoId">
                                                     @foreach (var cargo in ViewBag.Cargos)
                                                      {
 

@@ -21,7 +21,7 @@
 <!-- END SAMPLE PORTLET CONFIGURATION MODAL FORM-->
 <!-- BEGIN PAGE HEADER-->
 <h3 class="page-title">
-    Clientes <small>registrar e editar clientes.</small>
+    Clientes <small>registrar e editar cliente.</small>
 </h3>
 <!-- END PAGE HEADER-->
 <!-- BEGIN PAGE CONTENT-->
@@ -51,8 +51,8 @@
                                             </span>
                                         </label>
                                         <div class="col-md-10">
-                                            <input type="text" class="form-control" name="clientes.Nome" placeholder="">
-                                            @Html.ValidationMessage("clientes.Nome")
+                                            <input type="text" class="form-control" name="cliente.Nome" placeholder="">
+                                            @Html.ValidationMessage("cliente.Nome")
                                         </div>
                                     </div><br />
                                     <div class="form-group">
@@ -62,19 +62,19 @@
                                             </span>
                                         </label>
                                         <div class="col-md-10">
-                                            <textarea style="resize:vertical" class="form-control" name="clientes.CPF"></textarea>
-                                            @Html.ValidationMessage("clientes.CPF")
+                                            <input type="number" class="form-control" id="cpf" onblur="validaCPF()" maxlength="11" name="cliente.Cpf" placeholder="">
+                                            @Html.ValidationMessage("cliente.Cpf")
                                         </div>
                                     </div><br />
                                     <div class="form-group">
-                                        <label class="col-md-2 control-label">
+                                        <label class="col-md-2 control-label" >
                                             Data de nascimento: <span class="required">
                                                 *
                                             </span>
                                         </label>
                                         <div class="col-md-10">
-                                            <textarea style="resize:vertical" class="form-control" name="clientes.DataDeNascimento"></textarea>
-                                            @Html.ValidationMessage("clientes.DataDeNascimento")
+                                            <input type="date" class="form-control" maxlength="10" name="cliente.DataDeNascimento" placeholder="">
+                                            @Html.ValidationMessage("cliente.DataDeNascimento")
                                         </div>
                                     </div><br />
                                     <div class="form-group">
@@ -82,7 +82,7 @@
                                             Telefone:
                                         </label>
                                         <div class="col-md-10">
-                                            <textarea style="resize:vertical" class="form-control" name="clientes.Telefone"></textarea>
+                                            <input type="tel" class="form-control" name="cliente.Telefone" placeholder="">
                                         </div>
                                     </div><br />                                  
                                 </div>

@@ -62,8 +62,8 @@
                                             </span>
                                         </label>
                                         <div class="col-md-10">
-                                            <textarea style="resize:vertical" class="form-control" name="cliente.CPF">@ViewBag.Clientes.CPF</textarea>
-                                            @Html.ValidationMessage("cliente.CPF")
+                                            <input type="text" class="form-control" id="cpf" onblur="ValidaCPF()" value="@ViewBag.Clientes.Cpf" name="cliente.Cpf">
+                                            @Html.ValidationMessage("cliente.Cpf")
                                         </div>
                                     </div><br />
                                     <div class="form-group">
@@ -73,7 +73,7 @@
                                             </span>
                                         </label>
                                         <div class="col-md-10">
-                                            <textarea style="resize:vertical" class="form-control" name="cliente.DataDeNascimento">@ViewBag.Clientes.DataDeNascimento</textarea>
+                                            <input type="date" class="form-control" value="@ViewBag.Clientes.DataDeNascimento" name="cliente.DataDeNascimento">
                                             @Html.ValidationMessage("cliente.DataDeNascimento")
                                         </div>
                                     </div><br />
@@ -82,10 +82,8 @@
                                             Telefone:
                                         </label>
                                         <div class="col-md-10">
-                                            <textarea style="resize:vertical" class="form-control" name="cliente.Telefone">@ViewBag.Clientes.Telefone</textarea>
-                                            <span class="help-block">
-                                                Mostrado na lista de cliente.
-                                            </span>
+                                            <input type="tel" class="form-control" value="@ViewBag.Clientes.Telefone" name="cliente.Telefone">
+                                            
                                         </div>
                                     </div><br />                                    
                                 </div>

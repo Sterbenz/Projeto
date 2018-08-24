@@ -16,7 +16,7 @@ namespace ProjetoFinal.Models
             FuncionariosDAO dao = new FuncionariosDAO();
             ViewBag.Funcionarios = dao.Lista();
 
-            return View();            
+            return View();
         }
 
         public ActionResult Form()
@@ -36,7 +36,7 @@ namespace ProjetoFinal.Models
                 funcionario.Login = new LoginFuncionarios()
                 {
                     Usuario = funcionario.Nome+funcionario.DataDeNascimento.Year,
-                    Senha = funcionario.CPF
+                    Senha = funcionario.Cpf
                 };
                 dao.Adiciona(funcionario);
 
@@ -45,7 +45,7 @@ namespace ProjetoFinal.Models
             else
             {
                 CargosDAO dao = new CargosDAO();
-                ViewBag.Cargo = dao.Lista();
+                ViewBag.Cargos = dao.Lista();
 
                 return View("Form");
             }
@@ -69,10 +69,10 @@ namespace ProjetoFinal.Models
                 FuncionariosDAO dao = new FuncionariosDAO();
                 Funcionario p = dao.BuscaPorId(id);
                 p.Nome = funcionario.Nome;
-                p.CPF = funcionario.CPF;
+                p.Cpf = funcionario.Cpf;
                 p.DataDeNascimento = funcionario.DataDeNascimento;
                 p.Telefone = funcionario.Telefone;
-                p.CargoID = funcionario.CargoID;
+                p.CargoId = funcionario.CargoId;
                 dao.Atualiza(p);
 
                 return RedirectToAction("Index", "Funcionarios");

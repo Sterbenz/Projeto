@@ -62,18 +62,18 @@
                                             </span>
                                         </label>
                                         <div class="col-md-10">
-                                            <textarea style="resize:vertical" class="form-control" name="funcionario.CPF">@ViewBag.Funcionarios.CPF</textarea>
-                                            @Html.ValidationMessage("funcionario.CPF")
+                                            <input type="text" class="form-control" id="cpf" onblur="ValidaCPF()" value="@ViewBag.Funcionarios.Cpf" name="funcionario.Cpf">
+                                            @Html.ValidationMessage("funcionario.Cpf")
                                         </div>
                                     </div><br />
                                     <div class="form-group">
                                         <label class="col-md-2 control-label">
-                                            Quantidade: <span class="required">
+                                            Data de nascimento: <span class="required">
                                                 *
                                             </span>
                                         </label>
                                         <div class="col-md-10">
-                                            <textarea style="resize:vertical" class="form-control" name="funcionario.DataDeNascimento">@ViewBag.Funcionarios.DataDeNascimento</textarea>
+                                            <input type="date" class="form-control" value="@ViewBag.Funcionarios.DataDeNascimento" name="funcionario.DataDeNascimento">
                                             @Html.ValidationMessage("funcionario.DataDeNascimento")
                                         </div>
                                     </div><br />
@@ -82,7 +82,7 @@
                                             Telefone:
                                         </label>
                                         <div class="col-md-10">
-                                            <textarea style="resize:vertical" class="form-control" name="funcionario.Telefone">@ViewBag.Funcionarios.Telefone</textarea>
+                                            <input type="tel" class="form-control" value="@ViewBag.Funcionarios.Telefone" name="funcionario.Telefone">
                                         </div>
                                     </div><br />
                                     <div class="form-group">

@@ -28,7 +28,7 @@ namespace ProjetoFinal.Controllers
         {
             if (ModelState.IsValid)
             {
-                ClientesDAO dao = new ClientesDAO();                
+                ClientesDAO dao = new ClientesDAO();
                 dao.Adiciona(cliente);
 
                 return RedirectToAction("Index", "Cliente");
@@ -43,7 +43,7 @@ namespace ProjetoFinal.Controllers
         {
             ClientesDAO dao = new ClientesDAO();
             Cliente cliente = dao.BuscaPorId(id);
-            ViewBag.Produto = cliente;
+            ViewBag.Clientes = cliente;
 
             return View();
         }
@@ -55,7 +55,7 @@ namespace ProjetoFinal.Controllers
                 ClientesDAO dao = new ClientesDAO();
                 Cliente c = dao.BuscaPorId(id);
                 c.Nome = cliente.Nome;
-                c.CPF = cliente.CPF;
+                c.Cpf = cliente.Cpf;
                 c.DataDeNascimento = cliente.DataDeNascimento;
                 c.Telefone = cliente.Telefone;                
                 dao.Atualiza(c);
