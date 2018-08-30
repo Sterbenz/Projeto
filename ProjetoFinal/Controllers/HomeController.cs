@@ -12,6 +12,12 @@ namespace ProjetoFinal.Controllers
         // GET: Home
         public ActionResult Index()
         {
+            TipoPessoa pessoa = new TipoPessoa();
+
+            pessoa.Nome ="Cliente";
+
+            TipoPessoasDAO dao = new TipoPessoasDAO();
+            dao.Adiciona(pessoa);
             return View();
         }
     }

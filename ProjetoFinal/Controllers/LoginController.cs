@@ -16,15 +16,17 @@ namespace ProjetoFinal.Controllers
             return View();
         }
 
-        public ActionResult Validar(string usuario, string senha)
+        public ActionResult Validar(String usuario, String senha)
         {
-            FuncionariosDAO dao = new FuncionariosDAO();
-            ViewBag.Funcionarios = dao.Lista();            
+            
+            
+            
 
-            foreach(var funcionario in ViewBag.Funcionarios)
-            {
-                if (funcionario.Login.Usuario == usuario && funcionario.Login.Senha == senha)
+            foreach (var login in ViewBag.Logins)
+            {               
+                if (login.Usuario == usuario && login.Senha == senha)
                 {
+                   
                     return RedirectToAction("Index","Home");
                 }
                 else
@@ -36,5 +38,7 @@ namespace ProjetoFinal.Controllers
 
             return View();
         }
+        
+       
     }
 }

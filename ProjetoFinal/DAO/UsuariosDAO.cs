@@ -6,47 +6,47 @@ using ProjetoFinal.Models;
 
 namespace ProjetoFinal.DAO
 {
-    public class FuncionariosDAO
+    public class UsuariosDAO
     {
-        public void Adiciona(Funcionario funcionario)
+        public void Adiciona(Usuario usuarios)
         {
             using (var context = new LojaContext())
             {
-                context.Funcionarios.Add(funcionario);
+                context.Usuarios.Add(usuarios);
                 context.SaveChanges();
             }
         }
 
-        public IList<Funcionario> Lista()
+        public IList<Usuario> Lista()
         {
             using (var contexto = new LojaContext())
             {
-                return contexto.Funcionarios.ToList();
+                return contexto.Usuarios.ToList();
             }
         }
 
-        public Funcionario BuscaPorId(int id)
+        public Usuario BuscaPorId(int id)
         {
             using (var contexto = new LojaContext())
             {
-                return contexto.Funcionarios.Find(id);
+                return contexto.Usuarios.Find(id);
             }
         }
 
-        public void Atualiza(Funcionario funcionario)
+        public void Atualiza(Usuario usuarios)
         {
             using (var contexto = new LojaContext())
             {
-                contexto.Funcionarios.Update(funcionario);
+                contexto.Usuarios.Update(usuarios);
                 contexto.SaveChanges();
             }
         }
 
-        public void Remover(Funcionario funcionario)
+        public void Remover(Usuario usuarios)
         {
             using (var contexto = new LojaContext())
             {
-                contexto.Funcionarios.Remove(funcionario);
+                contexto.Usuarios.Remove(usuarios);
                 contexto.SaveChanges();
             }
         }

@@ -13,38 +13,51 @@ namespace ProjetoFinal.Models
         // GET: Funcionarios
         public ActionResult Index()
         {
-            FuncionariosDAO dao = new FuncionariosDAO();
-            ViewBag.Funcionarios = dao.Lista();
+            IList<Pessoa> pessoas = new List<Pessoa>();
+
+            PessoasDAO dao = new PessoasDAO();
+            foreach (Pessoa pessoa in dao.Lista())
+            {
+                if (pessoa.TipoPessoa.Nome == "Funcionario")
+                    pessoas.Add(pessoa);
+            }
+            ViewBag.Funcionarios = pessoas;
 
             return View();
         }
 
         public ActionResult Form()
         {
-            CargosDAO dao = new CargosDAO();
+            TipoPessoasDAO dao = new TipoPessoasDAO();
             ViewBag.Cargos = dao.Lista();
 
             return View();
         }
 
         [HttpPost]
-        public ActionResult Adiciona(Funcionario funcionario)
+        public ActionResult Adiciona(Pessoa funcionario)
         {
             if (ModelState.IsValid)
             {
-                FuncionariosDAO dao = new FuncionariosDAO();
-                funcionario.Login = new LoginFuncionarios()
+                PessoasDAO funcDAO = new PessoasDAO();
+                UsuariosDAO userDAO = new UsuariosDAO();
+                Usuario user = new Usuario()
                 {
-                    Usuario = funcionario.Nome+funcionario.DataDeNascimento.Year,
-                    Senha = funcionario.Cpf
+                    User = funcionario.Nome + funcionario.DataDeNascimento.Year,
+                    Senha = funcionario.Cpf,
+                    PessoaId = funcionario.Id,
+                    TipoPessoaId = funcionario.TipoPessoaId
+                   
                 };
-                dao.Adiciona(funcionario);
+
+                funcDAO.Adiciona(funcionario);
+                userDAO.Adiciona(user);
 
                 return RedirectToAction("Index", "Funcionario");
             }
             else
             {
-                CargosDAO dao = new CargosDAO();
+                TipoPessoasDAO dao = new TipoPessoasDAO();
                 ViewBag.Cargos = dao.Lista();
 
                 return View("Form");
@@ -53,26 +66,27 @@ namespace ProjetoFinal.Models
 
         public ActionResult Editar(int id)
         {
-            FuncionariosDAO dao = new FuncionariosDAO();
-            Funcionario funcionario = dao.BuscaPorId(id);
-            CargosDAO cargoDao = new CargosDAO();
+            UsuariosDAO dao = new UsuariosDAO();
+            Usuario funcionario = dao.BuscaPorId(id);
+            TipoPessoasDAO cargoDao = new TipoPessoasDAO();
             ViewBag.Cargos = cargoDao.Lista();
             ViewBag.Funcionarios = funcionario;
 
             return View();
         }
 
-        public ActionResult Edita(int id, Funcionario funcionario)
+        public ActionResult Edita(int id, Pessoa funcionario)
         {
             if (ModelState.IsValid)
             {
-                FuncionariosDAO dao = new FuncionariosDAO();
-                Funcionario p = dao.BuscaPorId(id);
+                PessoasDAO dao = new PessoasDAO();
+                Pessoa p = dao.BuscaPorId(id);
                 p.Nome = funcionario.Nome;
                 p.Cpf = funcionario.Cpf;
                 p.DataDeNascimento = funcionario.DataDeNascimento;
+                p.Email = funcionario.Email;
                 p.Telefone = funcionario.Telefone;
-                p.CargoId = funcionario.CargoId;
+                p.TipoPessoaId = funcionario.TipoPessoaId;
                 dao.Atualiza(p);
 
                 return RedirectToAction("Index", "Funcionarios");
@@ -85,8 +99,8 @@ namespace ProjetoFinal.Models
 
         public ActionResult Remover(int id)
         {
-            FuncionariosDAO dao = new FuncionariosDAO();
-            Funcionario funcionario = dao.BuscaPorId(id);
+            UsuariosDAO dao = new UsuariosDAO();
+            Usuario funcionario = dao.BuscaPorId(id);
             dao.Remover(funcionario);
 
             return RedirectToAction("Index", "Funcionarios");

@@ -6,47 +6,47 @@ using ProjetoFinal.Models;
 
 namespace ProjetoFinal.DAO
 {
-    public class CargosDAO
+    public class TipoPessoasDAO
     {
-        public void Adiciona(Cargo cargo)
+        public void Adiciona(TipoPessoa tipo)
         {
             using (var context = new LojaContext())
             {
-                context.Cargos.Add(cargo);
+                context.TipoPessoas.Add(tipo);
                 context.SaveChanges();
             }
         }
 
-        public IList<Cargo> Lista()
+        public IList<TipoPessoa> Lista()
         {
             using (var contexto = new LojaContext())
             {
-                return contexto.Cargos.ToList();
+                return contexto.TipoPessoas.ToList();
             }
         }
 
-        public Cargo BuscaPorId(int id)
+        public TipoPessoa BuscaPorId(int id)
         {
             using (var contexto = new LojaContext())
             {
-                return contexto.Cargos.Find(id);
+                return contexto.TipoPessoas.Find(id);
             }
         }
 
-        public void Atualiza(Cargo cargo)
+        public void Atualiza(TipoPessoa tipo)
         {
             using (var contexto = new LojaContext())
             {
-                contexto.Cargos.Update(cargo);
+                contexto.TipoPessoas.Update(tipo);
                 contexto.SaveChanges();
             }
         }
 
-        public void Remover(Cargo cargo)
+        public void Remover(TipoPessoa tipo)
         {
             using (var contexto = new LojaContext())
             {
-                contexto.Cargos.Remove(cargo);
+                contexto.TipoPessoas.Remove(tipo);
                 contexto.SaveChanges();
             }
         }

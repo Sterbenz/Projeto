@@ -11,7 +11,7 @@ namespace ProjetoFinal.Models
         
         public int PessoaId { get; set; }
 
-        public Cliente Pessoa { get; set; }
+        public Pessoa Pessoa { get; set; }
 
         public String Descricao { get; set; }
     }

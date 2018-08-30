@@ -6,7 +6,7 @@ using System.Web;
 
 namespace ProjetoFinal.Models
 {
-    public class Cargo
+    public class TipoPessoa
     {
 
         public int Id { get; set; }

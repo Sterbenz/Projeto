@@ -12,8 +12,15 @@ namespace ProjetoFinal.Controllers
     {
         public ActionResult Index()
         {
-            ClientesDAO dao = new ClientesDAO();
-            ViewBag.Clientes = dao.Lista();
+            IList<Pessoa> pessoas = new List<Pessoa>();
+
+            PessoasDAO dao = new PessoasDAO();
+            foreach (Pessoa pessoa in dao.Lista())
+            {
+                if (pessoa.TipoPessoa.Nome == "Cliente")
+                    pessoas.Add(pessoa);
+            }
+            ViewBag.Clientes = pessoas;
 
             return View();
         }
@@ -24,11 +31,11 @@ namespace ProjetoFinal.Controllers
         }
 
         [HttpPost]
-        public ActionResult Adiciona(Cliente cliente)
+        public ActionResult Adiciona(Pessoa cliente)
         {
             if (ModelState.IsValid)
             {
-                ClientesDAO dao = new ClientesDAO();
+                PessoasDAO dao = new PessoasDAO();
                 dao.Adiciona(cliente);
 
                 return RedirectToAction("Index", "Cliente");
@@ -41,22 +48,23 @@ namespace ProjetoFinal.Controllers
 
         public ActionResult Editar(int id)
         {
-            ClientesDAO dao = new ClientesDAO();
-            Cliente cliente = dao.BuscaPorId(id);
+            PessoasDAO dao = new PessoasDAO();
+            Pessoa cliente = dao.BuscaPorId(id);
             ViewBag.Clientes = cliente;
 
             return View();
         }
 
-        public ActionResult Edita(int id, Cliente cliente)
+        public ActionResult Edita(int id, Pessoa cliente)
         {
             if (ModelState.IsValid)
             {
-                ClientesDAO dao = new ClientesDAO();
-                Cliente c = dao.BuscaPorId(id);
+                PessoasDAO dao = new PessoasDAO();
+                Pessoa c = dao.BuscaPorId(id);
                 c.Nome = cliente.Nome;
                 c.Cpf = cliente.Cpf;
                 c.DataDeNascimento = cliente.DataDeNascimento;
+                c.Email = cliente.Email;
                 c.Telefone = cliente.Telefone;                
                 dao.Atualiza(c);
 
@@ -70,8 +78,8 @@ namespace ProjetoFinal.Controllers
 
         public ActionResult Remover(int id)
         {
-            ClientesDAO dao = new ClientesDAO();
-            Cliente cliente = dao.BuscaPorId(id);
+            PessoasDAO dao = new PessoasDAO();
+            Pessoa cliente = dao.BuscaPorId(id);
             dao.Remover(cliente);
 
             return RedirectToAction("Index", "Cliente");

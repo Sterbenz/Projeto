@@ -13,9 +13,9 @@ namespace ProjetoFinal.DAO
 
         public DbSet<FamiliaProduto> Categorias { get; set; }
 
-        public DbSet<Cliente> Clientes { get; set; }        
+        public DbSet<Pessoa> Pessoas { get; set; }        
 
-        public DbSet<Cargo> Cargos { get; set; }
+        public DbSet<TipoPessoa> TipoPessoas { get; set; }
 
         public DbSet<Endereco> Enderecos { get; set; }
 
@@ -23,25 +23,11 @@ namespace ProjetoFinal.DAO
 
         public DbSet<LogPessoa> LogPessoas { get; set; }
 
-        public DbSet<Funcionario> Funcionarios { get; set; }
+        public DbSet<Usuario> Usuarios { get; set; }        
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlServer("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=LojaDB;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
-        }
-        
-        protected override void OnModelCreating(ModelBuilder model)
-        {
-
-            model
-                .Entity<LoginFuncionarios>()
-                .Property<int>("FuncionarioId");
-
-            model
-                .Entity<LoginFuncionarios>()
-                .HasKey("FuncionarioId");
-
-
-        }
+        }      
     }
 }

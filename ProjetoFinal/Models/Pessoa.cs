@@ -7,7 +7,7 @@ using System.Web;
 
 namespace ProjetoFinal.Models
 {
-    public class Cliente
+    public class Pessoa
     {
         public int Id { get; set; }
 
@@ -22,6 +22,13 @@ namespace ProjetoFinal.Models
         [Required(ErrorMessage ="Campo obrigatório!")]
         public DateTime DataDeNascimento { get; set; }
 
-        public string Telefone { get; set; }        
+        public string Email { get; set; }
+        
+        public string Telefone { get; set; }
+
+        public int TipoPessoaId { get; set; }
+
+        public TipoPessoa TipoPessoa { get; set; }
+
     }
 }
