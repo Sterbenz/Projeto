@@ -4,20 +4,16 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using ProjetoFinal.DAO;
+using ProjetoFinal.Filters;
 using ProjetoFinal.Models;
 namespace ProjetoFinal.Controllers
 {
+    [LoginFilter]
     public class HomeController : Controller
     {
         // GET: Home
         public ActionResult Index()
         {
-            TipoPessoa pessoa = new TipoPessoa();
-
-            pessoa.Nome ="Cliente";
-
-            TipoPessoasDAO dao = new TipoPessoasDAO();
-            dao.Adiciona(pessoa);
             return View();
         }
     }

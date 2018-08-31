@@ -1,4 +1,7 @@
-﻿<!DOCTYPE html>
+﻿
+@{var user = Session["Usuario"] as ProjetoFinal.Models.Usuario;}
+
+<!DOCTYPE html>
 <!--
 Template Name: Metronic - Responsive Admin Dashboard Template build with Twitter Bootstrap 3.3.2
 Version: 3.7.0
@@ -52,10 +55,10 @@ License: You must have a valid license purchased only from themeforest(the above
         .valido {
             border-color: #28a745;
         }
+
         .invalido {
             border-color: #dc3545;
         }
-
     </style>
 </head>
 <!-- END HEAD -->
@@ -99,7 +102,7 @@ License: You must have a valid license purchased only from themeforest(the above
                         <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
                             <img alt="" class="img-circle" src="~/Content/assets/admin/layout/img/avatar3_small.jpg" />
                             <span class="username username-hide-on-mobile">
-                                Nick
+                                @user.Pessoa.Nome
                             </span>
                             <i class="fa fa-angle-down"></i>
                         </a>
@@ -189,22 +192,23 @@ License: You must have a valid license purchased only from themeforest(the above
                         <a href="@Url.Action("Index","Produto")"><i class="icon-book-open"></i><span class="title">Produtos</span></a>
                     </li>
                     <li>
-                        <a href="@Url.Action("Index","Categoria")"><i class="icon-layers"></i><span class="title">Categorias</span></a>                       
+                        <a href="@Url.Action("Index","Categoria")"><i class="icon-layers"></i><span class="title">Categorias</span></a>
                     </li>
-                    
+
                     <li>
-                        <a href="#"><i class="icon-basket"></i><span class="title">Compras</span></a>                        
-                    </li>
-                    <li>
-                        <a href="#"><img src="~/Content/assets/admin/layout/img/delivery-truck2.svg" width="25">
-                        <span class="title">Fornecedores</span>                            
-                        </a>                        
+                        <a href="#"><i class="icon-basket"></i><span class="title">Compras</span></a>
                     </li>
                     <li>
-                        <a href="@Url.Action("Index","Funcionario")"><i class="icon-users"></i><span class="title">Funcionarios</span></a>                       
+                        <a href="#">
+                            <img src="~/Content/assets/admin/layout/img/delivery-truck2.svg" width="25">
+                            <span class="title">Fornecedores</span>
+                        </a>
                     </li>
                     <li>
-                        <a href="@Url.Action("Index","Cliente")"><i class="icon-star"></i><span class="title">Clientes</span></a>                        
+                        <a href="@Url.Action("Index","Funcionario")"><i class="icon-users"></i><span class="title">Funcionarios</span></a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("Index","Cliente")"><i class="icon-star"></i><span class="title">Clientes</span></a>
                     </li>
                     <!-- END ANGULARJS LINK -->
                 </ul>
@@ -235,9 +239,9 @@ License: You must have a valid license purchased only from themeforest(the above
             <!-- BEGIN JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
             <!-- BEGIN CORE PLUGINS -->
             <!--[if lt IE 9]>
-    <script src="../../assets/global/plugins/respond.min.js"></script>
-    <script src="../../assets/global/plugins/excanvas.min.js"></script>
-    <![endif]-->
+            <script src="../../assets/global/plugins/respond.min.js"></script>
+            <script src="../../assets/global/plugins/excanvas.min.js"></script>
+            <![endif]-->
             <script src="~/Content/assets/global/plugins/jquery.min.js" type="text/javascript"></script>
             <script src="~/Content/assets/global/plugins/jquery-migrate.min.js" type="text/javascript"></script>
             <!-- IMPORTANT! Load jquery-ui.min.js before bootstrap.min.js to fix bootstrap tooltip conflict with jquery ui tooltip -->
@@ -274,7 +278,7 @@ License: You must have a valid license purchased only from themeforest(the above
                     EcommerceProducts.init();
                 });
 
-            </script>            
+            </script>
             <!-- END JAVASCRIPTS -->
         </div>
     </div>

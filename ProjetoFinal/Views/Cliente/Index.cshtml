@@ -28,18 +28,19 @@
     <tbody>
         @foreach (var cliente in ViewBag.Clientes)
         {
-            <tr onclick="window.location='@Url.Action("Editar","Cliente", new { @cliente.Id })'">
-                <th>@cliente.Id</th>
-                <th>@cliente.Nome</th>
-                <th>@Convert.ToUInt64(cliente.Cpf).ToString(@"000\.000\.000\-00")</th>
-                <th>@Convert.ToDateTime(cliente.DataDeNascimento).ToString("dd/MM/yyyy")</th>
-                <th>@Convert.ToUInt64(cliente.Telefone).ToString(@"00 00000-0000")</th>                
-                <th>
-                    <form class="form-horizontal form-row-seperated" action="@Url.Action("Remover","Cliente", new { @cliente.Id })" method="post">
-                        <button class="btn default red-flamingo" type="submit">Deletar</button>
-                    </form>
-                </th>
-            </tr>
+        <tr onclick="window.location='@Url.Action("Editar","Cliente", new { @cliente.Id })'">
+            <th>@cliente.Id</th>
+            <th>@cliente.Nome</th>
+            <th>@Convert.ToUInt64(cliente.Cpf).ToString(@"000\.000\.000\-00")</th>
+            <th>@Convert.ToDateTime(cliente.DataDeNascimento).ToString("dd/MM/yyyy")</th>
+            <th>@cliente.Email</th>
+            <th>@Convert.ToUInt64(cliente.Telefone).ToString(@"00 00000-0000")</th>
+            <th>
+                <form class="form-horizontal form-row-seperated" action="@Url.Action("Remover","Cliente", new { @cliente.Id })" method="post">
+                    <button class="btn default red-flamingo" type="submit">Deletar</button>
+                </form>
+            </th>
+        </tr>
         }
 
     </tbody>

@@ -4,10 +4,12 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using ProjetoFinal.DAO;
+using ProjetoFinal.Filters;
 using ProjetoFinal.Models;
 
 namespace ProjetoFinal.Controllers
 {
+    [LoginFilter]
     public class ClienteController : Controller
     {
         public ActionResult Index()
@@ -17,7 +19,7 @@ namespace ProjetoFinal.Controllers
             PessoasDAO dao = new PessoasDAO();
             foreach (Pessoa pessoa in dao.Lista())
             {
-                if (pessoa.TipoPessoa.Nome == "Cliente")
+                if (pessoa.TipoPessoaId == 1)
                     pessoas.Add(pessoa);
             }
             ViewBag.Clientes = pessoas;
@@ -36,6 +38,7 @@ namespace ProjetoFinal.Controllers
             if (ModelState.IsValid)
             {
                 PessoasDAO dao = new PessoasDAO();
+                cliente.TipoPessoaId = 1;
                 dao.Adiciona(cliente);
 
                 return RedirectToAction("Index", "Cliente");

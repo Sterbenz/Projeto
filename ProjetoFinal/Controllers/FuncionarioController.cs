@@ -5,9 +5,11 @@ using System.Web;
 using System.Web.Mvc;
 using ProjetoFinal.Models;
 using ProjetoFinal.DAO;
+using ProjetoFinal.Filters;
 
 namespace ProjetoFinal.Models
 {
+    [LoginFilter]
     public class FuncionarioController : Controller
     {
         // GET: Funcionarios
@@ -18,7 +20,7 @@ namespace ProjetoFinal.Models
             PessoasDAO dao = new PessoasDAO();
             foreach (Pessoa pessoa in dao.Lista())
             {
-                if (pessoa.TipoPessoa.Nome == "Funcionario")
+                if (pessoa.TipoPessoaId != 1)
                     pessoas.Add(pessoa);
             }
             ViewBag.Funcionarios = pessoas;
@@ -29,7 +31,7 @@ namespace ProjetoFinal.Models
         public ActionResult Form()
         {
             TipoPessoasDAO dao = new TipoPessoasDAO();
-            ViewBag.Cargos = dao.Lista();
+            ViewBag.TipoPessoas = dao.Lista();
 
             return View();
         }
@@ -41,16 +43,15 @@ namespace ProjetoFinal.Models
             {
                 PessoasDAO funcDAO = new PessoasDAO();
                 UsuariosDAO userDAO = new UsuariosDAO();
+                funcDAO.Adiciona(funcionario);
+
                 Usuario user = new Usuario()
                 {
-                    User = funcionario.Nome + funcionario.DataDeNascimento.Year,
+                    User = funcionario.Email,
                     Senha = funcionario.Cpf,
                     PessoaId = funcionario.Id,
-                    TipoPessoaId = funcionario.TipoPessoaId
-                   
                 };
-
-                funcDAO.Adiciona(funcionario);
+                
                 userDAO.Adiciona(user);
 
                 return RedirectToAction("Index", "Funcionario");
@@ -58,7 +59,7 @@ namespace ProjetoFinal.Models
             else
             {
                 TipoPessoasDAO dao = new TipoPessoasDAO();
-                ViewBag.Cargos = dao.Lista();
+                ViewBag.TipoPessoas = dao.Lista();
 
                 return View("Form");
             }
@@ -68,8 +69,8 @@ namespace ProjetoFinal.Models
         {
             UsuariosDAO dao = new UsuariosDAO();
             Usuario funcionario = dao.BuscaPorId(id);
-            TipoPessoasDAO cargoDao = new TipoPessoasDAO();
-            ViewBag.Cargos = cargoDao.Lista();
+            TipoPessoasDAO tipoPessoasDao = new TipoPessoasDAO();
+            ViewBag.TipoPessoas = tipoPessoasDao.Lista();
             ViewBag.Funcionarios = funcionario;
 
             return View();
@@ -89,7 +90,7 @@ namespace ProjetoFinal.Models
                 p.TipoPessoaId = funcionario.TipoPessoaId;
                 dao.Atualiza(p);
 
-                return RedirectToAction("Index", "Funcionarios");
+                return RedirectToAction("Index", "Funcionario");
             }
             else
             {
@@ -99,11 +100,11 @@ namespace ProjetoFinal.Models
 
         public ActionResult Remover(int id)
         {
-            UsuariosDAO dao = new UsuariosDAO();
-            Usuario funcionario = dao.BuscaPorId(id);
-            dao.Remover(funcionario);
+            PessoasDAO pessoaDAO = new PessoasDAO();
+            Pessoa funcionario = pessoaDAO.BuscaPorId(id);
+            pessoaDAO.Remover(funcionario);
 
-            return RedirectToAction("Index", "Funcionarios");
+            return RedirectToAction("Index", "Funcionario");
         }
     }
 }

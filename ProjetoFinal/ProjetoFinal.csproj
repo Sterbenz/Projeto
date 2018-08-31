@@ -25,6 +25,7 @@
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -4273,14 +4274,18 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\CategoriaController.cs" />
     <Compile Include="Controllers\ClienteController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\ProdutoController.cs" />
+    <Compile Include="DAO\AcompanhamentoFornecedoresDAO.cs" />
     <Compile Include="DAO\FamiliaProdutoDAO.cs" />
     <Compile Include="DAO\EnderecosDAO.cs" />
+    <Compile Include="DAO\FornecedoresDAO.cs" />
+    <Compile Include="DAO\PedidosDAO.cs" />
     <Compile Include="DAO\UsuariosDAO.cs" />
     <Compile Include="DAO\LogPessoasDAO.cs" />
     <Compile Include="DAO\LogProdutosDAO.cs" />
@@ -4288,45 +4293,25 @@
     <Compile Include="DAO\ProdutosDAO.cs" />
     <Compile Include="DAO\PessoasDAO.cs" />
     <Compile Include="DAO\TipoPessoasDAO.cs" />
+    <Compile Include="Filters\LoginFilter.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\20180809183621_Tabelas.cs" />
-    <Compile Include="Migrations\20180809183621_Tabelas.designer.cs">
-      <DependentUpon>20180809183621_Tabelas.cs</DependentUpon>
+    <Compile Include="Migrations\20180831162153_Teste.cs" />
+    <Compile Include="Migrations\20180831162153_Teste.designer.cs">
+      <DependentUpon>20180831162153_Teste.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\20180809191256_Ligacoes.cs" />
-    <Compile Include="Migrations\20180809191256_Ligacoes.designer.cs">
-      <DependentUpon>20180809191256_Ligacoes.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\20180813190647_remover.cs" />
-    <Compile Include="Migrations\20180813190647_remover.designer.cs">
-      <DependentUpon>20180813190647_remover.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\20180822202015_Pessoas.cs" />
-    <Compile Include="Migrations\20180822202015_Pessoas.designer.cs">
-      <DependentUpon>20180822202015_Pessoas.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\20180823170808_semTipoPessoaCliente.cs" />
-    <Compile Include="Migrations\20180823170808_semTipoPessoaCliente.designer.cs">
-      <DependentUpon>20180823170808_semTipoPessoaCliente.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\20180823184804_ModificacoesFuncionarios.cs" />
-    <Compile Include="Migrations\20180823184804_ModificacoesFuncionarios.designer.cs">
-      <DependentUpon>20180823184804_ModificacoesFuncionarios.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\20180824172330_cpfModif.cs" />
-    <Compile Include="Migrations\20180824172330_cpfModif.designer.cs">
-      <DependentUpon>20180824172330_cpfModif.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\20180830203149_Fu.cs" />
-    <Compile Include="Migrations\20180830203149_Fu.designer.cs">
-      <DependentUpon>20180830203149_Fu.cs</DependentUpon>
+    <Compile Include="Migrations\20180831192434_Fornecedores-Pedidos-Acompanhamentos.cs" />
+    <Compile Include="Migrations\20180831192434_Fornecedores-Pedidos-Acompanhamentos.designer.cs">
+      <DependentUpon>20180831192434_Fornecedores-Pedidos-Acompanhamentos.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\LojaContextModelSnapshot.cs" />
+    <Compile Include="Models\AcompanhamentoFornecedores.cs" />
     <Compile Include="Models\FamiliaProduto.cs" />
     <Compile Include="Models\Endereco.cs" />
     <Compile Include="Controllers\FuncionarioController.cs" />
+    <Compile Include="Models\Fornecedor.cs" />
+    <Compile Include="Models\Pedido.cs" />
     <Compile Include="Models\Usuario.cs" />
     <Compile Include="Models\LogPessoa.cs" />
     <Compile Include="Models\LogProduto.cs" />

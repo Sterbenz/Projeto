@@ -10,8 +10,8 @@ using ProjetoFinal.DAO;
 namespace ProjetoFinal.Migrations
 {
     [DbContext(typeof(LojaContext))]
-    [Migration("20180809191256_Ligacoes")]
-    partial class Ligacoes
+    [Migration("20180831162153_Teste")]
+    partial class Teste
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -50,11 +50,51 @@ namespace ProjetoFinal.Migrations
 
                     b.Property<string>("Descricao");
 
-                    b.Property<string>("Nome");
+                    b.Property<string>("Nome")
+                        .IsRequired()
+                        .HasMaxLength(50);
 
                     b.HasKey("Id");
 
                     b.ToTable("Categorias");
+                });
+
+            modelBuilder.Entity("ProjetoFinal.Models.LogPessoa", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Descricao");
+
+                    b.Property<int>("PessoaId");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("PessoaId");
+
+                    b.ToTable("LogPessoas");
+                });
+
+            modelBuilder.Entity("ProjetoFinal.Models.LogProduto", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Descricao");
+
+                    b.Property<int>("PessoaId");
+
+                    b.Property<int>("ProdutoId");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("PessoaId");
+
+                    b.HasIndex("ProdutoId");
+
+                    b.ToTable("LogProdutos");
                 });
 
             modelBuilder.Entity("ProjetoFinal.Models.Pessoa", b =>
@@ -63,19 +103,24 @@ namespace ProjetoFinal.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("CPF");
+                    b.Property<string>("Cpf")
+                        .IsRequired()
+                        .HasColumnType("VARCHAR(11)");
 
                     b.Property<DateTime>("DataDeNascimento");
 
-                    b.Property<string>("Nome");
+                    b.Property<string>("Email");
+
+                    b.Property<string>("Nome")
+                        .IsRequired();
 
                     b.Property<string>("Telefone");
 
-                    b.Property<int>("TipoPessoaID");
+                    b.Property<int>("TipoPessoaId");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("TipoPessoaID");
+                    b.HasIndex("TipoPessoaId");
 
                     b.ToTable("Pessoas");
                 });
@@ -86,15 +131,17 @@ namespace ProjetoFinal.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<string>("Complemento");
+
                     b.Property<int>("FamiliaProdutoId");
 
-                    b.Property<string>("Nome");
+                    b.Property<string>("Nome")
+                        .IsRequired()
+                        .HasMaxLength(50);
 
                     b.Property<float>("PrecoPorUnidade");
 
                     b.Property<int>("Quantidade");
-
-                    b.Property<string>("complemento");
 
                     b.HasKey("Id");
 
@@ -111,18 +158,59 @@ namespace ProjetoFinal.Migrations
 
                     b.Property<string>("Descricao");
 
-                    b.Property<string>("Nome");
+                    b.Property<string>("Nome")
+                        .IsRequired();
 
                     b.HasKey("Id");
 
                     b.ToTable("TipoPessoas");
                 });
 
+            modelBuilder.Entity("ProjetoFinal.Models.Usuario", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("PessoaId");
+
+                    b.Property<string>("Senha");
+
+                    b.Property<string>("User");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("PessoaId");
+
+                    b.ToTable("Usuarios");
+                });
+
+            modelBuilder.Entity("ProjetoFinal.Models.LogPessoa", b =>
+                {
+                    b.HasOne("ProjetoFinal.Models.Pessoa", "Pessoa")
+                        .WithMany()
+                        .HasForeignKey("PessoaId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("ProjetoFinal.Models.LogProduto", b =>
+                {
+                    b.HasOne("ProjetoFinal.Models.Pessoa", "Pessoa")
+                        .WithMany()
+                        .HasForeignKey("PessoaId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("ProjetoFinal.Models.Produto", "Produto")
+                        .WithMany()
+                        .HasForeignKey("ProdutoId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
             modelBuilder.Entity("ProjetoFinal.Models.Pessoa", b =>
                 {
-                    b.HasOne("ProjetoFinal.Models.TipoPessoa", "tipoPessoa")
+                    b.HasOne("ProjetoFinal.Models.TipoPessoa", "TipoPessoa")
                         .WithMany()
-                        .HasForeignKey("TipoPessoaID")
+                        .HasForeignKey("TipoPessoaId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
@@ -131,6 +219,14 @@ namespace ProjetoFinal.Migrations
                     b.HasOne("ProjetoFinal.Models.FamiliaProduto", "Familia")
                         .WithMany()
                         .HasForeignKey("FamiliaProdutoId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("ProjetoFinal.Models.Usuario", b =>
+                {
+                    b.HasOne("ProjetoFinal.Models.Pessoa", "Pessoa")
+                        .WithMany()
+                        .HasForeignKey("PessoaId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618

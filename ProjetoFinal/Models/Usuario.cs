@@ -15,13 +15,8 @@ namespace ProjetoFinal.Models
 
         public string Senha { get; set; }
 
-        public int TipoPessoaId { get; set; }
-
         public int PessoaId { get; set; }
 
         public Pessoa Pessoa { get; set; }
-
-        public TipoPessoa Tipo { get; set; }
-
     }
 }

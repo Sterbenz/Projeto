@@ -62,12 +62,12 @@
                                             </span>
                                         </label>
                                         <div class="col-md-10">
-                                            <input type="number" class="form-control" id="cpf" onblur="validaCPF()" maxlength="11" name="cliente.Cpf" placeholder="">
+                                            <input type="number" class="form-control" id="cpf" onblur="validaCPF()" maxlength="11" name="cliente.Cpf" placeholder="apenas numeros">
                                             @Html.ValidationMessage("cliente.Cpf")
                                         </div>
                                     </div><br />
                                     <div class="form-group">
-                                        <label class="col-md-2 control-label" >
+                                        <label class="col-md-2 control-label">
                                             Data de nascimento: <span class="required">
                                                 *
                                             </span>
@@ -79,12 +79,20 @@
                                     </div><br />
                                     <div class="form-group">
                                         <label class="col-md-2 control-label">
+                                            Email:
+                                        </label>
+                                        <div class="col-md-10">
+                                            <input type="email" class="form-control" name="cliente.Email">
+                                        </div>
+                                    </div><br />
+                                    <div class="form-group">
+                                        <label class="col-md-2 control-label">
                                             Telefone:
                                         </label>
                                         <div class="col-md-10">
                                             <input type="tel" class="form-control" name="cliente.Telefone" placeholder="">
                                         </div>
-                                    </div><br />                                  
+                                    </div><br />
                                 </div>
                             </div>
                         </div>

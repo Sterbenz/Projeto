@@ -18,15 +18,16 @@ namespace ProjetoFinal.Controllers
 
         public ActionResult Validar(String usuario, String senha)
         {
-            
-            
-            
 
-            foreach (var login in ViewBag.Logins)
+            UsuariosDAO dao = new UsuariosDAO();
+            Usuario user = new Usuario();
+            ViewBag.Usuarios = dao.Lista();
+
+            foreach (var login in ViewBag.Usuarios)
             {               
-                if (login.Usuario == usuario && login.Senha == senha)
+                if (login.User == usuario && login.Senha == senha)
                 {
-                   
+                    Session["UsuarioLogado"] = login;
                     return RedirectToAction("Index","Home");
                 }
                 else

@@ -79,6 +79,14 @@
                                     </div><br />
                                     <div class="form-group">
                                         <label class="col-md-2 control-label">
+                                            Email:
+                                        </label>
+                                        <div class="col-md-10">
+                                            <input type="email" class="form-control" value="@ViewBag.Funcionarios.Email" name="funcionario.Email">
+                                        </div>
+                                    </div><br />
+                                    <div class="form-group">
+                                        <label class="col-md-2 control-label">
                                             Telefone:
                                         </label>
                                         <div class="col-md-10">
@@ -87,28 +95,27 @@
                                     </div><br />
                                     <div class="form-group">
                                         <label class="col-md-2 control-label">
-                                            Telefone:
+                                            Tipo de Pessoa:
                                         </label>
                                         <div class="col-md-10">
                                             <div class="form-control height-auto">
 
                                                 <select class="form-control" name="funcionario.CargoId">
-                                                    @foreach (var cargo in ViewBag.Cargos)
-                                                    {
-                                                        if (@ViewBag.Produto.FamiliaProdutoId == cargo.Id)
+                                                    @foreach (var tipo in ViewBag.TipoPessoas)
+                                                     {
+                                                        if (@ViewBag.TipoPessoas.TipoPessoaId == tipo.Id 
+                                                            && 
+                                                            @ViewBag.TipoPessoas.TipoPessoaId != 1)
                                                         {
-                                                            <option value="@cargo.Id" selected>
-                                                                @cargo.Nome
+                                                            <option value="@tipo.Id" selected>
+                                                                @tipo.Nome
                                                             </option>
                                                         }
-
                                                         else
                                                         {
-                                                            <option value="@cargo.Id">@cargo.Nome</option>}
-
-
-
-                                                    }
+                                                            <option value="@tipo.Id">@tipo.Nome</option>
+                                                        }
+                                                     }
                                                 </select>
                                             </div>
                                         </div>
