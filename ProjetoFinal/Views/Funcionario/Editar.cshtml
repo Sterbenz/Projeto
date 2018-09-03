@@ -27,7 +27,7 @@
 <!-- BEGIN PAGE CONTENT-->
 <div class="row">
     <div class="col-md-12">
-        <form class="form-horizontal form-row-seperated" action="@Url.Action("Edita","Cliente", new { ViewBag.Clientes.Id })" method="post">
+        <form class="form-horizontal form-row-seperated" action="@Url.Action("Edita","Funcionario", new { ViewBag.Funcionarios.Id })" method="post">
             <div class="portlet">
                 <div class="portlet-title">
                     <div class="caption">
@@ -51,7 +51,7 @@
                                             </span>
                                         </label>
                                         <div class="col-md-10">
-                                            <input type="text" class="form-control" name="funcionario.Nome" value="@ViewBag.Clientes.Nome" placeholder="">
+                                            <input type="text" class="form-control" name="funcionario.Nome" value="@ViewBag.Funcionarios.Nome" placeholder="">
                                             @Html.ValidationMessage("funcionario.Nome")
                                         </div>
                                     </div><br />
@@ -100,12 +100,12 @@
                                         <div class="col-md-10">
                                             <div class="form-control height-auto">
 
-                                                <select class="form-control" name="funcionario.CargoId">
+                                                <select class="form-control" name="funcionario.TipoPessoaId">
                                                     @foreach (var tipo in ViewBag.TipoPessoas)
                                                      {
-                                                        if (@ViewBag.TipoPessoas.TipoPessoaId == tipo.Id 
+                                                        if (@ViewBag.Funcionarios.TipoPessoaId == tipo.Id 
                                                             && 
-                                                            @ViewBag.TipoPessoas.TipoPessoaId != 1)
+                                                            @ViewBag.Funcionarios.TipoPessoaId != 1)
                                                         {
                                                             <option value="@tipo.Id" selected>
                                                                 @tipo.Nome

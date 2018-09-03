@@ -1,0 +1,21 @@
+TipoPessoasDAO dao = new TipoPessoasDAO();
+            TipoPessoa a = new TipoPessoa()
+            {
+                Nome = "Cliente"
+            };
+            TipoPessoa b = new TipoPessoa()
+            {
+                Nome = "Funcionario(a)"
+            };
+            TipoPessoa c = new TipoPessoa()
+            {
+                Nome = "Gerente"
+            };
+            TipoPessoa d = new TipoPessoa()
+            {
+                Nome = "Dono(a)"
+            };
+            dao.Adiciona(a);
+            dao.Adiciona(b);
+            dao.Adiciona(c);
+            dao.Adiciona(d);

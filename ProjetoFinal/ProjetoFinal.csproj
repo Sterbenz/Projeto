@@ -4271,6 +4271,9 @@
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Scripts\Deletar.js" />
+    <Content Include="Scripts\jquery-1.10.2.js" />
+    <Content Include="Scripts\MaskTelefone.js" />
     <Content Include="Scripts\ValidaCPF.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>

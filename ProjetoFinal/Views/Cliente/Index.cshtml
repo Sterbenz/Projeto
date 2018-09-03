@@ -37,7 +37,7 @@
             <th>@cliente.Email</th>
             <th>@Convert.ToUInt64(cliente.Telefone).ToString(@"00 00000-0000")</th>
             <th>
-                <form class="form-horizontal form-row-seperated" action="@Url.Action("Remover","Cliente", new { @cliente.Id })" method="post">
+                <form class="form-horizontal form-row-seperated" action="@Url.Action("Remover","Cliente", new { cliente.Id })" method="post">
                     <button class="btn default red-flamingo" type="submit">Deletar</button>
                 </form>
             </th>

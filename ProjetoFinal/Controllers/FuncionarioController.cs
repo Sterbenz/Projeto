@@ -9,7 +9,7 @@ using ProjetoFinal.Filters;
 
 namespace ProjetoFinal.Models
 {
-    [LoginFilter]
+    
     public class FuncionarioController : Controller
     {
         // GET: Funcionarios
@@ -67,8 +67,8 @@ namespace ProjetoFinal.Models
 
         public ActionResult Editar(int id)
         {
-            UsuariosDAO dao = new UsuariosDAO();
-            Usuario funcionario = dao.BuscaPorId(id);
+            PessoasDAO dao = new PessoasDAO();
+            Pessoa funcionario = dao.BuscaPorId(id);
             TipoPessoasDAO tipoPessoasDao = new TipoPessoasDAO();
             ViewBag.TipoPessoas = tipoPessoasDao.Lista();
             ViewBag.Funcionarios = funcionario;
