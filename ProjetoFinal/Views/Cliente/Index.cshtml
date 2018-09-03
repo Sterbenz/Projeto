@@ -22,13 +22,14 @@
             <th>Nome</th>
             <th>CPF</th>
             <th>Data de nascimento</th>
+            <th>Email</th>
             <th>Telefone</th>
         </tr>
     </thead>
     <tbody>
         @foreach (var cliente in ViewBag.Clientes)
         {
-        <tr onclick="window.location='@Url.Action("Editar","Cliente", new { @cliente.Id })'">
+        <tr onclick="window.location='@Url.Action("Editar","Cliente", new { cliente.Id })'">
             <th>@cliente.Id</th>
             <th>@cliente.Nome</th>
             <th>@Convert.ToUInt64(cliente.Cpf).ToString(@"000\.000\.000\-00")</th>

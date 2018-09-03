@@ -35,23 +35,11 @@ namespace ProjetoFinal.Models
         public string Email { get; set; }
 
         [Required]
-        public string CNPJ { get; set; }
-
-        [Required]
-        public string InscriçãoEstadual { get; set; }
-
-        [Required]
-        public string RamoDeAtividade { get; set; }
-
-        [Required]
-        public string ContadoDoResponsavel { get; set; }
-
-        [Required]
-        public string FuncaoDoResponsavel { get; set; }
+        public string CNPJ { get; set; }        
 
         [Required]
         public string PrazoMedioEntrega { get; set; }
 
-        public string Observacoes { get; set; }
+        
     }
 }

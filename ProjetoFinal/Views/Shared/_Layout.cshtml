@@ -1,5 +1,5 @@
-﻿
-@{var user = Session["Usuario"] as ProjetoFinal.Models.Usuario;}
+﻿@{ var user = (ProjetoFinal.Models.Pessoa)Session["UsuarioLogado"];}
+
 
 <!DOCTYPE html>
 <!--
@@ -100,9 +100,20 @@ License: You must have a valid license purchased only from themeforest(the above
                     <!-- DOC: Apply "dropdown-dark" class after below "dropdown-extended" to change the dropdown styte -->
                     <li class="dropdown dropdown-user">
                         <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
-                            <img alt="" class="img-circle" src="~/Content/assets/admin/layout/img/avatar3_small.jpg" />
+                            @if (user.TipoPessoaId == 2)
+                            {
+                                <img alt="" class="img-circle" src="~/Content/icons8-f-52.png" />
+                            }                            
+                            else if (user.TipoPessoaId == 3)
+                            {
+                            <img alt="" class="img-circle" src="~/Content/icons8-g-52.png" />
+                            }
+                            else if (user.TipoPessoaId == 4)
+                            {
+                            <img alt="" class="img-circle" src="~/Content/icons8-d-52.png" />
+                            }
                             <span class="username username-hide-on-mobile">
-                                @user.Pessoa.Nome
+                                @user.Nome
                             </span>
                             <i class="fa fa-angle-down"></i>
                         </a>

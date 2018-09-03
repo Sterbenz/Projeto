@@ -21,13 +21,15 @@ namespace ProjetoFinal.Controllers
 
             UsuariosDAO dao = new UsuariosDAO();
             Usuario user = new Usuario();
+            PessoasDAO pessDAO= new PessoasDAO();
             ViewBag.Usuarios = dao.Lista();
 
             foreach (var login in ViewBag.Usuarios)
             {               
-                if (login.User == usuario && login.Senha == senha)
-                {
-                    Session["UsuarioLogado"] = login;
+                if (UsuarioExiste(usuario,senha))
+                {                    
+                    Pessoa pessoa = pessDAO.BuscaPorId(login.PessoaId);                    
+                    Session["UsuarioLogado"] = pessoa;
                     return RedirectToAction("Index","Home");
                 }
                 else
@@ -39,7 +41,15 @@ namespace ProjetoFinal.Controllers
 
             return View();
         }
-        
-       
+        private bool UsuarioExiste(String usuario, String senha)
+        {
+            foreach (var login in ViewBag.Usuarios)
+            {
+                if (login.User == usuario && login.Senha == senha)
+                    return true;
+            }
+            return false;
+        }
+
     }
 }
