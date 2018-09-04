@@ -9,7 +9,7 @@ using ProjetoFinal.Filters;
 
 namespace ProjetoFinal.Models
 {
-    
+    [LoginFilter]
     public class FuncionarioController : Controller
     {
         // GET: Funcionarios
@@ -104,7 +104,7 @@ namespace ProjetoFinal.Models
             Pessoa funcionario = pessoaDAO.BuscaPorId(id);
             pessoaDAO.Remover(funcionario);
 
-            return RedirectToAction("Index", "Funcionario");
+            return Json(funcionario.Id);
         }
     }
 }

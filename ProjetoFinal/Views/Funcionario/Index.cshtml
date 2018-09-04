@@ -1,9 +1,7 @@
 ﻿@{ ProjetoFinal.DAO.TipoPessoasDAO dao = new ProjetoFinal.DAO.TipoPessoasDAO();
     ViewBag.Cargos = dao.Lista(); ;
-
-
-
-}
+    
+    }
 
 <h3 class="page-title">
     Lista de funcionarios <small>Visualisar funcionarios</small>
@@ -35,46 +33,51 @@
 
         </tr>
     </thead>
-    <tbody>
+    <tbody id="listagem">
         @foreach (var funcionario in ViewBag.Funcionarios)
         {
-            <tr onclick="window.location='@Url.Action("Editar","Funcionario", new { funcionario.Id})'">
-                <th>@funcionario.Id</th>
-                <th>@funcionario.Nome</th>
-                <th>@Convert.ToUInt64(funcionario.Cpf).ToString(@"000\.000\.000\-00")</th>
-                <th>@Convert.ToDateTime(funcionario.DataDeNascimento).ToString("dd/MM/yyyy")</th>
-                <th>@funcionario.Email</th>
-                <th>@Convert.ToUInt64(funcionario.Telefone).ToString(@"00 00000-0000")</th>
-                @foreach (var tipos in ViewBag.Cargos)
+        <tr id="@funcionario.Id">
+            <th>@funcionario.Id</th>
+            <th>@funcionario.Nome</th>
+            <th>@Convert.ToUInt64(funcionario.Cpf).ToString(@"000\.000\.000\-00")</th>
+            <th>@Convert.ToDateTime(funcionario.DataDeNascimento).ToString("dd/MM/yyyy")</th>
+            <th>@funcionario.Email</th>
+            <th>@Convert.ToUInt64(funcionario.Telefone).ToString(@"00 00000-0000")</th>
+            @foreach (var tipos in ViewBag.Cargos)
+            {
+                if (tipos.Id == funcionario.TipoPessoaId)
                 {
-                    if (tipos.Id == funcionario.TipoPessoaId)
-                    {
-                        <th>@tipos.Nome</th>
-                    }
+                    <th>@tipos.Nome</th>
                 }
-                <th>
-                    <button class="btn default red-flamingo" onclick="Deletar(@funcionario.Id)" type="submit">Deletar</button>                    
-                </th>
-            </tr>
+            }
+            <th>                
+                <button class="btn default red-flamingo" onclick="Deletar(@funcionario.Id)">Deletar</button>
+            </th>
+            <th>
+                <form action="@Url.Action("Editar", "Funcionario", new { funcionario.Id })">                    
+                    <button class="btn default green-jungle" type="submit">Editar</button>
+                </form>
+            </th>
+        </tr>
         }
-
     </tbody>
 
 </table>
 
 <script>
-    function Deletar(funcionarioId) {
-        if (confirm("Deseja remover!?")) { node.focus(); }
+    function Deletar(id) {
+        if (confirm("Deseja remover!?"))
         {
             var url = "@Url.Action("Remover", "Funcionario")";
-            var params = { id: funcionarioId };
-            $.post(url, params);
+            
+            $.post(url, { id: id }, AtualizarPag);
+            
         }       
 
     }
 
-    function AtualizarPagina()
-    {
-        c
+    function AtualizarPag(resposta) {
+
+        $("#" + resposta).Remove();
     }
 </script>

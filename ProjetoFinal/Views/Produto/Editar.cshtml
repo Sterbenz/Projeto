@@ -21,21 +21,21 @@
 <!-- END SAMPLE PORTLET CONFIGURATION MODAL FORM-->
 <!-- BEGIN PAGE HEADER-->
 <h3 class="page-title">
-    Editar funcionarios. <small>criar e editar funcionarios.</small>
+    Editar produtos <small>Editar produto: @ViewBag.Produtos.Nome</small>
 </h3>
 <!-- END PAGE HEADER-->
 <!-- BEGIN PAGE CONTENT-->
 <div class="row">
     <div class="col-md-12">
-        <form class="form-horizontal form-row-seperated" action="@Url.Action("Edita","Produto", new { ViewBag.Produtos.Id })" method="post">
+        <form class="form-horizontal form-row-seperated" action="@Url.Action("Edita","Produto",new { ViewBag.Produtos.Id })" method="post">
             <div class="portlet">
                 <div class="portlet-title">
                     <div class="caption">
                         <i class="fa fa-shopping-cart"></i>Produto
                     </div>
                     <div class="actions btn-set">
-                        <button class="btn default" type="reset"><i class="fa fa-reply"></i> Resetar</button>
-                        <button class="btn green" type="submit"><i class="fa fa-check"></i> Salvar</button>
+                        <button class="btn default"><i class="fa fa-reply"></i> Resetar</button>
+                        <button class="btn green"><i class="fa fa-check"></i> Salvar</button>
                     </div>
                 </div>
                 <div class="portlet-body">
@@ -51,43 +51,46 @@
                                             </span>
                                         </label>
                                         <div class="col-md-10">
-                                            <input type="text" class="form-control" name="funcionarios.Nome"  value="@ViewBag.Funcionarios.Nome"  placeholder="">
-                                            @Html.ValidationMessage("funcionarios.Nome")
+                                            <input type="text" class="form-control" value="@ViewBag.Produtos.Nome" name="produto.Nome" placeholder="">
+                                            @Html.ValidationMessage("produto.Nome")
                                         </div>
                                     </div><br />
                                     <div class="form-group">
                                         <label class="col-md-2 control-label">
-                                            CPF: <span class="required">
+                                            Valor: <span class="required">
                                                 *
                                             </span>
                                         </label>
                                         <div class="col-md-10">
-                                            <textarea style="resize:vertical" class="form-control" name="funcionarios.CPF">@ViewBag.Funcionarios.CPF</textarea>
-                                            @Html.ValidationMessage("funcionarios.CPF")
+                                            <input value="@ViewBag.Produtos.PrecoPorUnidade" class="form-control" name="produto.PrecoPorUnidade">
+                                            @Html.ValidationMessage("produto.PrecoPorUnidade")
                                         </div>
                                     </div><br />
                                     <div class="form-group">
                                         <label class="col-md-2 control-label">
-                                            Data de nascimento: <span class="required">
+                                            Quantidade: <span class="required">
                                                 *
                                             </span>
                                         </label>
                                         <div class="col-md-10">
-                                            <textarea style="resize:vertical" class="form-control" name="funcionarios.DataDeNascimento">@ViewBag.Funcionarios.DataDeNascimento</textarea>
-                                            @Html.ValidationMessage("funcionarios.DataDeNascimento")
+                                            <input type="number" class="form-control" value="@ViewBag.Produtos.Quantidade" name="produto.Quantidade">
+                                            @Html.ValidationMessage("produto.Quantidade")
                                         </div>
                                     </div><br />
                                     <div class="form-group">
                                         <label class="col-md-2 control-label">
-                                            Telefone:
+                                            Descrição:
                                         </label>
                                         <div class="col-md-10">
-                                            <textarea style="resize:vertical" class="form-control" name="funcionarios.Telefone">@ViewBag.Funcionarios.Telefone</textarea>                                          
+                                            <textarea style="resize:vertical" class="form-control" name="produto.Complemento">@ViewBag.Produtos.Complemento</textarea>
+                                            <span class="help-block">
+                                                Mostrado na lista de produtos
+                                            </span>
                                         </div>
                                     </div><br />
                                     <div class="form-group">
                                         <label class="col-md-2 control-label">
-                                            Cargo:
+                                            Categorias:
 
                                             <span class="required"> * </span>
 
@@ -95,23 +98,27 @@
                                         <div class="col-md-10">
                                             <div class="form-control height-auto">
 
-                                                <select class="form-control" name="funcionarios.FamiliaProdutoId">
-                                                    @foreach (var cargo in ViewBag.Cargos)
+                                                <select class="form-control" name="produto.FamiliaProdutoId">
+                                                    @foreach (var familia in ViewBag.Familias)
                                                     {
-                                                        if (@ViewBag.Funcionarios.CargoId == cargo.Id)
+
+                                                        if (@ViewBag.Produtos.FamiliaProdutoId == familia.Id)
                                                         {
-                                                            <option value="@cargo.Id" selected>
-                                                                @cargo.Nome
+                                                            <option value="@familia.Id" selected>
+                                                                @familia.Nome
                                                             </option>
                                                         }
-
                                                         else
-                                                        { <option value="@cargo.Id">@cargo.Nome</option>}
-                                                        
-
+                                                        {
+                                                            <option value="@familia.Id">@familia.Nome</option>
+                                                        }
 
                                                     }
                                                 </select>
+
+                                                <span class="help-block">
+                                                    @Html.ValidationMessage("produto.FamiliaProdutoId")
+                                                </span>
                                             </div>
                                         </div>
                                     </div>
