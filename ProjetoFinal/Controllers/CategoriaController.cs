@@ -77,7 +77,7 @@ namespace ProjetoFinal.Controllers
             FamiliaProduto familia = dao.BuscaPorId(id);
             dao.Remover(familia);
 
-            return RedirectToAction("Index", "Categoria");
+            return Json(id);
         }
     }
 }

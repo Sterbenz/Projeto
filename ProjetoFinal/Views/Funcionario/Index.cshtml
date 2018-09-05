@@ -1,6 +1,6 @@
 ﻿@{ ProjetoFinal.DAO.TipoPessoasDAO dao = new ProjetoFinal.DAO.TipoPessoasDAO();
     ViewBag.Cargos = dao.Lista(); ;
-    
+
     }
 
 <h3 class="page-title">
@@ -8,7 +8,7 @@
 </h3>
 <ul class="nav nav-tabs">
     <li style="bottom: 2px">
-        <form class="form-horizontal form-row-seperated" action="@Url.Action("Form","Funcionario")" method="post">
+        <form class="form-horizontal form-row-seperated" action="@Url.Action("Form", "Funcionario")" method="post">
             <button class="btn default green" type="submit">Registrar funcionario</button>
         </form>
     </li>
@@ -36,7 +36,7 @@
     <tbody id="listagem">
         @foreach (var funcionario in ViewBag.Funcionarios)
         {
-        <tr id="@funcionario.Id">
+        <tr id="@(funcionario.Id)">
             <th>@funcionario.Id</th>
             <th>@funcionario.Nome</th>
             <th>@Convert.ToUInt64(funcionario.Cpf).ToString(@"000\.000\.000\-00")</th>
@@ -51,7 +51,7 @@
                 }
             }
             <th>                
-                <button class="btn default red-flamingo" onclick="Deletar(@funcionario.Id)">Deletar</button>
+                <button class="btn default red-flamingo" onclick="Deletar(@funcionario.Id,'Funcionario')">Deletar</button>
             </th>
             <th>
                 <form action="@Url.Action("Editar", "Funcionario", new { funcionario.Id })">                    
@@ -70,14 +70,12 @@
         {
             var url = "@Url.Action("Remover", "Funcionario")";
             
-            $.post(url, { id: id }, AtualizarPag);
-            
-        }       
-
+            $.post(url, { id: id }, AtualizarPag);            
+        }
     }
 
     function AtualizarPag(resposta) {
-
-        $("#" + resposta).Remove();
+        var resposta = "#" + resposta;        
+        $(resposta).remove();
     }
 </script>

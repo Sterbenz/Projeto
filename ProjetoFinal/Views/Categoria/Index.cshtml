@@ -26,13 +26,16 @@
     <tbody>
         @foreach (var familia in ViewBag.Familias)
         {
-        <tr>
+        <tr id="@familia.Id">
             <th>@familia.Id</th>
             <th>@familia.Nome</th>
             <th>@familia.Descricao</th>
             <th>
-                <form class="form-horizontal form-row-seperated" action="@Url.Action("Remover","Categoria", new { familia.Id })" method="post">
-                    <button class="btn default red-flamingo" type="submit">Deletar</button>
+                <button class="btn default red-flamingo" onclick="Deletar(@familia.Id, 'Categoria')" type="submit">Deletar</button>
+            </th>
+            <th>
+                <form action="@Url.Action("Editar", "Categoria", new { familia.Id })">
+                    <button class="btn default green-jungle" type="submit">Editar</button>
                 </form>
             </th>
         </tr>

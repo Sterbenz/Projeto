@@ -85,7 +85,7 @@ namespace ProjetoFinal.Controllers
             Pessoa cliente = dao.BuscaPorId(id);
             dao.Remover(cliente);
 
-            return RedirectToAction("Index", "Cliente");
+            return Json(id);
         }
     }
 }

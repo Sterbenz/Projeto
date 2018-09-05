@@ -82,7 +82,7 @@ namespace ProjetoFinal.Controllers
             Produto produto = dao.BuscaPorId(id);
             dao.Remover(produto);
 
-            return RedirectToAction("Index", "Produto");
+            return Json(id);
         }
     }
 }

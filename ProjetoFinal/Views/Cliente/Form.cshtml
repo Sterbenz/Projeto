@@ -73,13 +73,15 @@
                                             </span>
                                         </label>
                                         <div class="col-md-10">
-                                            <input type="date" class="form-control" maxlength="10" name="cliente.DataDeNascimento" placeholder="">
+                                            <input type="date" class="form-control" max="2050-12-31" min="1900-12-31" name="cliente.DataDeNascimento" placeholder="">
                                             @Html.ValidationMessage("cliente.DataDeNascimento")
                                         </div>
                                     </div><br />
                                     <div class="form-group">
                                         <label class="col-md-2 control-label">
-                                            Email:
+                                            Email: <spam class="required">
+                                                *
+                                            </spam>
                                         </label>
                                         <div class="col-md-10">
                                             <input type="email" class="form-control" name="cliente.Email">
