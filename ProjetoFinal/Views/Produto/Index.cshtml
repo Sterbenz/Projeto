@@ -3,8 +3,8 @@
     Lista de produtos <small>Visualisar produtos</small>
 </h3>
 <ul class="nav nav-tabs">
-    <li style="bottom: 2px">        
-        <button data-toggle="modal" class="btn default green" type="submit" onclick="RegistrarProduto" data-target="#myModal">Registrar produto</button>           
+    <li style="bottom: 2px">
+        <button type="button" onclick="novoProduto()" class="btn default green" data-toggle="modal" data-target="#myModal">Registrar produto</button>
     </li>
 
     <li style="left:10px; bottom: 2px">
@@ -50,19 +50,33 @@
     </tbody>
 </table>
 
-<div class="modal hide fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-        <h3 id="myModalLabel">URL EXTERNA</h3>
-    </div>
-    <div class="modal-body">
+
+
+<!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Adicionar Produto</h4>
+            </div>
+            <div class="modal-body">
+                <iframe src="" style="zoom:0.60" width="2000" height="700" frameborder="0"></iframe>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+
     </div>
 </div>
 
 <script>
-    function RegistrarProduto(){        
-        var url = @Url.Action("Form","Produto")
-        $(".modal-body").html('<iframe width="100%" height="100%" frameborder="0" scrolling="yes" allowtransparency="true" src="' + url + '"></iframe>');
+    function novoProduto() {
+        var frameSrc = "@Url.Action("Form","Produto")";
+        $('iframe').attr("src", frameSrc);                
     }
-    
+
 </script>
