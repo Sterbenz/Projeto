@@ -61,8 +61,8 @@
                                                 *
                                             </span>
                                         </label>
-                                        <div class="col-md-10">
-                                            <input type="text" class="form-control" id="cpf" onblur="validaCPF()" maxlength="11" name="funcionario.Cpf" placeholder="Apenas numeros">
+                                        <div class="col-md-10">                                            
+                                            <input type="text" class="form-control cpfOuCnpj" id="cpfcnpj" maxlength="11" onblur="validaCPF()"  name="funcionario.Cpf" placeholder="Apenas numeros">
                                             @Html.ValidationMessage("funcionario.Cpf")
                                         </div>
                                     </div><br />
@@ -128,3 +128,8 @@
     </div>
 </div>
 
+
+<script>
+   
+   
+</script>

@@ -63,19 +63,3 @@
     </tbody>
 
 </table>
-
-<script>
-    function Deletar(id) {
-        if (confirm("Deseja remover!?"))
-        {
-            var url = "@Url.Action("Remover", "Funcionario")";
-            
-            $.post(url, { id: id }, AtualizarPag);            
-        }
-    }
-
-    function AtualizarPag(resposta) {
-        var resposta = "#" + resposta;        
-        $(resposta).remove();
-    }
-</script>

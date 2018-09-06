@@ -1,19 +1,16 @@
 ﻿
 @{
     Layout = "~/Views/Shared/_Styles_Scripts.cshtml";
+    ProjetoFinal.Models.Produto produto = new ProjetoFinal.Models.Produto();
 }
-<div >
+<div>
     <div class="col-sm-pull-12">
         <form class="form-horizontal form-row-seperated" action="@Url.Action("Adiciona","Produto")" method="post">
-            <div class="portlet">
+            <div class="page-portlet-fullscreen">
                 <div class="portlet-title">
-                    <div class="caption">
-                        <i class="fa fa-shopping-cart"></i>Produto
-                        <button class="btn default"><i class="fa fa-reply"></i> Resetar</button>
-                        <button class="btn green"><i class="fa fa-check"></i> Salvar</button>
-                    </div>
                     <div class="actions btn-set">
-                        
+                        <button class="btn default"><i class="fa fa-reply"></i> Resetar</button>
+                        <button onclick="fecharModal()" class="btn green"><i class="fa fa-check"></i> Salvar</button>
                     </div>
                 </div>
                 <div class="portlet-body">
@@ -23,12 +20,12 @@
                             <div class="tab-pane active" id="tab_general">
                                 <div class="form-body">
                                     <div class="form-group">
-                                        <label class="col-md-2 control-label" >
+                                        <label class="col-md-2 control-label">
                                             Nome: <span class="required">
                                                 *
                                             </span>
                                         </label>
-                                        <div class="col-sm-4">
+                                        <div class="col-md-3">
                                             <input type="text" class="form-control" name="produto.Nome" placeholder="">
                                             @Html.ValidationMessage("produto.Nome")
                                         </div>
@@ -39,8 +36,8 @@
                                                 *
                                             </span>
                                         </label>
-                                        <div class="col-sm-4">
-                                            <textarea style="resize:vertical" class="form-control" name="produto.PrecoPorUnidade"></textarea>
+                                        <div class="col-md-3">
+                                            <input type="text" class="form-control" name="produto.PrecoPorUnidade">
                                             @Html.ValidationMessage("produto.PrecoPorUnidade")
                                         </div>
                                     </div><br />
@@ -50,8 +47,8 @@
                                                 *
                                             </span>
                                         </label>
-                                        <div class="col-sm-4">
-                                            <textarea style="resize:vertical" class="form-control" name="produto.Quantidade"></textarea>
+                                        <div class="col-md-3">
+                                            <input type="text" class="form-control" name="produto.Quantidade">
                                             @Html.ValidationMessage("produto.Quantidade")
                                         </div>
                                     </div><br />
@@ -59,7 +56,7 @@
                                         <label class="col-md-2 control-label">
                                             Descrição:
                                         </label>
-                                        <div class="col-sm-4">
+                                        <div class="col-md-3">
                                             <textarea style="resize:vertical" class="form-control" name="produto.Complemento"></textarea>
                                             <span class="help-block">
                                                 Mostrado na lista de produtos
@@ -73,7 +70,7 @@
                                             <span class="required"> * </span>
 
                                         </label>
-                                        <div class="col-sm-4">
+                                        <div class="col-md-3">
                                             <div class="form-control height-auto">
 
                                                 <select class="form-control" name="produto.FamiliaProdutoId">
@@ -102,3 +99,12 @@
         </form>
     </div>
 </div>
+
+<script>    
+
+    function fecharModal() {
+        alert("1");
+        $window.close(('#myModal').modal('hide'));
+    }
+
+</script>

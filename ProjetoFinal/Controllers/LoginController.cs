@@ -51,5 +51,11 @@ namespace ProjetoFinal.Controllers
             return false;
         }
 
+        public ActionResult Sair()
+        {
+            Session["UsuarioLogado"] = null;
+            return RedirectToAction("Index","Login");
+        }
+
     }
 }

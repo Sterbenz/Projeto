@@ -8,9 +8,9 @@ function Deletar(id, controller) {
             data: { id: id},
             type: "post",
             dataType: "Json",
-            success: function (resposta) {                
-                $("#" + resposta).remove();
-            }
+            success: function (resposta) {
+                $fadeOut("slow", ("#" + resposta).remove());
+            }                
         });
     }
 }

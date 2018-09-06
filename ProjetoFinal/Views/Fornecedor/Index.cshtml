@@ -14,3 +14,47 @@
         </form>
     </li>
 </ul>
+
+<table class="table table-striped table-hover">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Nome</th>
+            <th>CPF</th>
+            <th>Data de nascimento</th>
+            <th>Email</th>
+            <th>Telefone</th>
+            <th>Cargo</th>
+
+        </tr>
+    </thead>
+    <tbody id="listagem">
+        @foreach (var fornecedores in ViewBag.Fornecedores)
+        {
+            <tr id="@(fornecedores.Id)">
+                <th>@fornecedores.Id</th>
+                <th>@fornecedores.DenominacaoSocial</th>
+                <th>@Convert.ToUInt64(fornecedores.Cpf).ToString(@"000\.000\.000\-00")</th>
+                <th>@Convert.ToDateTime(fornecedores.DataDeNascimento).ToString("dd/MM/yyyy")</th>
+                <th>@fornecedores.Email</th>
+                <th>@Convert.ToUInt64(fornecedores.Telefone).ToString(@"00 00000-0000")</th>
+                @foreach (var tipos in ViewBag.Cargos)
+                {
+                    if (tipos.Id == fornecedores.TipoPessoaId)
+                    {
+                        <th>@tipos.Nome</th>
+                    }
+                }
+                <th>
+                    <button class="btn default red-flamingo" onclick="Deletar(@fornecedores.Id,'Funcionario')">Deletar</button>
+                </th>
+                <th>
+                    <form action="@Url.Action("Editar", "Funcionario", new { fornecedores.Id })">
+                        <button class="btn default green-jungle" type="submit">Editar</button>
+                    </form>
+                </th>
+            </tr>
+        }
+    </tbody>
+
+</table>
