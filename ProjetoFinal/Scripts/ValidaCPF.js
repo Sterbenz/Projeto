@@ -1,12 +1,15 @@
-﻿
-function validaCPF() {
+﻿var cpf = document.querySelector("#cpf");
+
+cpf.addEventListener("input", function () {
+    
     var cpf = document.getElementById("cpf").value;
     var result = 0;
     var result2 = 0;
     var R = 0;
     var R2 = 0;
     var N = 10;
-    var N2 = 11;
+    var N2 = 11;    
+    
     for (var i = 0; i < cpf.length - 2; i++) {
         result += (cpf.charAt(i) * N);
         N -= 1;
@@ -65,4 +68,4 @@ function validaCPF() {
             }
         }
     }
-}
+});

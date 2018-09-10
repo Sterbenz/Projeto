@@ -3,7 +3,7 @@
 </h3>
 <ul class="nav nav-tabs">
     <li style="bottom: 2px">
-        <form class="form-horizontal form-row-seperated" action="@Url.Action("Form","Cliente")" method="post">
+        <form class="form-horizontal form-row-seperated" action="@Url.Action("Form","Fornecedor")" method="post">
             <button class="btn default green" type="submit">Registrar fornecedor</button>
         </form>
     </li>
@@ -20,11 +20,10 @@
         <tr>
             <th>Id</th>
             <th>Nome</th>
-            <th>CPF</th>
-            <th>Data de nascimento</th>
+            <th>CNPJ</th>
             <th>Email</th>
             <th>Telefone</th>
-            <th>Cargo</th>
+            
 
         </tr>
     </thead>
@@ -34,17 +33,9 @@
             <tr id="@(fornecedores.Id)">
                 <th>@fornecedores.Id</th>
                 <th>@fornecedores.DenominacaoSocial</th>
-                <th>@Convert.ToUInt64(fornecedores.Cpf).ToString(@"000\.000\.000\-00")</th>
-                <th>@Convert.ToDateTime(fornecedores.DataDeNascimento).ToString("dd/MM/yyyy")</th>
+                <th>@Convert.ToUInt64(fornecedores.Cpf).ToString(@"00\.000\.000\/0000-00")</th>
                 <th>@fornecedores.Email</th>
-                <th>@Convert.ToUInt64(fornecedores.Telefone).ToString(@"00 00000-0000")</th>
-                @foreach (var tipos in ViewBag.Cargos)
-                {
-                    if (tipos.Id == fornecedores.TipoPessoaId)
-                    {
-                        <th>@tipos.Nome</th>
-                    }
-                }
+                <th>@Convert.ToUInt64(fornecedores.Telefone).ToString(@"00 00000-0000")</th>                
                 <th>
                     <button class="btn default red-flamingo" onclick="Deletar(@fornecedores.Id,'Funcionario')">Deletar</button>
                 </th>

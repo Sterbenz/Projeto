@@ -4277,7 +4277,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Scripts\Deletar.js" />
     <Content Include="Scripts\FecharIframe.js" />
-    <Content Include="Scripts\jquery-1.10.2.js" />
+    <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\MaskTelefone.js" />
     <Content Include="Scripts\ValidaCPF.js" />
     <Content Include="Web.config">
@@ -4589,6 +4589,7 @@
     <Content Include="Views\Fornecedor\AdicionaPedido.cshtml" />
     <Content Include="Views\Fornecedor\Form.cshtml" />
     <Content Include="Views\Shared\_Styles_Scripts.cshtml" />
+    <Content Include="Views\Fornecedor\Editar.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
