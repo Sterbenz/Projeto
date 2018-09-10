@@ -1,4 +1,11 @@
-﻿<div class="modal fade" id="portlet-config" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+﻿@{  
+    ProjetoFinal.Models.Produto prod = new ProjetoFinal.Models.Produto();
+    ProjetoFinal.DAO.ProdutosDAO dao = new ProjetoFinal.DAO.ProdutosDAO();
+
+ }
+
+
+<div class="modal fade" id="portlet-config" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -132,13 +139,5 @@
 </div>
 
 <script type="text/javascript">
-    $("#adicionar-produto-pedidos").click(function (event) {
-        var valor = document.querySelector("#valor-produto-pedido");
-        var quantidade = document.querySelector("#quantidade-produto-pedido");
-        
-        console.log(produto);
-        $("#nada-no-pedido").remove();
-        $("#tabela-pedidos-fornecedores").append("<tr id =" + id + "></tr>");
-
-    });
+    
 </script>

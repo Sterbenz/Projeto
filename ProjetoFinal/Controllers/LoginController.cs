@@ -12,7 +12,7 @@ namespace ProjetoFinal.Controllers
     {
         // GET: Login
         public ActionResult Index()
-        {   
+        {
             return View();
         }
 

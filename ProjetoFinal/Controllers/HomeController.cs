@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using ProjetoFinal.DAO;
 using ProjetoFinal.Filters;
 using ProjetoFinal.Models;
+
 namespace ProjetoFinal.Controllers
 {
     [LoginFilter]
@@ -15,6 +16,13 @@ namespace ProjetoFinal.Controllers
         public ActionResult Index()
         {
             return View();
+        }
+
+        public ActionResult BuscaProduto(int id)
+        {
+            ProdutosDAO dao = new ProdutosDAO();
+            Produto produto = new Produto();
+            return Json(produto);
         }
     }
 }
