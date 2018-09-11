@@ -10,5 +10,7 @@ namespace ProjetoFinal.Models
 
         [Required]
         public IList<Produto> Produtos { get; set; }
+
+        public int ValorTotal { get; set; }
     }
 }

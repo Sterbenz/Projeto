@@ -1,8 +1,8 @@
-﻿@{  
+﻿@{
     ProjetoFinal.Models.Produto prod = new ProjetoFinal.Models.Produto();
     ProjetoFinal.DAO.ProdutosDAO dao = new ProjetoFinal.DAO.ProdutosDAO();
 
- }
+}
 
 
 <div class="modal fade" id="portlet-config" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -46,7 +46,7 @@
                 <div class="col-md-7 value">
                     @*@ViewBag.Fornecedores.DenominacaoSocial*@
                 </div>
-            </div>            
+            </div>
             <div class="row static-info">
                 <div class="col-md-5 name">
                     Email:
@@ -106,7 +106,7 @@
             </div>
             <div class="portlet-body">
                 <div class="table-responsive">
-                    <table class="table table-hover table-bordered table-striped">
+                    <table id="tabela-pedidos" class="table table-hover table-bordered table-striped">
                         <thead>
                             <tr>
                                 <th>
@@ -123,7 +123,7 @@
                                 </th>
                                 <th>
                                     Total
-                                </th>                                
+                                </th>
                             </tr>
                         </thead>
                         <tbody id="tabela-pedidos-fornecedores">
@@ -137,7 +137,3 @@
         </div>
     </div>
 </div>
-
-<script type="text/javascript">
-    
-</script>

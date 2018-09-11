@@ -21,7 +21,7 @@ namespace ProjetoFinal.Controllers
         public ActionResult BuscaProduto(int id)
         {
             ProdutosDAO dao = new ProdutosDAO();
-            Produto produto = new Produto();
+            Produto produto = dao.BuscaPorId(id);
             return Json(produto);
         }
     }
