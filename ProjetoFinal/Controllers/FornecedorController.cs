@@ -56,7 +56,7 @@ namespace ProjetoFinal.Controllers
                 Fornecedor p = dao.BuscaPorId(id);
                 p.DenominacaoSocial = fornecedor.DenominacaoSocial;
                 p.CNPJ = fornecedor.CNPJ;
-                p.Endereço = fornecedor.Endereço;
+                p.Endereco = fornecedor.Endereco;
                 p.UF = fornecedor.UF;
                 p.Cidade = fornecedor.Cidade;
                 p.Bairro = fornecedor.Bairro;

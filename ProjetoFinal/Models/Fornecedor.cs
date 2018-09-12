@@ -14,7 +14,7 @@ namespace ProjetoFinal.Models
         public string DenominacaoSocial { get; set; }
 
         [Required]
-        public string Endereço { get; set; }
+        public string Endereco { get; set; }
 
         [Required]
         public string Bairro { get; set; }

@@ -33,7 +33,7 @@
             <tr id="@(fornecedores.Id)">
                 <th>@fornecedores.Id</th>
                 <th>@fornecedores.DenominacaoSocial</th>
-                <th>@Convert.ToUInt64(fornecedores.Cpf).ToString(@"00\.000\.000\/0000-00")</th>
+                <th>@Convert.ToUInt64(fornecedores.CNPJ).ToString(@"00\.000\.000\/0000-00")</th>
                 <th>@fornecedores.Email</th>
                 <th>@Convert.ToUInt64(fornecedores.Telefone).ToString(@"00 00000-0000")</th>                
                 <th>

@@ -4324,6 +4324,10 @@
     <Compile Include="Migrations\20180911191539_valorTotalPedido.designer.cs">
       <DependentUpon>20180911191539_valorTotalPedido.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\20180912011420_remocaoÇ.cs" />
+    <Compile Include="Migrations\20180912011420_remocaoÇ.designer.cs">
+      <DependentUpon>20180912011420_remocaoÇ.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\LojaContextModelSnapshot.cs" />
     <Compile Include="Models\AcompanhamentoFornecedores.cs" />
     <Compile Include="Models\FamiliaProduto.cs" />
