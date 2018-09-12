@@ -9,36 +9,26 @@ namespace ProjetoFinal.Models
     public class Fornecedor
     {
         public int Id { get; set; }
-
-        [Required]
+                
         public string DenominacaoSocial { get; set; }
 
-        [Required]
         public string Endereco { get; set; }
 
-        [Required]
         public string Bairro { get; set; }
 
-        [Required]
         public string Cidade { get; set; }
 
-        [Required]
         public string UF { get; set; }
 
-        [Required]
         public string Telefone { get; set; }
 
-        [Required]
         public string CEP { get; set; }
 
-        [Required]
         public string Email { get; set; }
 
-        [Required]
         public string CNPJ { get; set; }        
 
-        [Required]
-        public string PrazoMedioEntrega { get; set; }
+        public int PrazoMedioEntrega { get; set; }
 
         
     }

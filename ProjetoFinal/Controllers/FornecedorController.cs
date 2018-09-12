@@ -82,13 +82,37 @@ namespace ProjetoFinal.Controllers
             return Json(id);
         }
 
-        public ActionResult AdicionaPedido()
+        public ActionResult ViewPedidos()
         {
             FornecedoresDAO dao = new FornecedoresDAO();
             ProdutosDAO prodDAO = new ProdutosDAO();
             ViewBag.Fonecedores = dao.Lista();
             ViewBag.Produtos = prodDAO.Lista();
             return View();
+        }
+
+        //id = FornecedorId
+        public ActionResult RealizaPedido(int id,List<Produto> pedidos, double valorTotal)
+        {
+            FornecedoresDAO fDAO = new FornecedoresDAO();
+            Fornecedor fornecedor = fDAO.BuscaPorId(id);
+            PedidosDAO dao = new PedidosDAO();
+            Pedido pedido = new Pedido()
+            {
+                ValorTotal = valorTotal,
+                Entregue = false,
+                DataEntrega = DateTime.Now.AddDays(fornecedor.PrazoMedioEntrega),
+                FornecedorId = id
+            };
+
+            foreach(var produto in pedidos)
+            {
+                pedido.IncluiProduto(produto);
+            }
+
+            dao.Adiciona(pedido);
+
+            return View("Index");
         }
     }
 }

@@ -3,6 +3,7 @@
 cpf.addEventListener("input", function () {
     
     var cpf = document.getElementById("cpf").value;
+    var cpfClass = document.getElementById("cpf");
     var result = 0;
     var result2 = 0;
     var R = 0;
@@ -23,11 +24,11 @@ cpf.addEventListener("input", function () {
         cpf == "33333333333" ||
         cpf == "44444444444" ||
         cpf == "55555555555" ||
+        cpf == "88888888888" ||
         cpf == "66666666666" ||
         cpf == "77777777777" ||
-        cpf == "88888888888" ||
         cpf == "99999999999") {
-        document.getElementById("cpf").className = "form-control invalido";
+        cpfClass.className = "form-control invalido";
     }
     else {
 
@@ -35,9 +36,9 @@ cpf.addEventListener("input", function () {
         if (R == 10) {
             R = 0;
             if (R == cpf.charAt(9)) {
-                document.getElementById("cpf").className = "form-control valido";
+                cpfClass.className = "form-control valido";
             } else {
-                document.getElementById("cpf").className = "form-control invalido";
+                cpfClass.className = "form-control invalido";
             }
         } else {
             if (R == cpf.charAt(9)) {
@@ -49,22 +50,22 @@ cpf.addEventListener("input", function () {
                 if (R2 == 10) {
                     R2 = 0;
                     if (R2 == cpf.charAt(10)) {
-                        document.getElementById("cpf").className = "form-control valido";
+                        cpfClass.className = "form-control valido";
                     } else {
-                        document.getElementById("cpf").className = "form-control invalido";
+                        cpfClass.className = "form-control invalido";
                     }
                 }
                 else {
                     if (R2 == cpf.charAt(10)) {
-                        document.getElementById("cpf").className = "form-control valido";
+                        cpfClass.className = "form-control valido";
                     } else {
-                        document.getElementById("cpf").className = "form-control invalido";
+                        dcpfClass.className = "form-control invalido";
                     }
 
                 }
             }
             else {
-                document.getElementById("cpf").className = "form-control invalido";
+                cpfClass.className = "form-control invalido";
             }
         }
     }

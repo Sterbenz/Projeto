@@ -15,8 +15,8 @@ namespace ProjetoFinal.Models
         public string Nome { get; set; }
 
         [Required]
-        [Range(0.1,999.99)]
-        public float PrecoPorUnidade { get; set; }
+        [Range(0.1,Double.MaxValue)]
+        public Double PrecoPorUnidade { get; set; }
 
         [Required]
         [Range(0.1, 999.99)]
@@ -29,5 +29,7 @@ namespace ProjetoFinal.Models
 
         
         public FamiliaProduto Familia { get; set; }
+
+        public IList<PedidoProdutos> Pedidos { get; set; }
     }
 }

@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ProjetoFinal.DAO;
 
 namespace ProjetoFinal.Migrations
 {
     [DbContext(typeof(LojaContext))]
-    partial class LojaContextModelSnapshot : ModelSnapshot
+    [Migration("20180912200736_PedidosUpgrade")]
+    partial class PedidosUpgrade
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -102,7 +104,7 @@ namespace ProjetoFinal.Migrations
 
                     b.Property<string>("Endereco");
 
-                    b.Property<int>("PrazoMedioEntrega");
+                    b.Property<string>("PrazoMedioEntrega");
 
                     b.Property<string>("Telefone");
 
@@ -161,13 +163,9 @@ namespace ProjetoFinal.Migrations
 
                     b.Property<bool>("Entregue");
 
-                    b.Property<int?>("FornecedorId");
-
                     b.Property<double>("ValorTotal");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("FornecedorId");
 
                     b.ToTable("Pedidos");
                 });
@@ -305,13 +303,6 @@ namespace ProjetoFinal.Migrations
                         .WithMany()
                         .HasForeignKey("ProdutoId")
                         .OnDelete(DeleteBehavior.Cascade);
-                });
-
-            modelBuilder.Entity("ProjetoFinal.Models.Pedido", b =>
-                {
-                    b.HasOne("ProjetoFinal.Models.Fornecedor", "Fornecedor")
-                        .WithMany()
-                        .HasForeignKey("FornecedorId");
                 });
 
             modelBuilder.Entity("ProjetoFinal.Models.PedidoProdutos", b =>

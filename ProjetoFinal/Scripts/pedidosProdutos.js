@@ -19,7 +19,7 @@ $("#adicionar-produto-pedidos").click(function (event) {
                 console.log(true);
                 $("#valor-total-pedido").remove();
             }
-            
+            console.log(true);
             $("#tabela-pedidos-fornecedores").append("<tr id =" + id + "><td>" + resposta.Nome +
                 "</td><td>" + resposta.Quantidade +
                 "</td><td> R$ " + valor +
@@ -56,7 +56,7 @@ $("#tabela-pedidos").dblclick(function (event) {
     setTimeout(function () {
         selec.remove();
         for (var i = 0; i < produtos.length; i++) {
-            if (produtos[i].Id == selec.id) {
+            if (produtos[i].Id === selec.id) {
                 console.log(produtos.PrecoPorUnidade);
                 console.log(total);
                 console.log(total - produtos.PrecoPorUnidade);
@@ -77,3 +77,12 @@ $("#tabela-pedidos").dblclick(function (event) {
 
 });
 
+$("#btn-registra-pedido").click(function () {
+    $.ajax({
+
+        url: "/RealizaPedido",
+        data: { produtos: produtos, valorTotal: total },
+        type: "post",
+        dataType: "Json"        
+    });
+});

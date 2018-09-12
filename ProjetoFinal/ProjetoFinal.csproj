@@ -238,7 +238,6 @@
     <Content Include="App_Data\LojaDB_log.ldf">
       <DependentUpon>LojaDB.mdf</DependentUpon>
     </Content>
-    <Content Include="Content\AnimacaoFadeOut.css" />
     <Content Include="Content\assets\admin\layout2\css\custom.css" />
     <Content Include="Content\assets\admin\layout2\css\layout.css" />
     <Content Include="Content\assets\admin\layout2\css\themes\blue.css" />
@@ -4280,7 +4279,6 @@
     <Content Include="Scripts\Deletar.js" />
     <Content Include="Scripts\FecharIframe.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
-    <Content Include="Scripts\MaskTelefone.js" />
     <Content Include="Scripts\pedidosProdutos.js" />
     <Content Include="Scripts\ValidaCPF.js" />
     <Content Include="Web.config">
@@ -4328,6 +4326,18 @@
     <Compile Include="Migrations\20180912011420_remocaoÇ.designer.cs">
       <DependentUpon>20180912011420_remocaoÇ.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\20180912200736_PedidosUpgrade.cs" />
+    <Compile Include="Migrations\20180912200736_PedidosUpgrade.designer.cs">
+      <DependentUpon>20180912200736_PedidosUpgrade.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\20180912201954_PedidosFornecedo.cs" />
+    <Compile Include="Migrations\20180912201954_PedidosFornecedo.designer.cs">
+      <DependentUpon>20180912201954_PedidosFornecedo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\20180912203230_MudançaDiasEntregaFornecedor.cs" />
+    <Compile Include="Migrations\20180912203230_MudançaDiasEntregaFornecedor.designer.cs">
+      <DependentUpon>20180912203230_MudançaDiasEntregaFornecedor.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\LojaContextModelSnapshot.cs" />
     <Compile Include="Models\AcompanhamentoFornecedores.cs" />
     <Compile Include="Models\FamiliaProduto.cs" />
@@ -4335,6 +4345,7 @@
     <Compile Include="Controllers\FuncionarioController.cs" />
     <Compile Include="Models\Fornecedor.cs" />
     <Compile Include="Models\Pedido.cs" />
+    <Compile Include="Models\PedidoProdutos.cs" />
     <Compile Include="Models\Usuario.cs" />
     <Compile Include="Models\LogPessoa.cs" />
     <Compile Include="Models\LogProduto.cs" />
