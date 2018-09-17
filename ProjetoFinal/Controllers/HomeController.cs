@@ -24,5 +24,20 @@ namespace ProjetoFinal.Controllers
             Produto produto = dao.BuscaPorId(id);
             return Json(produto);
         }
+
+        public ActionResult Logs()
+        {
+            FornecedoresDAO forDAO = new FornecedoresDAO();
+            PessoasDAO pesDAO = new PessoasDAO();
+            FamiliaProdutoDAO famDAO = new FamiliaProdutoDAO();
+            ProdutosDAO proDAO = new ProdutosDAO();           
+            
+            ViewBag.LogPessoas = pesDAO.Lista();
+            ViewBag.LogFornecedores = forDAO.Lista();
+            ViewBag.LogFamilias = famDAO.Lista();
+            ViewBag.LogProdutos = proDAO.Lista();
+
+            return View();
+        }
     }
 }

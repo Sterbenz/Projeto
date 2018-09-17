@@ -13,29 +13,6 @@ namespace ProjetoFinal.Controllers
         // GET: Login
         public ActionResult Index()
         {
-            PessoasDAO funcDAO = new PessoasDAO();
-            UsuariosDAO userDAO = new UsuariosDAO();
-
-            Pessoa funcionario = new Pessoa()
-            {
-                Nome = "Vinicius",
-                Cpf = "12120827966",
-                Email = "ee@ee",
-                Telefone = "47997003217",
-                DataDeNascimento = DateTime.Now,
-                TipoPessoaId = 4
-
-            };
-            funcDAO.Adiciona(funcionario);
-
-            Usuario user = new Usuario()
-            {
-                User = funcionario.Email,
-                Senha = funcionario.Cpf,
-                PessoaId = funcionario.Id,
-            };
-
-            userDAO.Adiciona(user);
             return View();
         }
 

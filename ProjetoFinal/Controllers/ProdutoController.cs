@@ -36,7 +36,8 @@ namespace ProjetoFinal.Controllers
             {   
                 ProdutosDAO dao = new ProdutosDAO();
                 dao.Adiciona(produto);
-                return Content("Produto adicionado com sucesso!") ;
+                RegistrarLog(produto, "Registrou");
+                return View("Index", "Produto") ;
             }
             else
             {
@@ -67,6 +68,7 @@ namespace ProjetoFinal.Controllers
                 p.Quantidade = produto.Quantidade;
                 p.Complemento = produto.Complemento;
                 p.FamiliaProdutoId = produto.FamiliaProdutoId;
+                RegistrarLog(p, "Editou");
                 dao.Atualiza(p);
                 return RedirectToAction("Index", "Produto");
             }
@@ -80,9 +82,25 @@ namespace ProjetoFinal.Controllers
         {
             ProdutosDAO dao = new ProdutosDAO();
             Produto produto = dao.BuscaPorId(id);
+            RegistrarLog(produto, "Deletou");
             dao.Remover(produto);
 
             return Json(id);
+        }
+
+        public void RegistrarLog(Produto produto, string modificacao)
+        {
+            Pessoa user = (Pessoa) Session["UsuarioLogado"];
+            LogProdutosDAO dao = new LogProdutosDAO();
+            LogProduto log = new LogProduto()
+            {
+                PessoaId = user.Id,
+                PessoaNome = user.Nome,
+                ProdutoId = produto.Id,
+                ProdutoNome = produto.Nome,
+                DataModificacao = DateTime.Now,
+                Descricao = "Funcionario" + user.Nome + modificacao + "o produto" + produto.Nome
+            };
         }
     }
 }

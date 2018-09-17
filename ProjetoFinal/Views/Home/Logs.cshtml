@@ -1,0 +1,46 @@
+﻿<table class="table">
+    
+    <thead>
+        <tr>
+            <th>Tipo</th>
+            <th>Descrição</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var pessoa in ViewBag.LogPessoas)
+        {
+            <tr>
+                <td>Pessoas</td>
+                <td>@pessoa.Descricao</td>
+                <td>@pessoa.DataModificacao</td>
+            </tr>
+        }
+
+        @foreach (var familia in ViewBag.LogFamilias)
+        {
+            <tr>
+                <td>Familia</td>
+                <td>@familia.Descricao</td>
+                <td>@familia.DataModificacao</td>
+            </tr>
+        }
+
+        @foreach (var fornecedor in ViewBag.LogFornecedores)
+        {
+            <tr>
+                <td>Fornecedores</td>
+                <td>@fornecedor.Descricao</td>
+                <td>@fornecedor.DataModificacao</td>
+            </tr>
+        }
+
+        @foreach (var produto in ViewBag.LogProduto)
+        {
+            <tr>
+                <td>Pessoas</td>
+                <td>@produto.Descricao</td>
+                <td>@produto.DataModificacao</td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -42,10 +42,7 @@ function adicionaListaPedidos(resposta, valor, quantidade) {
     resposta.Quantidade = quantidade;
     resposta.PrecoPorUnidade = valor;   
 
-    produtos.push(resposta);
-
-    console.log(produtos);
-    console.log(produtos.length);
+    produtos.push(resposta);   
 }
 
 
@@ -56,7 +53,7 @@ $("#tabela-pedidos").dblclick(function (event) {
     setTimeout(function () {
         selec.remove();
         for (var i = 0; i < produtos.length; i++) {
-            if (produtos[i].Id === selec.id) {
+            if (produtos[i].Id == selec.id) {
                 console.log(produtos.PrecoPorUnidade);
                 console.log(total);
                 console.log(total - produtos.PrecoPorUnidade);

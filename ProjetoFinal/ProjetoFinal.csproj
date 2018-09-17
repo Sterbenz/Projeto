@@ -4279,6 +4279,7 @@
     <Content Include="Scripts\Deletar.js" />
     <Content Include="Scripts\FecharIframe.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
+    <Content Include="Scripts\jquery.mask.js" />
     <Content Include="Scripts\pedidosProdutos.js" />
     <Content Include="Scripts\ValidaCPF.js" />
     <Content Include="Web.config">
@@ -4298,6 +4299,8 @@
     <Compile Include="DAO\FamiliaProdutoDAO.cs" />
     <Compile Include="DAO\EnderecosDAO.cs" />
     <Compile Include="DAO\FornecedoresDAO.cs" />
+    <Compile Include="DAO\LogFamiliasDAO.cs" />
+    <Compile Include="DAO\LogFornecedoresDAO.cs" />
     <Compile Include="DAO\PedidosDAO.cs" />
     <Compile Include="DAO\UsuariosDAO.cs" />
     <Compile Include="DAO\LogPessoasDAO.cs" />
@@ -4338,12 +4341,22 @@
     <Compile Include="Migrations\20180912203230_MudançaDiasEntregaFornecedor.designer.cs">
       <DependentUpon>20180912203230_MudançaDiasEntregaFornecedor.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\20180917200248_Logs.cs" />
+    <Compile Include="Migrations\20180917200248_Logs.designer.cs">
+      <DependentUpon>20180917200248_Logs.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\20180917204210_LogsUpgrade.cs" />
+    <Compile Include="Migrations\20180917204210_LogsUpgrade.designer.cs">
+      <DependentUpon>20180917204210_LogsUpgrade.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\LojaContextModelSnapshot.cs" />
     <Compile Include="Models\AcompanhamentoFornecedores.cs" />
     <Compile Include="Models\FamiliaProduto.cs" />
     <Compile Include="Models\Endereco.cs" />
     <Compile Include="Controllers\FuncionarioController.cs" />
     <Compile Include="Models\Fornecedor.cs" />
+    <Compile Include="Models\LogFamilia.cs" />
+    <Compile Include="Models\LogFornecedor.cs" />
     <Compile Include="Models\Pedido.cs" />
     <Compile Include="Models\PedidoProdutos.cs" />
     <Compile Include="Models\Usuario.cs" />
@@ -4608,10 +4621,11 @@
     <Content Include="Views\Cliente\Editar.cshtml" />
     <Content Include="Views\Login\Index.cshtml" />
     <Content Include="Views\Fornecedor\Index.cshtml" />
-    <Content Include="Views\Fornecedor\AdicionaPedido.cshtml" />
+    <Content Include="Views\Fornecedor\ViewPedidos.cshtml" />
     <Content Include="Views\Fornecedor\Form.cshtml" />
     <Content Include="Views\Shared\_Styles_Scripts.cshtml" />
     <Content Include="Views\Fornecedor\Editar.cshtml" />
+    <Content Include="Views\Home\Logs.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

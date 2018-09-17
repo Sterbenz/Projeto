@@ -21,17 +21,17 @@
 <!-- END SAMPLE PORTLET CONFIGURATION MODAL FORM-->
 <!-- BEGIN PAGE HEADER-->
 <h3 class="page-title">
-    Clientes <small>registrar e editar fornecedor.</small>
+    Fornecedores <small>Editar fornecedor</small>
 </h3>
 <!-- END PAGE HEADER-->
 <!-- BEGIN PAGE CONTENT-->
 <div class="row">
     <div class="col-md-12">
-        <form class="form-horizontal form-row-seperated" action="@Url.Action("Edita","Fornecedor")" method="post">
+        <form class="form-horizontal form-row-seperated" action="@Url.Action("Edita","Fornecedor", new { ViewBag.Fornecedores.Id})" method="post">
             <div class="portlet">
                 <div class="portlet-title">
                     <div class="caption">
-                        <i class="fa fa-shopping-cart"></i>Cliente
+                        <i class="fa fa-shopping-cart"></i>Fornecedor
                     </div>
                     <div class="actions btn-set">
                         <button class="btn default"><i class="fa fa-reply"></i> Resetar</button>
@@ -51,7 +51,7 @@
                                             </span>
                                         </label>
                                         <div class="col-md-5">
-                                            <input type="text" class="form-control" name="fornecedor.DenominacaoSocial" placeholder="">
+                                            <input type="text" value="@ViewBag.Fornecedores.DenominacaoSocial" class="form-control" name="fornecedor.DenominacaoSocial" placeholder="">
                                         </div>
                                     </div><br />
                                     <div class="form-group">
@@ -61,7 +61,7 @@
                                             </span>
                                         </label>
                                         <div class="col-md-10">
-                                            <input type="number" class="form-control" id="cnpj" maxlength="14" name="fornecedor.CNPJ" placeholder="apenas numeros">
+                                            <input type="number" class="form-control" value="@ViewBag.Fornecedores.CNPJ" id="cnpj" maxlength="14" name="fornecedor.CNPJ" placeholder="apenas numeros">
                                         </div>
                                     </div><br />
                                     <div class="form-group">
@@ -71,7 +71,7 @@
                                             </span>
                                         </label>
                                         <div class="col-md-10">
-                                            <input type="text" class="form-control" name="fornecedor.Bairro" placeholder="">
+                                            <input type="text" class="form-control" value="@ViewBag.Fornecedores.Endereco" name="fornecedor.Bairro" placeholder="">
                                         </div>
                                     </div><br />
                                     <div class="form-group">
@@ -81,7 +81,7 @@
                                             </span>
                                         </label>
                                         <div class="col-md-10">
-                                            <input type="text" class="form-control" name="fornecedor.Bairro" placeholder="">
+                                            <input type="text" class="form-control" value="@ViewBag.Fornecedores.Bairro" name="fornecedor.Bairro" placeholder="">
 
                                         </div>
                                     </div><br />
@@ -90,7 +90,7 @@
                                             Cidade:
                                         </label>
                                         <div class="col-md-10">
-                                            <input type="email" class="form-control" name="fornecedor.Cidade">
+                                            <input type="text" class="form-control" value="@ViewBag.Fornecedores.Cidade" name="fornecedor.Cidade">
                                         </div>
                                     </div><br />
                                     <div class="form-group">
@@ -99,33 +99,34 @@
                                         </label>
                                         <div class="col-md-10">
                                             <select class="form-control" name="fornecedor.UF">
-                                                <option value="AC">Acre</option>
-                                                <option value="AL">Alagoas</option>
-                                                <option value="AP">Amapá</option>
-                                                <option value="AM">Amazonas</option>
-                                                <option value="BA">Bahia</option>
-                                                <option value="CE">Ceará</option>
-                                                <option value="DF">Distrito Federal</option>
-                                                <option value="ES">Espírito Santo</option>
-                                                <option value="GO">Goiás</option>
-                                                <option value="MA">Maranhão</option>
-                                                <option value="MT">Mato Grosso</option>
-                                                <option value="MS">Mato Grosso do Sul</option>
-                                                <option value="MG">Minas Gerais</option>
-                                                <option value="PA">Pará</option>
-                                                <option value="PB">Paraíba</option>
-                                                <option value="PR">Paraná</option>
-                                                <option value="PE">Pernambuco</option>
-                                                <option value="PI">Piauí</option>
-                                                <option value="RJ">Rio de Janeiro</option>
-                                                <option value="RN">Rio Grande do Norte</option>
-                                                <option value="RS">Rio Grande do Sul</option>
-                                                <option value="RO">Rondônia</option>
-                                                <option value="RR">Roraima</option>
-                                                <option value="SC">Santa Catarina</option>
-                                                <option value="SP">São Paulo</option>
-                                                <option value="SE">Sergipe</option>
-                                                <option value="TO">Tocantins</option>
+                                                <option selected value="@ViewBag.Fornecedores.UF" >@ViewBag.Fornecedores.UF</option>
+                                                <option value="Acre">Acre</option>
+                                                <option value="Alagoas">Alagoas</option>
+                                                <option value="Amapá">Amapá</option>
+                                                <option value="Amazonas">Amazonas</option>
+                                                <option value="Bahia">Bahia</option>
+                                                <option value="Ceará">Ceará</option>
+                                                <option value="Distrito Federal">Distrito Federal</option>
+                                                <option value="Espírito Santo">Espírito Santo</option>
+                                                <option value="Goiás">Goiás</option>
+                                                <option value="Maranhão">Maranhão</option>
+                                                <option value="Mato Grosso">Mato Grosso</option>
+                                                <option value="Mato Grosso do Sul">Mato Grosso do Sul</option>
+                                                <option value="Minas Gerais">Minas Gerais</option>
+                                                <option value="Pará">Pará</option>
+                                                <option value="Paraíba">Paraíba</option>
+                                                <option value="Paraná">Paraná</option>
+                                                <option value="Pernambuco">Pernambuco</option>
+                                                <option value="Piauí">Piauí</option>
+                                                <option value="Rio de Janeiro">Rio de Janeiro</option>
+                                                <option value="Rio Grande do Norte">Rio Grande do Norte</option>
+                                                <option value="Rio Grande do Sul">Rio Grande do Sul</option>
+                                                <option value="Rondônia">Rondônia</option>
+                                                <option value="Roraima">Roraima</option>
+                                                <option value="Santa Catarina">Santa Catarina</option>
+                                                <option value="São Paulo">São Paulo</option>
+                                                <option value="Sergipe">Sergipe</option>
+                                                <option value="Tocantins">Tocantins</option>
                                             </select>
                                         </div>
                                     </div><br />
@@ -134,7 +135,7 @@
                                             CEP:
                                         </label>
                                         <div class="col-md-10">
-                                            <input type="tel" class="form-control" name="fornecedor.CEP" placeholder="">
+                                            <input type="tel" class="form-control" value="@ViewBag.Fornecedores.CEP" name="fornecedor.CEP" placeholder="">
                                         </div>
                                     </div><br />
                                     <div class="form-group">
@@ -142,7 +143,7 @@
                                             Telefone:
                                         </label>
                                         <div class="col-md-10">
-                                            <input type="tel" class="form-control" name="fornecedor.Telefone" placeholder="">
+                                            <input type="tel" class="form-control" value="@ViewBag.Fornecedores.Telefone" name="fornecedor.Telefone" placeholder="">
                                         </div>
                                     </div><br />
                                     <div class="form-group">
@@ -150,7 +151,7 @@
                                             Email:
                                         </label>
                                         <div class="col-md-10">
-                                            <input type="text" class="form-control" name="fornecedor.Email" placeholder="">
+                                            <input type="email" class="form-control" value="@ViewBag.Fornecedores.Email" name="fornecedor.Email" placeholder="">
                                         </div>
                                     </div><br />
                                     <div class="form-group">
@@ -158,7 +159,7 @@
                                             Prazo medio de entrega:
                                         </label>
                                         <div class="col-md-10">
-                                            <input type="text" class="form-control" name="fornecedor.PrazoMedioEntrega" placeholder="">
+                                            <input type="number" class="form-control" value="@ViewBag.Fornecedores.PrazoMedioEntrega" name="fornecedor.PrazoMedioEntrega" placeholder="Prazo em dias (Apenas números)">
                                         </div>
                                     </div><br />
                                 </div>

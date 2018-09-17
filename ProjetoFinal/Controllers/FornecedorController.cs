@@ -32,6 +32,8 @@ namespace ProjetoFinal.Controllers
             {
                 FornecedoresDAO dao = new FornecedoresDAO();
                 dao.Adiciona(fornecedor);
+                RegistrarLog(fornecedor, "registrou ");
+
                 return Content("Fornecedor adicionado com sucesso!");
             }
             else
@@ -65,6 +67,7 @@ namespace ProjetoFinal.Controllers
                 p.Telefone = fornecedor.Telefone;
                 p.PrazoMedioEntrega = fornecedor.PrazoMedioEntrega;
                 dao.Atualiza(p);
+                RegistrarLog(p, "editou ");
                 return RedirectToAction("Index", "Fornecedor");
             }
             else
@@ -77,6 +80,7 @@ namespace ProjetoFinal.Controllers
         {
             FornecedoresDAO dao = new FornecedoresDAO();
             Fornecedor fornecedor = dao.BuscaPorId(id);
+            RegistrarLog(fornecedor, "deletou ");
             dao.Remover(fornecedor);
 
             return Json(id);
@@ -111,8 +115,24 @@ namespace ProjetoFinal.Controllers
             }
 
             dao.Adiciona(pedido);
+            RegistrarLog(fornecedor, "registrou pedido n");
 
             return View("Index");
+        }
+
+        public void RegistrarLog(Fornecedor fornecedor, string modificacao)
+        {
+            Pessoa user = (Pessoa)Session["UsuarioLogado"];
+            LogFornecedoresDAO dao = new LogFornecedoresDAO();
+            LogFornecedor log = new LogFornecedor()
+            {
+                PessoaId = user.Id,
+                PessoaNome = user.Nome,
+                FornecedorId = fornecedor.Id,
+                FornecedorNome = fornecedor.DenominacaoSocial,
+                DataModificacao = DateTime.Now,
+                Descricao = "Funcionario" + user.Nome + modificacao + "a fornecedora" + fornecedor.DenominacaoSocial
+            };
         }
     }
 }

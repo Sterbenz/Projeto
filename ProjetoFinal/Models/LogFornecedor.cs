@@ -5,13 +5,13 @@ using System.Web;
 
 namespace ProjetoFinal.Models
 {
-    public class LogProduto
+    public class LogFornecedor
     {
         public int Id { get; set; }
 
-        public int ProdutoId { get; set; }
+        public String FornecedorNome { get; set; }
 
-        public String ProdutoNome { get; set; }
+        public int FornecedorId { get; set; }
 
         public int PessoaId { get; set; }
 
