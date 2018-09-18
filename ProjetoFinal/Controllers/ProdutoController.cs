@@ -99,8 +99,9 @@ namespace ProjetoFinal.Controllers
                 ProdutoId = produto.Id,
                 ProdutoNome = produto.Nome,
                 DataModificacao = DateTime.Now,
-                Descricao = "Funcionario" + user.Nome + modificacao + "o produto" + produto.Nome
+                Descricao = "Funcionario " + user.Nome + " " + modificacao + " o produto " + produto.Nome
             };
+            dao.Adiciona(log);
         }
     }
 }

@@ -1,4 +1,8 @@
-﻿@{ var user = (ProjetoFinal.Models.Pessoa)Session["UsuarioLogado"];}
+﻿@{ var user = (ProjetoFinal.Models.Pessoa)Session["UsuarioLogado"];
+    ProjetoFinal.DAO.UsuariosDAO dao = new ProjetoFinal.DAO.UsuariosDAO();
+    ProjetoFinal.Models.Usuario usuario = dao.BuscaPorId(user.Id);
+    
+    }
 
 
 <!DOCTYPE html>
@@ -49,8 +53,7 @@ License: You must have a valid license purchased only from themeforest(the above
     <link href="~/Content/assets/admin/layout/css/layout.css" rel="stylesheet" type="text/css" />
     <link id="style_color" href="~/Content/assets/admin/layout/css/themes/default.css" rel="stylesheet" type="text/css" />
     <link href="~/Content/assets/admin/layout/css/custom.css" rel="stylesheet" type="text/css" />
-    <link href="~/Content/AnimacaoFadeOut.css" />
-    <script src="~/Scripts/jquery.mask.js"></script>
+    
     <!-- END THEME STYLES -->
     <link rel="icon" href="~/Content/favicon.png" />
     <style>
@@ -105,21 +108,27 @@ License: You must have a valid license purchased only from themeforest(the above
                             @if (user.TipoPessoaId == 2)
                             {
                                 <img alt="" class="img-circle" src="~/Content/icons8-f-52.png" />
-                            }                            
+                            }
                             else if (user.TipoPessoaId == 3)
                             {
-                            <img alt="" class="img-circle" src="~/Content/icons8-g-52.png" />
+                                <img alt="" class="img-circle" src="~/Content/icons8-g-52.png" />
                             }
                             else if (user.TipoPessoaId == 4)
                             {
-                            <img alt="" class="img-circle" src="~/Content/icons8-d-52.png" />
+                                <img alt="" class="img-circle" src="~/Content/icons8-d-52.png" />
                             }
                             <span class="username username-hide-on-mobile">
                                 @user.Nome
                             </span>
                             <i class="fa fa-angle-down"></i>
                         </a>
-                        <ul class="dropdown-menu dropdown-menu-default">                            
+                        <ul class="dropdown-menu dropdown-menu-default">
+                            <li>
+                                <a href="#" id="mudarUsuario" data-toggle="modal" data-target="#modalConfigUsuario">
+                                    <i class="icon-settings"></i> Mudar usuario
+                                </a>
+                            </li>
+                            
                             <li>
                                 <a href="@Url.Action("Sair","Login")">
                                     <i class="icon-key"></i> Sair
@@ -166,7 +175,7 @@ License: You must have a valid license purchased only from themeforest(the above
                     </li>
                     <li>
                         <a href="@Url.Action("Index","Categoria")"><i class="icon-layers"></i><span class="title">Categorias</span></a>
-                    </li>                    
+                    </li>
                     <li>
                         <a href="@Url.Action("Index","Funcionario")"><i class="icon-users"></i><span class="title">Funcionarios</span></a>
                     </li>
@@ -196,6 +205,50 @@ License: You must have a valid license purchased only from themeforest(the above
                 </div>
                 <div class="scroll-to-top">
                     <i class="icon-arrow-up"></i>
+                </div>
+            </div>
+
+            <!-- Modal -->
+            <div id="modalConfigUsuario" class="modal fade" role="dialog">
+                <div class="modal-dialog" style="width:800px">
+
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title">Mudar informações de usuario</h4>
+                        </div>
+                        <div class="modal-body">
+                            <div class="form-group">
+                                <label class="col-md-2 control-label">
+                                    Usuario: <span class="required">
+                                        *
+                                    </span>
+                                </label>
+                                <div class="col-md-10">
+                                    <input type="text" id="newUsuario" class="form-control" placeholder="">
+                                </div>
+                            </div><br />
+                            <br />
+                            <div class="form-group">
+                                <label class="col-md-2 control-label">
+                                    Senha: <span class="required">
+                                        *
+                                    </span>
+                                </label>
+                                <div class="col-md-10">
+                                    <input type="password" id="newSenha" class="form-control" placeholder="">
+                                </div>
+                            </div>
+                            <br />
+                            <br />
+                            <button id="confirmarMudanca" onclick="configurarUsuario(@user.Id)" class="form-control btn blue-steel">Confirmar</button>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+
                 </div>
             </div>
             <!-- END FOOTER -->
@@ -231,10 +284,13 @@ License: You must have a valid license purchased only from themeforest(the above
             <script src="~/Content/assets/admin/layout/scripts/demo.js" type="text/javascript"></script>
             <script src="~/Content/assets/global/scripts/datatable.js"></script>
             <script src="~/Content/assets/admin/pages/scripts/ecommerce-products.js"></script>
+            <script src="~/Scripts/jquery.mask.js"></script>
+            <script src="~/Scripts/AnimacaoFadeOut.js"></script>
             <script src="~/Scripts/ValidaCPF.js"></script>
             <script src="~/Scripts/Deletar.js"></script>
             <script src="~/Scripts/pedidosProdutos.js"></script>
             <script src="~/Scripts/FecharIframe.js"></script>
+            <script src="~/Scripts/mudarUsuario.js"></script>
 
             <!-- END PAGE LEVEL SCRIPTS -->
             <script>
@@ -250,6 +306,7 @@ License: You must have a valid license purchased only from themeforest(the above
             <!-- END JAVASCRIPTS -->
         </div>
     </div>
+    
 </body>
 <!-- END BODY -->
 </html>

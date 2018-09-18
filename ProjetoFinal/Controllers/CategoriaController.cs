@@ -92,9 +92,10 @@ namespace ProjetoFinal.Controllers
                 PessoaNome = user.Nome,
                 FamiliaId = familia.Id,
                 FamiliaNome = familia.Nome,
-                Descricao = "Funcionario" + user.Nome + modificacao + "a familia" + familia.Nome,
+                Descricao = "Funcionario " + user.Nome +" "+ modificacao + " a familia " + familia.Nome,
                 DataModificacao = DateTime.Now
             };
+            dao.Adiciona(log);
         }
     }
 }

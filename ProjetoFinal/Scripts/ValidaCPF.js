@@ -1,8 +1,8 @@
-﻿var cpf = document.querySelector("#cpf");
-
-cpf.addEventListener("input", function () {
+﻿$("#cpf").on("input", function () {
     
     var cpf = document.getElementById("cpf").value;
+    cpf = cpf.replace(/[^\d]/g, '');
+    
     var cpfClass = document.getElementById("cpf");
     var result = 0;
     var result2 = 0;

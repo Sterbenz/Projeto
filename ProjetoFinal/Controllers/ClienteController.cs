@@ -88,19 +88,20 @@ namespace ProjetoFinal.Controllers
             return Json(id);
         }
 
-        public void RegistrarLog(Fornecedor fornecedor, string modificacao)
+        public void RegistrarLog(Pessoa cliente, string modificacao)
         {
             Pessoa user = (Pessoa)Session["UsuarioLogado"];
-            LogFornecedoresDAO dao = new LogFornecedoresDAO();
-            LogFornecedor log = new LogFornecedor()
+            LogPessoasDAO dao = new LogPessoasDAO();
+            LogPessoa log = new LogPessoa()
             {
                 PessoaId = user.Id,
                 PessoaNome = user.Nome,
-                FornecedorId = fornecedor.Id,
-                FornecedorNome = fornecedor.DenominacaoSocial,
+                PessoaModificadaId = cliente.Id,
+                PessoaModificadaNome = cliente.Nome,
                 DataModificacao = DateTime.Now,
-                Descricao = "Funcionario" + user.Nome + modificacao + "a fornecedora" + fornecedor.DenominacaoSocial
+                Descricao = "Funcionario " + user.Nome + " " + modificacao + " o(a) cliente " + cliente.Nome
             };
+            dao.Adiciona(log);
         }
     }
 }

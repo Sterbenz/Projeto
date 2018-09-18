@@ -131,8 +131,9 @@ namespace ProjetoFinal.Controllers
                 FornecedorId = fornecedor.Id,
                 FornecedorNome = fornecedor.DenominacaoSocial,
                 DataModificacao = DateTime.Now,
-                Descricao = "Funcionario" + user.Nome + modificacao + "a fornecedora" + fornecedor.DenominacaoSocial
+                Descricao = "Funcionario " + user.Nome +" "+ modificacao + " a fornecedora " + fornecedor.DenominacaoSocial
             };
+            dao.Adiciona(log);
         }
     }
 }

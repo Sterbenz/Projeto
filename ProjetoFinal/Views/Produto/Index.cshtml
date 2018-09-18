@@ -1,4 +1,8 @@
-﻿
+﻿@{ ProjetoFinal.DAO.FamiliaProdutoDAO dao = new ProjetoFinal.DAO.FamiliaProdutoDAO();
+    ViewBag.Tipos = dao.Lista(); ;
+
+}
+
 <h3 class="page-title">
     Lista de produtos <small>Visualisar produtos</small>
 </h3>
@@ -29,22 +33,29 @@
     <tbody id="produtosLinhas">
         @foreach (var produto in ViewBag.Produtos)
         {
-            <tr id="@produto.Id">
-                <th>@produto.Id</th>
-                <th>@produto.Nome</th>
-                <th>R$ @produto.PrecoPorUnidade</th>
-                <th>@produto.Quantidade</th>
-                <th>@produto.Complemento</th>
-                <th>@produto.FamiliaProdutoId</th>
-                <th>
-                    <button class="btn default red-flamingo" onclick="Deletar(@produto.Id, 'Produto')" type="submit">Deletar</button>
-                </th>
-                <th>
-                    <form action="@Url.Action("Editar", "Produto", new { produto.Id })">
-                        <button class="btn default green-jungle" type="submit">Editar</button>
-                    </form>
-                </th>
-            </tr>
+        <tr id="@produto.Id">
+            <th>@produto.Id</th>
+            <th>@produto.Nome</th>
+            <th class="dinheiro">@produto.PrecoPorUnidade</th>
+            <th>@produto.Quantidade</th>
+            <th>@produto.Complemento</th>
+            @foreach (var tipos in ViewBag.Tipos)
+            {
+                if (tipos.Id == produto.FamiliaProdutoId)
+                {
+                    <th>@tipos.Nome</th>
+                }
+            }
+            
+            <th>
+                <button class="btn default red-flamingo" onclick="Deletar(@produto.Id, 'Produto')" type="submit">Deletar</button>
+            </th>
+            <th>
+                <form action="@Url.Action("Editar", "Produto", new { produto.Id })">
+                    <button class="btn default green-jungle" type="submit">Editar</button>
+                </form>
+            </th>
+        </tr>
         }
 
     </tbody>
@@ -80,8 +91,8 @@
     }
 
     function adicionarProdutoTabela() {
-        
-        $load("@Url.Action("Index", "Produto")");     
+
+        $load("@Url.Action("Index", "Produto")");
     }
 
 </script>

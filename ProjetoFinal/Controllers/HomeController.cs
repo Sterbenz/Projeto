@@ -27,10 +27,10 @@ namespace ProjetoFinal.Controllers
 
         public ActionResult Logs()
         {
-            FornecedoresDAO forDAO = new FornecedoresDAO();
-            PessoasDAO pesDAO = new PessoasDAO();
-            FamiliaProdutoDAO famDAO = new FamiliaProdutoDAO();
-            ProdutosDAO proDAO = new ProdutosDAO();           
+            LogFornecedoresDAO forDAO = new LogFornecedoresDAO();
+            LogPessoasDAO pesDAO = new LogPessoasDAO();
+            LogFamiliasDAO famDAO = new LogFamiliasDAO();
+            LogProdutosDAO proDAO = new LogProdutosDAO();           
             
             ViewBag.LogPessoas = pesDAO.Lista();
             ViewBag.LogFornecedores = forDAO.Lista();

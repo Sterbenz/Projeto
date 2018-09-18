@@ -1,9 +1,11 @@
-﻿<table class="table">
-    
+﻿<table class="table table-striped table-hover">
+
     <thead>
         <tr>
             <th>Tipo</th>
             <th>Descrição</th>
+            <th>Data de modificação</th>
+            <th>ID de quem modificou</th>
         </tr>
     </thead>
     <tbody>
@@ -12,7 +14,8 @@
             <tr>
                 <td>Pessoas</td>
                 <td>@pessoa.Descricao</td>
-                <td>@pessoa.DataModificacao</td>
+                <td class="data">@pessoa.DataModificacao</td>
+                <td>@pessoa.PessoaId</td>
             </tr>
         }
 
@@ -21,7 +24,8 @@
             <tr>
                 <td>Familia</td>
                 <td>@familia.Descricao</td>
-                <td>@familia.DataModificacao</td>
+                <td class="data">@familia.DataModificacao</td>
+                <td>@familia.PessoaId</td>
             </tr>
         }
 
@@ -30,16 +34,18 @@
             <tr>
                 <td>Fornecedores</td>
                 <td>@fornecedor.Descricao</td>
-                <td>@fornecedor.DataModificacao</td>
+                <td class="data">@fornecedor.DataModificacao</td>
+                <td>@fornecedor.PessoaId</td>
             </tr>
         }
 
-        @foreach (var produto in ViewBag.LogProduto)
+        @foreach (var produto in ViewBag.LogProdutos)
         {
             <tr>
                 <td>Pessoas</td>
                 <td>@produto.Descricao</td>
-                <td>@produto.DataModificacao</td>
+                <td class="data">@produto.DataModificacao</td>
+                <td>@produto.PessoaId</td>
             </tr>
         }
     </tbody>

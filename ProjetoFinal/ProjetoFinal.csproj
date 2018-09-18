@@ -4280,6 +4280,7 @@
     <Content Include="Scripts\FecharIframe.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery.mask.js" />
+    <Content Include="Scripts\mudarUsuario.js" />
     <Content Include="Scripts\pedidosProdutos.js" />
     <Content Include="Scripts\ValidaCPF.js" />
     <Content Include="Web.config">

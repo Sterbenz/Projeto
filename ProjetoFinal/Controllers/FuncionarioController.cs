@@ -120,8 +120,20 @@ namespace ProjetoFinal.Models
                 PessoaModificadaId = funcionario.Id,
                 PessoaModificadaNome = funcionario.Nome,
                 DataModificacao = DateTime.Now,
-                Descricao = "Funcionario" + user.Nome + modificacao +"o(a) funcionario(a)" + funcionario.Nome
+                Descricao = "Funcionario " + user.Nome + " " + modificacao +" o(a) funcionario(a) " + funcionario.Nome
             };
+            dao.Adiciona(log);
+        }
+
+        public ActionResult ConfiguracaoUsuario(int id, string usuario, string senha)
+        {
+            UsuariosDAO dao = new UsuariosDAO();
+            Usuario user = dao.BuscaPorId(id);
+            user.User = usuario;
+            user.Senha = senha;
+            dao.Atualiza(user);
+
+            return View();
         }
     }
 }

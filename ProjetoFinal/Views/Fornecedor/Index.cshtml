@@ -33,9 +33,9 @@
             <tr id="@(fornecedores.Id)">
                 <th>@fornecedores.Id</th>
                 <th>@fornecedores.DenominacaoSocial</th>
-                <th>@Convert.ToUInt64(fornecedores.CNPJ).ToString(@"00\.000\.000\/0000-00")</th>
+                <th class="cnpj">@fornecedores.CNPJ</th>
                 <th>@fornecedores.Email</th>
-                <th>@Convert.ToUInt64(fornecedores.Telefone).ToString(@"00 00000-0000")</th>                
+                <th class="telefone">@fornecedores.Telefone</th>                
                 <th>
                     <button class="btn default red-flamingo" onclick="Deletar(@fornecedores.Id,'Fornecedor')">Deletar</button>
                 </th>
