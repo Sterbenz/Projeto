@@ -9,7 +9,7 @@
     </li>
 
     <li style="left:10px; bottom: 2px">
-        <form class="form-horizontal form-row-seperated" action="#" method="post">
+        <form class="form-horizontal form-row-seperated" action="@Url.Action("Logs","Home")" method="post">
             <button class="btn default grey" type="submit">Registros</button>
         </form>
     </li>
@@ -23,6 +23,7 @@
             <th>CNPJ</th>
             <th>Email</th>
             <th>Telefone</th>
+            <th>Ações</th>
             
 
         </tr>
@@ -35,13 +36,15 @@
                 <th>@fornecedores.DenominacaoSocial</th>
                 <th class="cnpj">@fornecedores.CNPJ</th>
                 <th>@fornecedores.Email</th>
-                <th class="telefone">@fornecedores.Telefone</th>                
+                <th class="telefone">@fornecedores.Telefone</th>
                 <th>
                     <button class="btn default red-flamingo" onclick="Deletar(@fornecedores.Id,'Fornecedor')">Deletar</button>
-                </th>
-                <th>
-                    <form action="@Url.Action("Editar", "Fornecedor", new { fornecedores.Id })" method="get">
+
+                    <form action="@Url.Action("Editar", "Fornecedor", new { fornecedores.Id })" method="post">
                         <button class="btn default green-jungle" type="submit">Editar</button>
+                    </form>
+                    <form action="@Url.Action("ViewPedidos","Fornecedor", new { fornecedores.Id})" method="get">
+                        <button class="btn default red-pink-stripe" type="submit">Realizar pedido</button>
                     </form>
                 </th>
             </tr>

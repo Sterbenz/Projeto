@@ -14,14 +14,6 @@ namespace ProjetoFinal.Models
         [Range(0.1, Double.MaxValue)]
         public Double ValorTotal { get; set; }
 
-        public DateTime DataEntrega { get; set; }
-
-        public bool Entregue { get; set; }
-
-        public int? FornecedorId { get; set; }
-
-        public Fornecedor Fornecedor { get; set; }
-
         public Pedido()
         {
             this.Produtos = new List<PedidoProdutos>();

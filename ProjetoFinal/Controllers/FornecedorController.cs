@@ -34,7 +34,7 @@ namespace ProjetoFinal.Controllers
                 dao.Adiciona(fornecedor);
                 RegistrarLog(fornecedor, "registrou ");
 
-                return Content("Fornecedor adicionado com sucesso!");
+                return RedirectToAction("Index","Fornecedor");
             }
             else
             {                
@@ -86,11 +86,11 @@ namespace ProjetoFinal.Controllers
             return Json(id);
         }
 
-        public ActionResult ViewPedidos()
+        public ActionResult ViewPedidos(int id)
         {
             FornecedoresDAO dao = new FornecedoresDAO();
             ProdutosDAO prodDAO = new ProdutosDAO();
-            ViewBag.Fonecedores = dao.Lista();
+            ViewBag.Fonecedores = dao.BuscaPorId(id);
             ViewBag.Produtos = prodDAO.Lista();
             return View();
         }
@@ -103,10 +103,7 @@ namespace ProjetoFinal.Controllers
             PedidosDAO dao = new PedidosDAO();
             Pedido pedido = new Pedido()
             {
-                ValorTotal = valorTotal,
-                Entregue = false,
-                DataEntrega = DateTime.Now.AddDays(fornecedor.PrazoMedioEntrega),
-                FornecedorId = id
+                ValorTotal = valorTotal
             };
 
             foreach(var produto in pedidos)
@@ -115,6 +112,20 @@ namespace ProjetoFinal.Controllers
             }
 
             dao.Adiciona(pedido);
+
+            AcompanhamentoFornecedoresDAO acDAO = new AcompanhamentoFornecedoresDAO();
+            AcompanhamentoFornecedores acompanhamento = new AcompanhamentoFornecedores()
+            {
+                DataEmissao = DateTime.Now,
+                DataEntrega = DateTime.Now.AddDays(fornecedor.PrazoMedioEntrega),
+                Entregue = false,
+                FornecedorId = fornecedor.Id,
+                PedidoId = pedido.Id,
+                ValorTotal = valorTotal,
+            };
+
+            acDAO.Adiciona(acompanhamento);
+            
             RegistrarLog(fornecedor, "registrou pedido n");
 
             return View("Index");

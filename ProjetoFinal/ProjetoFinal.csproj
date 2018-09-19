@@ -4351,6 +4351,10 @@
     <Compile Include="Migrations\20180917204210_LogsUpgrade.designer.cs">
       <DependentUpon>20180917204210_LogsUpgrade.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\20180919201208_Pedidos-Acompanhamentos.cs" />
+    <Compile Include="Migrations\20180919201208_Pedidos-Acompanhamentos.designer.cs">
+      <DependentUpon>20180919201208_Pedidos-Acompanhamentos.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\LojaContextModelSnapshot.cs" />
     <Compile Include="Models\AcompanhamentoFornecedores.cs" />
     <Compile Include="Models\FamiliaProduto.cs" />

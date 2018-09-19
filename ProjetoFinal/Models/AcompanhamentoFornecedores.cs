@@ -19,6 +19,8 @@ namespace ProjetoFinal.Models
         [Required]
         public double ValorTotal { get; set; }
 
+        public bool Entregue { get; set; }
+
         public int PedidoId { get; set; }
 
         public Pedido Pedido { get; set; }

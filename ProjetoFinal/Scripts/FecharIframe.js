@@ -1,5 +1,10 @@
 ﻿function fecharModal(res) {
-    var documento = $(document);
-    console.log(documento);
-    
+    $.ajax({
+        url: "/Produto/Index",
+        success: function () {
+            $("#novoProdutoModal").toggle();
+            console.log($(document));
+            console.log($("#novoProdutoModal"));
+        }
+    });    
 }
