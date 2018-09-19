@@ -1,4 +1,5 @@
-﻿$("#registrar-produto").click(function () {
-    $('#myModal').modal('toggle');
-    console.log(true);
-});
+﻿function fecharModal(res) {
+    var documento = $(document);
+    console.log(documento);
+    
+}

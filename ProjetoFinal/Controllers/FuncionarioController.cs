@@ -133,7 +133,7 @@ namespace ProjetoFinal.Models
             user.Senha = senha;
             dao.Atualiza(user);
 
-            return View();
+            return Json(user);
         }
     }
 }

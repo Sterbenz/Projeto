@@ -1,6 +1,5 @@
 ﻿@{ ProjetoFinal.DAO.FamiliaProdutoDAO dao = new ProjetoFinal.DAO.FamiliaProdutoDAO();
-    ViewBag.Tipos = dao.Lista(); ;
-
+    ViewBag.Tipos = dao.Lista(); 
 }
 
 <h3 class="page-title">
@@ -8,7 +7,7 @@
 </h3>
 <ul class="nav nav-tabs">
     <li style="bottom: 2px">
-        <button type="button" onclick="novoProduto()" class="btn default green" data-toggle="modal" data-target="#myModal">Registrar produto</button>
+        <button type="button" class="btn default green" data-toggle="modal" data-target="#novoProdutoModal">Registrar produto</button>
     </li>
 
     <li style="left:10px; bottom: 2px">
@@ -64,7 +63,7 @@
 
 
 <!-- Modal -->
-<div id="myModal" class="modal fade" role="dialog">
+<div id="novoProdutoModal" class="modal fade" role="dialog">
     <div class="modal-dialog" style="width:800px">
 
         <!-- Modal content-->
@@ -74,7 +73,7 @@
                 <h4 class="modal-title">Adicionar Produto</h4>
             </div>
             <div class="modal-body">
-                <iframe src="" width="100%" height="700" frameborder="0"></iframe>
+                <iframe src="@Url.Action("Form", "Produto")" width="100%" height="700" frameborder="0"></iframe>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" onclick="adicionarProdutoTabela();" data-dismiss="modal">Close</button>
@@ -83,16 +82,3 @@
 
     </div>
 </div>
-
-<script>
-    function novoProduto() {
-        var frameSrc = "@Url.Action("Form", "Produto")";
-        $('iframe').attr("src", frameSrc);
-    }
-
-    function adicionarProdutoTabela() {
-
-        $load("@Url.Action("Index", "Produto")");
-    }
-
-</script>

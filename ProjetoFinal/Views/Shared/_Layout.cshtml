@@ -38,7 +38,6 @@ License: You must have a valid license purchased only from themeforest(the above
     <link href="~/Content/assets/global/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
     <link href="~/Content/assets/global/plugins/simple-line-icons/simple-line-icons.min.css" rel="stylesheet" type="text/css" />
     <link href="~/Content/assets/global/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-    <link href="https://github.com/igorescobar/jQuery-Mask-Plugin/blob/master/dist/jquery.mask.min.js" />
     <link href="~/Content/assets/global/plugins/uniform/css/uniform.default.css" rel="stylesheet" type="text/css" />
     <link href="~/Content/assets/global/plugins/bootstrap-switch/css/bootstrap-switch.min.css" rel="stylesheet" type="text/css" />
     <!-- END GLOBAL MANDATORY STYLES -->
@@ -53,7 +52,9 @@ License: You must have a valid license purchased only from themeforest(the above
     <link href="~/Content/assets/admin/layout/css/layout.css" rel="stylesheet" type="text/css" />
     <link id="style_color" href="~/Content/assets/admin/layout/css/themes/default.css" rel="stylesheet" type="text/css" />
     <link href="~/Content/assets/admin/layout/css/custom.css" rel="stylesheet" type="text/css" />
-    
+    <link href="~/css/estilos-gerais.css" rel="stylesheet" type="text/css" />
+    <script src="~/Scripts/FecharIframe.js"></script>
+
     <!-- END THEME STYLES -->
     <link rel="icon" href="~/Content/favicon.png" />
     <style>
@@ -199,7 +200,7 @@ License: You must have a valid license purchased only from themeforest(the above
             </div>
             <!-- END CONTAINER -->
             <!-- BEGIN FOOTER -->
-            <div class="page-footer">
+            <div class="page-footer rodape-pagina">
                 <div class="page-footer-inner">
                     2018 Estagio Benner - Projeto final.
                 </div>
@@ -245,6 +246,7 @@ License: You must have a valid license purchased only from themeforest(the above
                             <button id="confirmarMudanca" onclick="configurarUsuario(@user.Id)" class="form-control btn blue-steel">Confirmar</button>
                         </div>
                         <div class="modal-footer">
+                            <h1 class="operacao-concluida">Operação realizada com sucesso!!</h1>
                             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                         </div>
                     </div>
@@ -285,7 +287,7 @@ License: You must have a valid license purchased only from themeforest(the above
             <script src="~/Content/assets/global/scripts/datatable.js"></script>
             <script src="~/Content/assets/admin/pages/scripts/ecommerce-products.js"></script>
             <script src="~/Scripts/jquery.mask.js"></script>
-            <script src="~/Scripts/AnimacaoFadeOut.js"></script>
+            <script src="~/Scripts/Mascaras.js"></script>
             <script src="~/Scripts/ValidaCPF.js"></script>
             <script src="~/Scripts/Deletar.js"></script>
             <script src="~/Scripts/pedidosProdutos.js"></script>

@@ -1,0 +1,13 @@
+﻿.rodape-pagina {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+}
+
+.operacao-concluida {
+    text-align: center;
+    font-size: 20px;
+    color: green;
+    display: none;
+}

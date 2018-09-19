@@ -1,5 +1,4 @@
-﻿
-function Deletar(id, controller) {
+﻿function Deletar(id, controller) {
 
     if (confirm("Deseja remover!?")) {
         var url = controller + "/Remover";    
@@ -13,12 +12,4 @@ function Deletar(id, controller) {
             }                
         });
     }
-}
-
-function AtualizarPag(resposta) {    
-    $("#" + resposta).remove();
-}
-
-function Teste(id, controller) {
-    alert(id + " " + " ------ " + " " + controller);
 }

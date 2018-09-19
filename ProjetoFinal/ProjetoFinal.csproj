@@ -4270,12 +4270,13 @@
     <Content Include="Content\icons8-f-52.png" />
     <Content Include="Content\icons8-g-52.png" />
     <Content Include="Content\Logo.svg" />
+    <Content Include="css\estilos-gerais.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
-    <Content Include="Scripts\AnimacaoFadeOut.js" />
+    <Content Include="Scripts\Mascaras.js" />
     <Content Include="Scripts\Deletar.js" />
     <Content Include="Scripts\FecharIframe.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
