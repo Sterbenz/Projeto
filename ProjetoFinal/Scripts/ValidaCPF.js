@@ -1,5 +1,4 @@
-﻿$("#cpf").on("input", function () {
-    
+﻿$(".cpf").on("input", function () {
     var cpf = document.getElementById("cpf").value;
     cpf = cpf.replace(/[^\d]/g, '');
     
@@ -31,8 +30,6 @@
         cpfClass.className = "form-control invalido";
     }
     else {
-
-
         if (R == 10) {
             R = 0;
             if (R == cpf.charAt(9)) {
@@ -61,7 +58,6 @@
                     } else {
                         dcpfClass.className = "form-control invalido";
                     }
-
                 }
             }
             else {

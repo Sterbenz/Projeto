@@ -11,3 +11,8 @@
     color: green;
     display: none;
 }
+
+.col-sem-margem {
+    padding-left: 0px;
+    padding-right: 0px;
+}

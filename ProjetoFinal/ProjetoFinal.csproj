@@ -4283,6 +4283,7 @@
     <Content Include="Scripts\jquery.mask.js" />
     <Content Include="Scripts\mudarUsuario.js" />
     <Content Include="Scripts\pedidosProdutos.js" />
+    <Content Include="Scripts\ValidaCamposVazios.js" />
     <Content Include="Scripts\ValidaCPF.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>

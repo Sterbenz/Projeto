@@ -90,7 +90,8 @@ namespace ProjetoFinal.Controllers
         {
             FornecedoresDAO dao = new FornecedoresDAO();
             ProdutosDAO prodDAO = new ProdutosDAO();
-            ViewBag.Fonecedores = dao.BuscaPorId(id);
+            Fornecedor fornecedor = dao.BuscaPorId(id);
+            ViewBag.Fornecedor = fornecedor;
             ViewBag.Produtos = prodDAO.Lista();
             return View();
         }
@@ -111,8 +112,6 @@ namespace ProjetoFinal.Controllers
                 pedido.IncluiProduto(produto);
             }
 
-            dao.Adiciona(pedido);
-
             AcompanhamentoFornecedoresDAO acDAO = new AcompanhamentoFornecedoresDAO();
             AcompanhamentoFornecedores acompanhamento = new AcompanhamentoFornecedores()
             {
@@ -124,6 +123,7 @@ namespace ProjetoFinal.Controllers
                 ValorTotal = valorTotal,
             };
 
+            dao.Adiciona(pedido);
             acDAO.Adiciona(acompanhamento);
             
             RegistrarLog(fornecedor, "registrou pedido n");

@@ -1,6 +1,7 @@
 ﻿@{
     ProjetoFinal.Models.Produto prod = new ProjetoFinal.Models.Produto();
     ProjetoFinal.DAO.ProdutosDAO dao = new ProjetoFinal.DAO.ProdutosDAO();
+    
 
 }
 
@@ -40,11 +41,12 @@
         </div>
         <div class="portlet-body">
             <div class="row static-info">
+                <div class="invisible" id="id-fornecedor">@ViewBag.Fornecedor.Id</div>
                 <div class="col-md-5 name">
                     Nome:
                 </div>
                 <div class="col-md-7 value">
-                    @ViewBag.Fornecedores.DenominacaoSocial
+                    @ViewBag.Fornecedor.DenominacaoSocial
                 </div>
             </div>
             <div class="row static-info">
@@ -52,7 +54,7 @@
                     CNPJ:
                 </div>
                 <div class="col-md-7 value">
-                    @ViewBag.Fornecedores.CNPJ
+                    @ViewBag.Fornecedor.CNPJ
                 </div>
             </div>
             <div class="row static-info">
@@ -60,15 +62,15 @@
                     Email:
                 </div>
                 <div class="col-md-7 value">
-                    @ViewBag.Fornecedores.Email
+                    @ViewBag.Fornecedor.Email
                 </div>
             </div>
             <div class="row static-info">
                 <div class="col-md-5 name">
                     Telefone:
                 </div>
-                <div class="col-md-7 value">
-                    @ViewBag.Fornecedores.Telefone
+                <div class="col-md-7 value telefone">
+                    @ViewBag.Fornecedor.Telefone
                 </div>
             </div>
         </div>
@@ -85,19 +87,22 @@
         <div class="portlet-body">
             <label>Produto:</label>
             <select id="produtos-lista-pedidos" class="form-control">
+                <option selected>Produtos</option>
                 @foreach (var produto in ViewBag.Produtos)
                 {
 
-                    <option value="@produto.Id">
+                    <option id="1" class="qtdEstoque" value="@produto.Id">
                         @produto.Nome
                     </option>
 
                 }
             </select><br />
-            <label>Valor:</label>
-            <input type="text" class="form-control" id="valor-produto-pedido" /><br />
+            <label>Quantidade em estoque:</label>
+            <input type="text" class="form-control" id="quantidade-produto-estoque" disabled/><br />
             <label>Quantidade:</label>
-            <input type="text" class="form-control" id="quantidade-produto-pedido" /><br />
+            <input type="number" class="form-control" value="0" id="quantidade-produto-pedido" /><br />
+            <label>Valor:</label>
+            <input type="text" class="form-control dinheiro" value="0" id="valor-produto-pedido" /><br />
             <button id="adicionar-produto-pedidos" class="form-control btn green">Adicionar</button>
         </div>
     </div>
@@ -105,7 +110,7 @@
 
 
 <div class="row">
-    <div class="col-md-12 col-sm-12">
+    <div class="col-md-12">
         <div class="portlet grey-cascade box">
             <div class="portlet-title">
                 <div class="caption">
@@ -119,9 +124,6 @@
                             <tr>
                                 <th>
                                     Produto
-                                </th>
-                                <th>
-                                    Quantidade em estoque
                                 </th>
                                 <th>
                                     Valor por unidade
@@ -146,3 +148,7 @@
         </div>
     </div>
 </div>
+
+<script>
+    console.log("@ViewBag.Fornecedor");
+</script>
