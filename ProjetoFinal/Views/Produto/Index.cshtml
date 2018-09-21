@@ -7,7 +7,9 @@
 </h3>
 <ul class="nav nav-tabs">
     <li style="bottom: 2px">
-        <button type="button" class="btn default green" data-toggle="modal" data-target="#novoProdutoModal">Registrar produto</button>
+        <form class="form-horizontal form-row-seperated" action="@Url.Action("Form","Produto")" method="post">
+            <button type="submit" class="btn default green">Registrar produto</button>
+        </form>
     </li>
 
     <li style="left:10px; bottom: 2px">

@@ -30,8 +30,15 @@ namespace ProjetoFinal.Models
 
         public ActionResult Form()
         {
+            IList<TipoPessoa> tipoPessoas = new List<TipoPessoa>();
             TipoPessoasDAO dao = new TipoPessoasDAO();
-            ViewBag.TipoPessoas = dao.Lista();
+            foreach (TipoPessoa pessoa in dao.Lista())
+            {
+                if (pessoa.Nome != "Cliente") {
+                    tipoPessoas.Add(pessoa);
+                }                    
+            }
+            ViewBag.TipoPessoas = tipoPessoas;
 
             return View();
         }
