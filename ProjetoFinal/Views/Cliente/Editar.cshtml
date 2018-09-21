@@ -27,7 +27,7 @@
 <!-- BEGIN PAGE CONTENT-->
 <div class="row">
     <div class="col-md-12">
-        <form class="form-horizontal form-row-seperated" action="@Url.Action("Edita","Cliente", new { ViewBag.Clientes.Id })" method="post">
+        <form class="form-horizontal form-row-seperated form-validacao-pessoa" action="@Url.Action("Edita","Cliente", new { ViewBag.Clientes.Id })" method="post">
             <div class="portlet">
                 <div class="portlet-title">
                     <div class="caption">
@@ -51,8 +51,7 @@
                                             </span>
                                         </label>
                                         <div class="col-md-10">
-                                            <input type="text" class="form-control" name="cliente.Nome" value="@ViewBag.Clientes.Nome" placeholder="">
-                                            @Html.ValidationMessage("cliente.Nome")
+                                            <input type="text" class="form-control form-nome" onblur="validaNome()" name="cliente.Nome" value="@ViewBag.Clientes.Nome" placeholder="">
                                         </div>
                                     </div><br />
                                     <div class="form-group">
@@ -62,8 +61,7 @@
                                             </span>
                                         </label>
                                         <div class="col-md-10">
-                                            <input type="text" class="form-control" id="cpf" onblur="ValidaCPF()" value="@ViewBag.Clientes.Cpf" name="cliente.Cpf">
-                                            @Html.ValidationMessage("cliente.Cpf")
+                                            <input type="text" class="form-control form-cpf" id="cpf" onblur="ValidaCPF()" value="@ViewBag.Clientes.Cpf" name="cliente.Cpf">
                                         </div>
                                     </div><br />
                                     <div class="form-group">
@@ -73,8 +71,7 @@
                                             </span>
                                         </label>
                                         <div class="col-md-10">
-                                            <input type="date" class="form-control" value="@ViewBag.Clientes.DataDeNascimento" name="cliente.DataDeNascimento">
-                                            @Html.ValidationMessage("cliente.DataDeNascimento")
+                                            <input type="date" class="form-control form-data-nascimento " onblur="validaDataNascimento()" value="@ViewBag.Clientes.DataDeNascimento" name="cliente.DataDeNascimento">
                                         </div>
                                     </div><br />
                                     <div class="form-group">
@@ -82,7 +79,7 @@
                                             Email:
                                         </label>
                                         <div class="col-md-10">
-                                            <input type="email" class="form-control" value="@ViewBag.Clientes.Email" name="cliente.Email">
+                                            <input type="email" class="form-control form-email" onblur="validaEmail()" value="@ViewBag.Clientes.Email" name="cliente.Email">
                                         </div>
                                     </div><br />
                                     <div class="form-group">

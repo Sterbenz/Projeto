@@ -25,6 +25,7 @@ namespace ProjetoFinal.Controllers
             return Json(produto);
         }
 
+        [AutorizacaoUsuarioFilter]
         public ActionResult Logs()
         {
             LogFornecedoresDAO forDAO = new LogFornecedoresDAO();
@@ -38,6 +39,12 @@ namespace ProjetoFinal.Controllers
             ViewBag.LogProdutos = proDAO.Lista();
 
             return View();
+        }
+
+        public ActionResult Errors()
+        {
+
+            throw new DivideByZeroException();
         }
     }
 }

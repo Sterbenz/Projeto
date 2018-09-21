@@ -37,7 +37,7 @@ namespace ProjetoFinal.Controllers
                 ProdutosDAO dao = new ProdutosDAO();
                 dao.Adiciona(produto);
                 RegistrarLog(produto, "Registrou");
-                return Json("Index", "Produto") ;
+                return RedirectToAction("Index", "Produto") ;
             }
             else
             {

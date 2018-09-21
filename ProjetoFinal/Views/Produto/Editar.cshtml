@@ -1,33 +1,11 @@
-﻿<div class="modal fade" id="portlet-config" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
-                <h4 class="modal-title">Modal title</h4>
-            </div>
-            <div class="modal-body">
-                Widget settings form goes here
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn blue">Save changes</button>
-                <button type="button" class="btn default" data-dismiss="modal">Close</button>
-            </div>
-        </div>
-        <!-- /.modal-content -->
-    </div>
-    <!-- /.modal-dialog -->
-</div>
-<!-- /.modal -->
-<!-- END SAMPLE PORTLET CONFIGURATION MODAL FORM-->
-<!-- BEGIN PAGE HEADER-->
+﻿
 <h3 class="page-title">
     Editar produtos <small>Editar produto: @ViewBag.Produtos.Nome</small>
 </h3>
-<!-- END PAGE HEADER-->
-<!-- BEGIN PAGE CONTENT-->
+
 <div class="row">
     <div class="col-md-12">
-        <form class="form-horizontal form-row-seperated" action="@Url.Action("Edita","Produto",new { ViewBag.Produtos.Id })" method="post">
+        <form class="form-horizontal form-row-seperated form-validacao-produto" action="@Url.Action("Edita","Produto",new { ViewBag.Produtos.Id })" method="post">
             <div class="portlet">
                 <div class="portlet-title">
                     <div class="caption">
@@ -51,8 +29,7 @@
                                             </span>
                                         </label>
                                         <div class="col-md-10">
-                                            <input type="text" class="form-control" value="@ViewBag.Produtos.Nome" name="produto.Nome" placeholder="">
-                                            @Html.ValidationMessage("produto.Nome")
+                                            <input type="text" class="form-control form-nome" value="@ViewBag.Produtos.Nome" name="produto.Nome" placeholder="">
                                         </div>
                                     </div><br />
                                     <div class="form-group">
@@ -62,8 +39,7 @@
                                             </span>
                                         </label>
                                         <div class="col-md-10">
-                                            <input value="@ViewBag.Produtos.PrecoPorUnidade" class="form-control dinheiro" name="produto.PrecoPorUnidade">
-                                            @Html.ValidationMessage("produto.PrecoPorUnidade")
+                                            <input value="@ViewBag.Produtos.PrecoPorUnidade" class="form-control dinheiro form-valor" name="produto.PrecoPorUnidade">
                                         </div>
                                     </div><br />
                                     <div class="form-group">
@@ -73,8 +49,7 @@
                                             </span>
                                         </label>
                                         <div class="col-md-10">
-                                            <input type="number" class="form-control" value="@ViewBag.Produtos.Quantidade" name="produto.Quantidade">
-                                            @Html.ValidationMessage("produto.Quantidade")
+                                            <input type="number" class="form-control form-quantidade" value="@ViewBag.Produtos.Quantidade" name="produto.Quantidade">
                                         </div>
                                     </div><br />
                                     <div class="form-group">

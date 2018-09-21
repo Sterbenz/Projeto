@@ -28,7 +28,7 @@
 <!-- BEGIN PAGE CONTENT-->
 <div class="row">
     <div class="col-md-12">
-        <form class="form-horizontal form-row-seperated" action="@Url.Action("Edita","Categoria", new { ViewBag.Familias.Id })" method="post">
+        <form class="form-horizontal form-row-seperated form-validacao-familia" action="@Url.Action("Edita","Categoria", new { ViewBag.Familias.Id })" method="post">
             <div class="portlet">
                 <div class="portlet-title">
                     <div class="caption">
@@ -52,7 +52,7 @@
                                             </span>
                                         </label>
                                         <div class="col-md-10">
-                                            <input type="text" class="form-control" name="familia.Nome" placeholder="">
+                                            <input type="text" class="form-control form-nome" value="@ViewBag.Familias.Nome" name="familia.Nome" placeholder="">
                                             @Html.ValidationMessage("categoria.Nome")
                                         </div>
                                     </div>
@@ -64,7 +64,7 @@
                                         </span>
                                     </label>
                                     <div class="col-md-10">
-                                        <textarea style="resize:vertical" class="form-control" name="familia.Descricao"></textarea>
+                                        <textarea style="resize:vertical" class="form-control" name="familia.Descricao">@ViewBag.Familias.Descricao</textarea>
                                     </div>
                                 </div>
                             </div>

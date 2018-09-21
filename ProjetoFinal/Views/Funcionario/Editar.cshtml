@@ -27,7 +27,7 @@
 <!-- BEGIN PAGE CONTENT-->
 <div class="row">
     <div class="col-md-12">
-        <form class="form-horizontal form-row-seperated" action="@Url.Action("Edita","Funcionario", new { ViewBag.Funcionarios.Id })" method="post">
+        <form class="form-horizontal form-row-seperated form-validacao-pessoa" action="@Url.Action("Edita","Funcionario", new { ViewBag.Funcionarios.Id })" method="post">
             <div class="portlet">
                 <div class="portlet-title">
                     <div class="caption">
@@ -51,7 +51,7 @@
                                             </span>
                                         </label>
                                         <div class="col-md-10">
-                                            <input type="text" class="form-control" name="funcionario.Nome" value="@ViewBag.Funcionarios.Nome" placeholder="">
+                                            <input type="text" class="form-control form-nome" name="funcionario.Nome" value="@ViewBag.Funcionarios.Nome" placeholder="">
                                             @Html.ValidationMessage("funcionario.Nome")
                                         </div>
                                     </div><br />
@@ -62,7 +62,7 @@
                                             </span>
                                         </label>
                                         <div class="col-md-10">
-                                            <input type="text" class="form-control" id="cpf" onblur="ValidaCPF()" value="@ViewBag.Funcionarios.Cpf" name="funcionario.Cpf">
+                                            <input type="text" class="form-control form-cpf" id="cpf" onblur="ValidaCPF()" value="@ViewBag.Funcionarios.Cpf" name="funcionario.Cpf">
                                             @Html.ValidationMessage("funcionario.Cpf")
                                         </div>
                                     </div><br />
@@ -73,7 +73,7 @@
                                             </span>
                                         </label>
                                         <div class="col-md-10">
-                                            <input type="date" class="form-control" value="@ViewBag.Funcionarios.DataDeNascimento" name="funcionario.DataDeNascimento">
+                                            <input type="date" class="form-control form-data-nascimento" onblur="validaDataNascimento()" value="@ViewBag.Funcionarios.DataDeNascimento" name="funcionario.DataDeNascimento">
                                             @Html.ValidationMessage("funcionario.DataDeNascimento")
                                         </div>
                                     </div><br />
@@ -82,7 +82,7 @@
                                             Email:
                                         </label>
                                         <div class="col-md-10">
-                                            <input type="email" class="form-control" value="@ViewBag.Funcionarios.Email" name="funcionario.Email">
+                                            <input type="email" class="form-control form-email" onblur="validaEmail()" value="@ViewBag.Funcionarios.Email" name="funcionario.Email">
                                         </div>
                                     </div><br />
                                     <div class="form-group">

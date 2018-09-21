@@ -4312,6 +4312,7 @@
     <Compile Include="DAO\ProdutosDAO.cs" />
     <Compile Include="DAO\PessoasDAO.cs" />
     <Compile Include="DAO\TipoPessoasDAO.cs" />
+    <Compile Include="Filters\AutorizacaoUsuarioFilter.cs" />
     <Compile Include="Filters\LoginFilter.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -4355,6 +4356,10 @@
     <Compile Include="Migrations\20180919201208_Pedidos-Acompanhamentos.cs" />
     <Compile Include="Migrations\20180919201208_Pedidos-Acompanhamentos.designer.cs">
       <DependentUpon>20180919201208_Pedidos-Acompanhamentos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\20180921162023_correcaoAttTables.cs" />
+    <Compile Include="Migrations\20180921162023_correcaoAttTables.designer.cs">
+      <DependentUpon>20180921162023_correcaoAttTables.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\LojaContextModelSnapshot.cs" />
     <Compile Include="Models\AcompanhamentoFornecedores.cs" />
@@ -4611,7 +4616,6 @@
     <Content Include="Content\assets\global\plugins\uniform\css\uniform.default.scss" />
     <Content Include="Content\assets\global\plugins\uniform\README.md" />
     <None Include="packages.config" />
-    <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Produto\Index.cshtml" />
@@ -4633,6 +4637,14 @@
     <Content Include="Views\Shared\_Styles_Scripts.cshtml" />
     <Content Include="Views\Fornecedor\Editar.cshtml" />
     <Content Include="Views\Home\Logs.cshtml" />
+    <Content Include="Views\Shared\_LayoutFuncionarios.cshtml" />
+    <Content Include="Views\Produto\_ViewStart.cshtml" />
+    <Content Include="Views\Home\_ViewStart.cshtml" />
+    <Content Include="Views\Funcionario\_ViewStart.cshtml" />
+    <Content Include="Views\Fornecedor\_ViewStart.cshtml" />
+    <Content Include="Views\Cliente\_ViewStart.cshtml" />
+    <Content Include="Views\Categoria\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
