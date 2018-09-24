@@ -97,20 +97,26 @@ namespace ProjetoFinal.Controllers
         }
 
         //id = FornecedorId
-        public ActionResult RealizaPedido(int id,List<Produto> pedidos, double valorTotal)
+        public ActionResult RealizaPedido(int id,List<Produto> produtos, double valorTotal)
         {
             FornecedoresDAO fDAO = new FornecedoresDAO();
             Fornecedor fornecedor = fDAO.BuscaPorId(id);
+            ProdutosDAO pDAO = new ProdutosDAO();
             PedidosDAO dao = new PedidosDAO();
-            Pedido pedido = new Pedido()
+            Pedido pedido = new Pedido
             {
                 ValorTotal = valorTotal
             };
 
-            foreach(var produto in pedidos)
+            foreach (Produto produto in produtos)
             {
-                pedido.IncluiProduto(produto);
+                Produto produtoAdd = pDAO.BuscaPorId(produto.Id);
+                produtoAdd.PrecoPorUnidade = produto.PrecoPorUnidade;
+                produtoAdd.Quantidade = produto.Quantidade;
+                pedido.IncluiProduto(produtoAdd);
             }
+
+            dao.Adiciona(pedido);
 
             AcompanhamentoFornecedoresDAO acDAO = new AcompanhamentoFornecedoresDAO();
             AcompanhamentoFornecedores acompanhamento = new AcompanhamentoFornecedores()
@@ -123,7 +129,7 @@ namespace ProjetoFinal.Controllers
                 ValorTotal = valorTotal,
             };
 
-            dao.Adiciona(pedido);
+            
             acDAO.Adiciona(acompanhamento);
             
             RegistrarLog(fornecedor, "registrou pedido n");
@@ -142,7 +148,7 @@ namespace ProjetoFinal.Controllers
                 FornecedorId = fornecedor.Id,
                 FornecedorNome = fornecedor.DenominacaoSocial,
                 DataModificacao = DateTime.Now,
-                Descricao = "Funcionario " + user.Nome +" "+ modificacao + " a fornecedora " + fornecedor.DenominacaoSocial
+                Descricao = "Funcionario " + user.Nome +" "+ modificacao + "a fornecedora " + fornecedor.DenominacaoSocial
             };
             dao.Adiciona(log);
         }

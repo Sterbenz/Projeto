@@ -11,7 +11,6 @@ namespace ProjetoFinal.Models
                 
         public IList<PedidoProdutos> Produtos { get; set; }
         
-        [Range(0.1, Double.MaxValue)]
         public Double ValorTotal { get; set; }
 
         public Pedido()

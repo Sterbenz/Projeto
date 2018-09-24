@@ -43,8 +43,25 @@ namespace ProjetoFinal.Controllers
 
         public ActionResult Errors()
         {
-
+           
             throw new DivideByZeroException();
+        }
+
+        public void Testes()
+        {
+            PedidosDAO da = new PedidosDAO();
+            var p1 = new Produto() { Nome = "Suco de Laranja",  PrecoPorUnidade = 4.50 , Quantidade = 10, FamiliaProdutoId = 1};
+            var p2 = new Produto() { Nome = "Café", PrecoPorUnidade = 10.50, Quantidade = 10, FamiliaProdutoId = 1 };
+            var p3 = new Produto() { Nome = "Macarrão", PrecoPorUnidade = 13.50, Quantidade = 10, FamiliaProdutoId = 1 };
+
+            var pedido = new Pedido();
+            pedido.ValorTotal = 104.30;
+
+            pedido.IncluiProduto(p1);
+            pedido.IncluiProduto(p2);
+            pedido.IncluiProduto(p3);
+
+            da.Adiciona(pedido);
         }
     }
 }

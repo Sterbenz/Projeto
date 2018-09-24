@@ -100,9 +100,9 @@
             <label>Quantidade em estoque:</label>
             <input type="text" class="form-control" id="quantidade-produto-estoque" disabled/><br />
             <label>Quantidade:</label>
-            <input type="number" class="form-control" value="0" id="quantidade-produto-pedido" /><br />
+            <input type="number" min="0" class="form-control" value="0" id="quantidade-produto-pedido" /><br />
             <label>Valor:</label>
-            <input type="text" class="form-control dinheiro" value="0" id="valor-produto-pedido" /><br />
+            <input type="text" class="form-control dinheiro" value="0" id="valor-produto-pedido" placeholder="000.000,00"/><br />
             <button id="adicionar-produto-pedidos" class="form-control btn green">Adicionar</button>
         </div>
     </div>
@@ -148,7 +148,3 @@
         </div>
     </div>
 </div>
-
-<script>
-    console.log("@ViewBag.Fornecedor");
-</script>
