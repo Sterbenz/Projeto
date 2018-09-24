@@ -66,7 +66,10 @@ License: You must have a valid license purchased only from themeforest(the above
     <!-- END LOGO -->
     <!-- BEGIN LOGIN -->
     <div class="content">
-       <h1>Você não tem permissão para acessar esta página!</h1>
+        <h1 class="text-center">Você não tem permissão para acessar esta página!</h1>
+        <form action="@Url.Action("Index","Home")" method="get">
+            <button class="btn btn-success uppercase center-block">Voltar a tela inicial</button>
+        </form>
     </div>
     <div class="copyright">
         2018 Estagio Benner - Projeto final .

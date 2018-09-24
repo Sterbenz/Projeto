@@ -62,7 +62,7 @@
                                             </span>
                                         </label>
                                         <div class="col-md-10">
-                                            <input type="text" class="form-control form-cpf" id="cpf" onblur="ValidaCPF()" value="@ViewBag.Funcionarios.Cpf" name="funcionario.Cpf">
+                                            <input type="text" class="form-control cpf form-cpf" id="cpf" onblur="ValidaCPF()" value="@ViewBag.Funcionarios.Cpf" name="funcionario.Cpf">
                                             @Html.ValidationMessage("funcionario.Cpf")
                                         </div>
                                     </div><br />
@@ -90,7 +90,7 @@
                                             Telefone:
                                         </label>
                                         <div class="col-md-10">
-                                            <input type="tel" class="form-control" value="@ViewBag.Funcionarios.Telefone" name="funcionario.Telefone">
+                                            <input type="tel" class="form-control telefone" value="@ViewBag.Funcionarios.Telefone" name="funcionario.Telefone">
                                         </div>
                                     </div><br />
                                     <div class="form-group">

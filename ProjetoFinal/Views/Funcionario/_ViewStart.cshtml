@@ -1,16 +1,14 @@
 ﻿@{
-                /**/
+    var user = (ProjetoFinal.Models.Pessoa)Session["UsuarioLogado"];
+    var dao = new ProjetoFinal.DAO.TipoPessoasDAO();
+    var cargo = dao.BuscaPorId(user.TipoPessoaId);
 
-                var user = (ProjetoFinal.Models.Pessoa)Session["UsuarioLogado"];
-                var dao = new ProjetoFinal.DAO.TipoPessoasDAO();
-                var cargo = dao.BuscaPorId(user.TipoPessoaId);
-
-                if (cargo.Nome == "Funcionario")
-                {
-                    Layout = "~/Views/Shared/_LayoutFuncionarios.cshtml";
-                }
-                else if (cargo.Nome == "Gerente" || cargo.Nome == "Dono(a)")
-                {
-                    Layout = "~/Views/Shared/_Layout.cshtml";
-                }
+    if (cargo.Nome == "Funcionario")
+    {
+        Layout = "~/Views/Shared/_LayoutFuncionarios.cshtml";
+    }
+    else if (cargo.Nome == "Gerente" || cargo.Nome == "Dono(a)" || cargo.Nome == "Dono")
+    {
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
 }

@@ -135,7 +135,7 @@ namespace ProjetoFinal.Models
         public ActionResult ConfiguracaoUsuario(int id, string usuario, string senha)
         {
             UsuariosDAO dao = new UsuariosDAO();
-            Usuario user = dao.BuscaPorId(id);
+            Usuario user = dao.BuscaPorIdFuncionario(id);
             user.User = usuario;
             user.Senha = senha;
             dao.Atualiza(user);

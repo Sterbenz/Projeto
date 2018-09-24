@@ -41,11 +41,12 @@ namespace ProjetoFinal.Controllers
             return View();
         }
 
+        [HandleError(View = "Error")]
         public ActionResult Errors()
         {
-           
-            throw new DivideByZeroException();
+            return View();
         }
+
 
         public void Testes()
         {

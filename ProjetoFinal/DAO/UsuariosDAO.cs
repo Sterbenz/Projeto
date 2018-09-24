@@ -33,6 +33,16 @@ namespace ProjetoFinal.DAO
             }
         }
 
+        public Usuario BuscaPorIdFuncionario(int id)
+        {
+            using (var contexto = new LojaContext())
+            {
+                return contexto.Usuarios
+                    .Where(p => p.PessoaId == id)
+                    .FirstOrDefault();
+            }
+        }
+
         public void Atualiza(Usuario usuarios)
         {
             using (var contexto = new LojaContext())

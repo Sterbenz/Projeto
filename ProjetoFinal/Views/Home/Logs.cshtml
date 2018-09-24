@@ -1,4 +1,19 @@
-﻿<table class="table table-striped table-hover">
+﻿<h3 class="page-title">
+    Registros gerais <small>Logs</small>
+</h3>
+<ul class="nav nav-tabs">
+    <li style="bottom: 2px">
+        <select id="filtro-logs-gerais" class="form-control">
+            <option selected>Geral</option>
+            <option>Pessoas</option>
+            <option>Familias</option>
+            <option>Produtos</option>
+            <option>Fornecedores</option>
+        </select>
+    </li>
+</ul>
+
+<table class="table table-striped table-hover">
 
     <thead>
         <tr>
@@ -9,19 +24,10 @@
         </tr>
     </thead>
     <tbody>
-        @foreach (var pessoa in ViewBag.LogPessoas)
-        {
-            <tr>
-                <td>Pessoas</td>
-                <td>@pessoa.Descricao</td>
-                <td>@pessoa.DataModificacao</td>
-                <td>@pessoa.PessoaId</td>
-            </tr>
-        }
 
         @foreach (var familia in ViewBag.LogFamilias)
         {
-            <tr>
+            <tr class="filtro-ativo logs-familias">
                 <td>Familia</td>
                 <td>@familia.Descricao</td>
                 <td>@familia.DataModificacao</td>
@@ -31,7 +37,8 @@
 
         @foreach (var fornecedor in ViewBag.LogFornecedores)
         {
-            <tr>
+    
+            <tr class="filtro-ativo logs-fornecedores">
                 <td>Fornecedores</td>
                 <td>@fornecedor.Descricao</td>
                 <td>@fornecedor.DataModificacao</td>
@@ -39,9 +46,19 @@
             </tr>
         }
 
+        @foreach (var pessoa in ViewBag.LogPessoas)
+        {
+            <tr class="filtro-ativo logs-pessoas">
+                <td>Pessoas</td>
+                <td>@pessoa.Descricao</td>
+                <td>@pessoa.DataModificacao</td>
+                <td>@pessoa.PessoaId</td>
+            </tr>
+        }
+
         @foreach (var produto in ViewBag.LogProdutos)
         {
-            <tr>
+            <tr  class="filtro-ativo logs-produtos">
                 <td>Produtos</td>
                 <td>@produto.Descricao</td>
                 <td>@produto.DataModificacao</td>
