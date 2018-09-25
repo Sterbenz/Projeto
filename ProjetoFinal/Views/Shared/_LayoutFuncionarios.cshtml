@@ -108,15 +108,15 @@ License: You must have a valid license purchased only from themeforest(the above
                         <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
                             @if (user.TipoPessoaId == 2)
                             {
-                                <img alt="" class="img-circle" src="~/Content/icons8-f-52.png" />
+                                <img alt="" class="img-responsive" src="~/Content/icons8-f-52.png" />
                             }
                             else if (user.TipoPessoaId == 3)
                             {
-                                <img alt="" class="img-circle" src="~/Content/icons8-g-52.png" />
+                                <img alt="" class="img-responsive" src="~/Content/icons8-g-52.png" />
                             }
                             else if (user.TipoPessoaId == 4)
                             {
-                                <img alt="" class="img-circle" src="~/Content/icons8-d-52.png" />
+                                <img alt="" class="img-responsive" src="~/Content/icons8-d-52.png" />
                             }
                             <span class="username username-hide-on-mobile">
                                 @user.Nome
@@ -223,7 +223,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                     </span>
                                 </label>
                                 <div class="col-md-10">
-                                    <input type="text" id="newUsuario" class="form-control" placeholder="">
+                                    <input type="text" onblur="validaUsuarioMudar()" id="newUsuario" class="form-control" placeholder="">
                                 </div>
                             </div><br />
                             <br />
@@ -234,12 +234,24 @@ License: You must have a valid license purchased only from themeforest(the above
                                     </span>
                                 </label>
                                 <div class="col-md-10">
-                                    <input type="password" id="newSenha" class="form-control" placeholder="">
+                                    <input type="password" id="newSenha" onblur="validaSenhaMudar()" class="form-control" placeholder="">
+                                </div>
+                            </div><br />
+                            <br />
+                            <div class="form-group">
+                                <label class="col-md-2 control-label">
+                                    Confirme a senha: <span class="required">
+                                        *
+                                    </span>
+                                </label>
+                                <div class="col-md-10">
+                                    <input type="password" id="newConfirmaSenha" class="form-control" placeholder="">
+                                    <span class="senha-incorreta">Senhas não coincidem!</span>
                                 </div>
                             </div>
                             <br />
                             <br />
-                            <button id="confirmarMudanca" onclick="configurarUsuario(@user.Id)" class="form-control btn blue-steel">Confirmar</button>
+                            <button id="confirmarMudanca" onclick="validaCamposMudarUsuario(@user.Id)" class="form-control btn blue-steel">Confirmar</button>
                         </div>
                         <div class="modal-footer">
                             <h1 class="operacao-concluida">Operação realizada com sucesso!!</h1>
@@ -253,9 +265,9 @@ License: You must have a valid license purchased only from themeforest(the above
             <!-- BEGIN JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
             <!-- BEGIN CORE PLUGINS -->
             <!--[if lt IE 9]>
-            <script src="../../assets/global/plugins/respond.min.js"></script>
-            <script src="../../assets/global/plugins/excanvas.min.js"></script>
-            <![endif]-->
+    <script src="../../assets/global/plugins/respond.min.js"></script>
+    <script src="../../assets/global/plugins/excanvas.min.js"></script>
+    <![endif]-->
 
             <script src="~/Content/assets/global/plugins/jquery.min.js" type="text/javascript"></script>
             <script src="~/Content/assets/global/plugins/jquery-migrate.min.js" type="text/javascript"></script>

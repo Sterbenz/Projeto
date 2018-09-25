@@ -1,4 +1,17 @@
-﻿function configurarUsuario(id) {
+﻿function verificaMudancaUsuario(id) {
+    $(".senha-incorreta").hide();
+    var senha = $("#newSenha").val();
+    var confirmaSenha = $("#newConfirmaSenha").val();
+
+    if (senha == confirmaSenha)
+        configurarUsuario(id);
+    else {
+        $(".senha-incorreta").toggle();
+        $("#newConfirmaSenha").addClass("invalido");
+    }        
+}
+
+function configurarUsuario(id) {
 
     var usuario = $("#newUsuario").val();
     var senha = $("#newSenha").val();

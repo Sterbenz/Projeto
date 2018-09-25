@@ -3,7 +3,7 @@
     var dao = new ProjetoFinal.DAO.TipoPessoasDAO();
     var cargo = dao.BuscaPorId(user.TipoPessoaId);
 
-    if (cargo.Nome == "Funcionario")
+    if (cargo.Nome == "Funcionario" || cargo.Nome == "Funcionario(a)")
     {
         Layout = "~/Views/Shared/_LayoutFuncionarios.cshtml";
     }

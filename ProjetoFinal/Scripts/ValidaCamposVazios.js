@@ -46,6 +46,11 @@ $(".form-validacao-familia").submit(function () {
     }
 });
 
+
+
+
+
+
 /////////////////////////////////////////////////////////////////////////////////////////////////
 
 function pegaCampos() {
@@ -61,6 +66,10 @@ function pegaCampos() {
     campoUf = validaUf();
     campoCep = validaCep();
     campoDataEntrega = validaDataEntrega();
+    campoUsuarioMudar = validaUsuarioMudar();
+    campoSenhaMudar = validaSenhaMudar();
+    campoConfirmaSenhaMudar = validaConfirmaSenhaMudar();
+
 }
 
 /////////////////////////////////////////////////////////////////////////////////////////////////
@@ -102,6 +111,12 @@ function validaCamposFornecedor() {
     }
 }
 
+function validaCamposMudarUsuario(id) {
+    pegaCampos();
+    if (campoUsuarioMudar == true && campoSenhaMudar == true && campoConfirmaSenhaMudar == true) {
+        verificaMudancaUsuario(id);
+    }    
+}
 /////////////////////////////////////////////////////////////////////////////////////////////////
 
 function validaNome() {
@@ -294,6 +309,54 @@ function validaDataEntrega() {
     else {
         dataEntregaClass.removeClass(" invalido");
         dataEntregaClass.addClass(" valido");
+        return true;
+    }
+}
+
+function validaConfirmaSenhaMudar() {
+    var confirmaSenhaClass = $("#newConfirmaSenha");
+    var confirmaSenhaText = $("#newConfirmaSenha").val();
+
+    if (confirmaSenhaText == "") {
+        confirmaSenhaClass.removeClass(" valido");
+        confirmaSenhaClass.addClass(" invalido");
+        return false;
+    }
+    else {
+        confirmaSenhaClass.removeClass(" invalido");
+        confirmaSenhaClass.addClass(" valido");
+        return true;
+    }
+}
+
+function validaSenhaMudar() {
+    var senhaClass = $("#newSenha");
+    var senhaText = $("#newSenha").val();
+
+    if (senhaText == "") {
+        senhaClass.removeClass(" valido");
+        senhaClass.addClass(" invalido");
+        return false;
+    }
+    else {
+        senhaClass.removeClass(" invalido");
+        senhaClass.addClass(" valido");
+        return true;
+    }
+}
+
+function validaUsuarioMudar() {
+    var usuarioClass = $("#newUsuario");
+    var usuarioText = $("#newUsuario").val();
+
+    if (usuarioText == "") {
+        usuarioClass.removeClass(" valido");
+        usuarioClass.addClass(" invalido");
+        return false;
+    }
+    else {
+        usuarioClass.removeClass(" invalido");
+        usuarioClass.addClass(" valido");
         return true;
     }
 }

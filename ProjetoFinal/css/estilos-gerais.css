@@ -20,3 +20,8 @@
 .filtro-ativo{
     display: none;
 }
+
+.senha-incorreta{
+    display: none;
+    color: red;
+}
