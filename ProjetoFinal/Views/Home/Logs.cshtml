@@ -28,10 +28,10 @@
         @foreach (var familia in ViewBag.LogFamilias)
         {
             <tr class="filtro-ativo logs-familias">
-                <td>Familia</td>
-                <td>@familia.Descricao</td>
-                <td>@familia.DataModificacao</td>
-                <td>@familia.PessoaId</td>
+                <th>Familia</th>
+                <th>@familia.Descricao</th>
+                <th>@familia.DataModificacao</th>
+                <th>@familia.PessoaId</th>
             </tr>
         }
 
@@ -39,30 +39,30 @@
         {
     
             <tr class="filtro-ativo logs-fornecedores">
-                <td>Fornecedores</td>
-                <td>@fornecedor.Descricao</td>
-                <td>@fornecedor.DataModificacao</td>
-                <td>@fornecedor.PessoaId</td>
+                <th>Fornecedores</th>
+                <th>@fornecedor.Descricao</th>
+                <th>@fornecedor.DataModificacao</th>
+                <th>@fornecedor.PessoaId</th>
             </tr>
         }
 
         @foreach (var pessoa in ViewBag.LogPessoas)
         {
             <tr class="filtro-ativo logs-pessoas">
-                <td>Pessoas</td>
-                <td>@pessoa.Descricao</td>
-                <td>@pessoa.DataModificacao</td>
-                <td>@pessoa.PessoaId</td>
+                <th>Pessoas</th>
+                <th>@pessoa.Descricao</th>
+                <th>@pessoa.DataModificacao</th>
+                <th>@pessoa.PessoaId</th>
             </tr>
         }
 
         @foreach (var produto in ViewBag.LogProdutos)
         {
             <tr  class="filtro-ativo logs-produtos">
-                <td>Produtos</td>
-                <td>@produto.Descricao</td>
-                <td>@produto.DataModificacao</td>
-                <td>@produto.PessoaId</td>
+                <th>Produtos</th>
+                <th>@produto.Descricao</th>
+                <th>@produto.DataModificacao</th>
+                <th>@produto.PessoaId</th>
             </tr>
         }
     </tbody>

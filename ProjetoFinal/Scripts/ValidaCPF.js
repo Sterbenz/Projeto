@@ -1,4 +1,8 @@
-﻿$(".cpf").on("input", function () {
+﻿
+
+function VerificaCPFValido() {
+
+    
     var cpf = document.getElementById("cpf").value;
     cpf = cpf.replace(/[^\d]/g, '');
     
@@ -27,15 +31,18 @@
         cpf == "66666666666" ||
         cpf == "77777777777" ||
         cpf == "99999999999") {
-        cpfClass.className = "form-control invalido";
+        
+        return false;
     }
     else {
         if (R == 10) {
             R = 0;
             if (R == cpf.charAt(9)) {
-                cpfClass.className = "form-control valido";
+                
+                return true;
             } else {
-                cpfClass.className = "form-control invalido";
+                
+                return false;
             }
         } else {
             if (R == cpf.charAt(9)) {
@@ -47,22 +54,28 @@
                 if (R2 == 10) {
                     R2 = 0;
                     if (R2 == cpf.charAt(10)) {
-                        cpfClass.className = "form-control valido";
+                        
+                        return true;
                     } else {
-                        cpfClass.className = "form-control invalido";
+                        
+                        return false;
                     }
                 }
                 else {
                     if (R2 == cpf.charAt(10)) {
-                        cpfClass.className = "form-control valido";
+                        
+                        return true;
                     } else {
-                        dcpfClass.className = "form-control invalido";
+                        
+                        return false;
                     }
                 }
             }
             else {
-                cpfClass.className = "form-control invalido";
+                
+                return false;
             }
         }
     }
-});
+}
+

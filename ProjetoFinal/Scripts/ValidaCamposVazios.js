@@ -53,16 +53,16 @@ $(".form-validacao-familia").submit(function () {
 
 /////////////////////////////////////////////////////////////////////////////////////////////////
 
-function pegaCampos() {
+function pegaCampos() {   
     campoNome = validaNome();
-    campoCpf = validaCpf();
+    campoCpf = validaCpf(cpfValido);
     campoDataNascimento = validaDataNascimento();
     campoEmail = validaEmail();
     campoValor = validaValor();
     campoQuantidade = validaQuantidade();
     campoEndereco = validaEndereco();
     campoBairro = validaBairro();
-    campoCidade = validaCidade();
+    campoCidade = validaCidade();    
     campoUf = validaUf();
     campoCep = validaCep();
     campoDataEntrega = validaDataEntrega();
@@ -77,7 +77,7 @@ function pegaCampos() {
 
 function validaCampos() {
     pegaCampos();
-    if (campoNome == false || campoCpf == false || campoDataNascimento == false || campoEmail == false) {
+    if (campoNome == false || campoCpf == false || campoDataNascimento == false || campoEmail == false || cpfValido == false) {
         return false;
     } else {
         return true;
@@ -137,10 +137,11 @@ function validaNome() {
 }
 
 function validaCpf() {
+    
     var cpfClass = $(".form-cpf");
     var cpfText = $(".form-cpf").val();
-
-    if (cpfText == "") {
+    cpfValido = VerificaCPFValido();
+    if (cpfText == "" || cpfValido == false) {
         cpfClass.removeClass(" valido");
         cpfClass.addClass(" invalido");
         return false;

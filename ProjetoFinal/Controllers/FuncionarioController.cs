@@ -60,7 +60,7 @@ namespace ProjetoFinal.Models
                 };
                 
                 userDAO.Adiciona(user);
-                RegistrarLog(funcionario, "Registrou");
+                RegistrarLog(funcionario, "REGISTROU");
 
                 return RedirectToAction("Index", "Funcionario");
             }
@@ -97,7 +97,7 @@ namespace ProjetoFinal.Models
                 p.Telefone = funcionario.Telefone;
                 p.TipoPessoaId = funcionario.TipoPessoaId;
                 dao.Atualiza(p);
-                RegistrarLog(p, "Editou");
+                RegistrarLog(p, "EDITOU");
 
                 return RedirectToAction("Index", "Funcionario");
             }
@@ -112,7 +112,7 @@ namespace ProjetoFinal.Models
             PessoasDAO pessoaDAO = new PessoasDAO();
             Pessoa funcionario = pessoaDAO.BuscaPorId(id);
             pessoaDAO.Remover(funcionario);
-            RegistrarLog(funcionario, "Deletou");
+            RegistrarLog(funcionario, "DELETOU");
             return Json(funcionario.Id);
         }
 

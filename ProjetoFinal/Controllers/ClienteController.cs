@@ -40,6 +40,7 @@ namespace ProjetoFinal.Controllers
                 PessoasDAO dao = new PessoasDAO();
                 cliente.TipoPessoaId = 1;
                 dao.Adiciona(cliente);
+                RegistrarLog(cliente, "REGISTROU");
 
                 return RedirectToAction("Index", "Cliente");
             }
@@ -70,6 +71,7 @@ namespace ProjetoFinal.Controllers
                 c.Email = cliente.Email;
                 c.Telefone = cliente.Telefone;                
                 dao.Atualiza(c);
+                RegistrarLog(c, "EDITOU");
 
                 return RedirectToAction("Index", "Cliente");
             }
@@ -83,6 +85,7 @@ namespace ProjetoFinal.Controllers
         {
             PessoasDAO dao = new PessoasDAO();
             Pessoa cliente = dao.BuscaPorId(id);
+            RegistrarLog(cliente, "DELETOU");
             dao.Remover(cliente);
 
             return Json(id);

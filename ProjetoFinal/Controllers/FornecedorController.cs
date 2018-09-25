@@ -32,7 +32,7 @@ namespace ProjetoFinal.Controllers
             {
                 FornecedoresDAO dao = new FornecedoresDAO();
                 dao.Adiciona(fornecedor);
-                RegistrarLog(fornecedor, "registrou ");
+                RegistrarLog(fornecedor, "REGISTROU");
 
                 return RedirectToAction("Index","Fornecedor");
             }
@@ -67,7 +67,7 @@ namespace ProjetoFinal.Controllers
                 p.Telefone = fornecedor.Telefone;
                 p.PrazoMedioEntrega = fornecedor.PrazoMedioEntrega;
                 dao.Atualiza(p);
-                RegistrarLog(p, "editou ");
+                RegistrarLog(p, "EDITOU");
                 return RedirectToAction("Index", "Fornecedor");
             }
             else
@@ -80,7 +80,7 @@ namespace ProjetoFinal.Controllers
         {
             FornecedoresDAO dao = new FornecedoresDAO();
             Fornecedor fornecedor = dao.BuscaPorId(id);
-            RegistrarLog(fornecedor, "deletou ");
+            RegistrarLog(fornecedor, "DELETOU");
             dao.Remover(fornecedor);
 
             return Json(id);

@@ -35,7 +35,7 @@ namespace ProjetoFinal.Controllers
             {
                 FamiliaProdutoDAO dao = new FamiliaProdutoDAO();
                 dao.Adiciona(familia);
-                RegistrarLog(familia, "registrou ");
+                RegistrarLog(familia, "REGISTROU ");
                 return RedirectToAction("Index", "Categoria");
             }
             else
@@ -62,7 +62,7 @@ namespace ProjetoFinal.Controllers
                 f.Nome = familia.Nome;                
                 f.Descricao = familia.Descricao;                
                 dao.Atualiza(f);
-                RegistrarLog(familia, "editou ");
+                RegistrarLog(familia, "EDITOU");
 
                 return RedirectToAction("Index", "Categoria");
             }
@@ -76,7 +76,7 @@ namespace ProjetoFinal.Controllers
         {
             FamiliaProdutoDAO dao = new FamiliaProdutoDAO();
             FamiliaProduto familia = dao.BuscaPorId(id);
-            RegistrarLog(familia, "deletou ");
+            RegistrarLog(familia, "DELETOU");
             dao.Remover(familia);
 
             return Json(id);

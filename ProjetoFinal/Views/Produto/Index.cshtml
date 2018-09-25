@@ -12,7 +12,13 @@
         </form>
     </li>
     <li class="float-right navbar-right">
-        <input class="form-control float-right" id="filtroProdutos" placeholder="Filtro por nome" />
+        <select id="tipo-filtro-produto" class="form-control">
+            <option value="nome" selected>Nome</option>
+            <option value="familia">Familia</option>
+        </select>
+    </li>
+    <li class="float-right navbar-right">
+        <input id="filtrar-produtos" class="form-control float-right" placeholder="Filtrar por " />
     </li>
 </ul>
 
@@ -31,9 +37,9 @@
     <tbody id="produtosLinhas">
         @foreach (var produto in ViewBag.Produtos)
         {
-        <tr id="@produto.Id">
+        <tr class="produto" id="@produto.Id">
             <th>@produto.Id</th>
-            <th>@produto.Nome</th>
+            <th class="prod-nome ">@produto.Nome</th>
             <th class="dinheiro">@produto.PrecoPorUnidade</th>
             <th>@produto.Quantidade</th>
             <th>@produto.Complemento</th>
@@ -41,7 +47,7 @@
             {
                 if (tipos.Id == produto.FamiliaProdutoId)
                 {
-                    <th>@tipos.Nome</th>
+                    <th class="prod-familia">@tipos.Nome</th>
                 }
             }
             

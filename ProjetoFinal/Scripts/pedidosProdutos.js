@@ -26,6 +26,7 @@ $("#adicionar-produto-pedidos").click(function (event) {
                 type: "post",
                 dataType: "Json",
                 success: function (resposta) {
+                    valor = valor.replace(/[^\d]/g, '');
                     $("#nada-no-pedido").remove();
                     if ($("#valor-total-pedido").length) {
                         console.log(true);
@@ -102,18 +103,20 @@ $("#tabela-pedidos").dblclick(function (event) {
 
 $("#btn-registra-pedido").click(function () {
     var id = $("#id-fornecedor").text();
-    console.log(produtos);
-    $.ajax({
-        url: "/Fornecedor/RealizaPedido",
-        data: { id: id, produtos: produtos, valorTotal: total },
-        type: "get",
-        dataType: "Json"        
-    });
+    var json = JSON.stringify(produtos);
+    console.log(json);
+    //$.ajax({
+    //    url: "/Fornecedor/RealizaPedido",
+    //    data: { id: id, produtos: produtos, valorTotal: total },
+    //    type: "get",
+    //    dataType: "Json"        
+    //});
 });
 
 $("#produtos-lista-pedidos").change(function () {
     var id = document.querySelector("#produtos-lista-pedidos").value;
     var url = "/Home/BuscaProduto";
+    
     $.ajax({
 
         url: url,
