@@ -105,12 +105,17 @@ $("#btn-registra-pedido").click(function () {
     var id = $("#id-fornecedor").text();
     var json = JSON.stringify(produtos);
     console.log(json);
-    //$.ajax({
-    //    url: "/Fornecedor/RealizaPedido",
-    //    data: { id: id, produtos: produtos, valorTotal: total },
-    //    type: "get",
-    //    dataType: "Json"        
-    //});
+    if (total == null || produtos.length == 0) {
+        alert("Nenhum produto adicionado ao pedido!");
+    }
+    else {    
+        $.ajax({
+            url: "/Fornecedor/RealizaPedido",
+            data: { id: id, model: produtos, valorTotal: total },
+            type: "post",
+            dataType: "Json"        
+        });
+    }
 });
 
 $("#produtos-lista-pedidos").change(function () {

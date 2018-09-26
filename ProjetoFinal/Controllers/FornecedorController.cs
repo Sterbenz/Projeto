@@ -7,6 +7,7 @@ using ProjetoFinal.Models;
 using ProjetoFinal.DAO;
 using System.ComponentModel.DataAnnotations;
 using ProjetoFinal.Filters;
+using System.Web.Script.Serialization;
 
 namespace ProjetoFinal.Controllers
 {
@@ -96,9 +97,10 @@ namespace ProjetoFinal.Controllers
             return View();
         }
 
-        //id = FornecedorId
-        public ActionResult RealizaPedido(int id,List<Produto> produtos, double valorTotal)
+
+        public ActionResult RealizaPedido(int id,Produto[] model, double valorTotal)
         {
+            
             FornecedoresDAO fDAO = new FornecedoresDAO();
             Fornecedor fornecedor = fDAO.BuscaPorId(id);
             ProdutosDAO pDAO = new ProdutosDAO();
@@ -107,15 +109,15 @@ namespace ProjetoFinal.Controllers
             {
                 ValorTotal = valorTotal
             };
-
-            foreach (Produto produto in produtos)
+            
+            foreach (Produto produto in model)
             {
                 Produto produtoAdd = pDAO.BuscaPorId(produto.Id);
                 produtoAdd.PrecoPorUnidade = produto.PrecoPorUnidade;
                 produtoAdd.Quantidade = produto.Quantidade;
                 pedido.IncluiProduto(produtoAdd);
             }
-
+            
             dao.Adiciona(pedido);
 
             AcompanhamentoFornecedoresDAO acDAO = new AcompanhamentoFornecedoresDAO();
@@ -134,7 +136,7 @@ namespace ProjetoFinal.Controllers
             
             RegistrarLog(fornecedor, "registrou pedido n");
 
-            return View("Index");
+            return RedirectToAction("Index","Fornecedor");
         }
 
         public void RegistrarLog(Fornecedor fornecedor, string modificacao)

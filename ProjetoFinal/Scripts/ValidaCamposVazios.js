@@ -24,7 +24,7 @@ $(".form-validacao-produto").submit(function () {
 
 $(".form-validacao-fornecedores").submit(function () {
 
-    if (!validaCamposProduto()) {
+    if (!validaCamposFornecedor()) {
         console.log("fase 1");
         return false;
     }
@@ -55,7 +55,6 @@ $(".form-validacao-familia").submit(function () {
 
 function pegaCampos() {   
     campoNome = validaNome();
-    campoCpf = validaCpf(cpfValido);
     campoDataNascimento = validaDataNascimento();
     campoEmail = validaEmail();
     campoValor = validaValor();
@@ -69,7 +68,9 @@ function pegaCampos() {
     campoUsuarioMudar = validaUsuarioMudar();
     campoSenhaMudar = validaSenhaMudar();
     campoConfirmaSenhaMudar = validaConfirmaSenhaMudar();
-
+}
+function pegaCpf() {
+    campoCpf = validaCpf();
 }
 
 /////////////////////////////////////////////////////////////////////////////////////////////////
@@ -77,6 +78,7 @@ function pegaCampos() {
 
 function validaCampos() {
     pegaCampos();
+    pegaCpf();
     if (campoNome == false || campoCpf == false || campoDataNascimento == false || campoEmail == false || cpfValido == false) {
         return false;
     } else {

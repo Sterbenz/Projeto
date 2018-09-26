@@ -20,7 +20,10 @@ namespace ProjetoFinal.Models
 
         public void IncluiProduto(Produto produto)
         {
-            this.Produtos.Add(new PedidoProdutos() { Produto = produto });
+            this.Produtos.Add
+                (
+                    new PedidoProdutos() { Produto = produto }
+                );
         }
     }
 }

@@ -30,8 +30,9 @@ function configurarUsuario(id) {
             console.log(true);
             $(".operacao-concluida").show();
             setTimeout(function () {
-
+                $(".operacao-concluida").hide();
                 $("#modalConfigUsuario").modal('hide');
+                
             }, 1500);
         },
         fail: function () {
