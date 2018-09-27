@@ -168,16 +168,16 @@ License: You must have a valid license purchased only from themeforest(the above
                         <!-- END SIDEBAR TOGGLER BUTTON -->
                     </li>
 
-                    <li>
+                    <li id="selecao-home">
                         <a href="@Url.Action("Index","Home")"><i class="icon-home"></i><span class="title">Inicio</span></a>
                     </li>
-                    <li>
+                    <li id="selecao-familia">
                         <a href="@Url.Action("Index","Categoria")"><i class="icon-layers"></i><span class="title">Categorias</span></a>
                     </li>
-                    <li>
+                    <li id="selecao-produto">
                         <a href="@Url.Action("Index","Produto")"><i class="icon-book-open"></i><span class="title">Produtos</span></a>
                     </li>
-                    <li>
+                    <li id="selecao-cliente">
                         <a href="@Url.Action("Index","Cliente")"><i class="icon-star"></i><span class="title">Clientes</span></a>
                     </li>
                 </ul>
@@ -303,6 +303,7 @@ License: You must have a valid license purchased only from themeforest(the above
             <script src="~/Scripts/mudarUsuario.js"></script>
             <script src="~/Scripts/ValidaCamposVazios.js"></script>
             <script src="~/Scripts/filtros.js"></script>
+            <script src="~/Scripts/paginaSelecionada.js"></script>
 
             <!-- END PAGE LEVEL SCRIPTS -->
             <script>

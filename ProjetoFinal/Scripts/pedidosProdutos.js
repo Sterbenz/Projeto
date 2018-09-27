@@ -113,7 +113,11 @@ $("#btn-registra-pedido").click(function () {
             url: "/Fornecedor/RealizaPedido",
             data: { id: id, model: produtos, valorTotal: total },
             type: "post",
-            dataType: "Json"        
+            dataType: "Json",
+            success: function (resposta) {
+                console.log("TESTEEEEEEEE");
+                location.href = "/Fornecedor";
+            }
         });
     }
 });

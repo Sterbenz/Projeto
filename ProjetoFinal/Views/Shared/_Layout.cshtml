@@ -168,25 +168,44 @@ License: You must have a valid license purchased only from themeforest(the above
                         <!-- END SIDEBAR TOGGLER BUTTON -->
                     </li>
 
-                    <li>
+                    <li id="selecao-home">
                         <a href="@Url.Action("Index","Home")"><i class="icon-home"></i><span class="title">Inicio</span></a>
                     </li>
-                    <li>
-                        <a href="@Url.Action("Index","Fornecedor")"><i><img src="~/Content/assets/admin/layout/img/delivery-truck2.svg" /> </i><span class="title">Fornecedores</span></a>
+                    <li id="selecao-fornecedor">
+                        <a href="javascript:;">
+                            <i>
+                                <img width="20px" style="float:left" src="~/Content/assets/admin/layout/img/delivery-truck2.svg" />
+                            </i>
+                            <span class="title">Fornecedores</span>
+                            <span class="selected"></span>
+                            <span class="arrow open"></span>
+                        </a>
+                        <ul class="sub-menu">
+                            <li id="selecao-fornecedor-lista">
+                                <a href="@Url.Action("Index","Fornecedor")">                                    
+                                    Lista de fornecedores
+                                </a>
+                            </li>
+                            <li id="selecao-fornecedor-pedidos">
+                                <a href="#">
+                                    Pedidos
+                                </a>
+                            </li>
+                        </ul>
                     </li>
-                    <li>
+                    <li id="selecao-familia">
                         <a href="@Url.Action("Index","Categoria")"><i class="icon-layers"></i><span class="title">Categorias</span></a>
                     </li>
-                    <li>
+                    <li id="selecao-produto">
                         <a href="@Url.Action("Index","Produto")"><i class="icon-book-open"></i><span class="title">Produtos</span></a>
                     </li>
-                    <li>
+                    <li id="selecao-funcionario">
                         <a href="@Url.Action("Index","Funcionario")"><i class="icon-users"></i><span class="title">Funcionarios</span></a>
                     </li>
-                    <li>
+                    <li id="selecao-cliente">
                         <a href="@Url.Action("Index","Cliente")"><i class="icon-star"></i><span class="title">Clientes</span></a>
                     </li>
-                    <li>
+                    <li id="selecao-logs">
                         <a href="@Url.Action("Logs","Home")"><i class="icon-support"></i><span class="title">Registros</span></a>
                     </li>
                     <!-- END ANGULARJS LINK -->
@@ -314,7 +333,7 @@ License: You must have a valid license purchased only from themeforest(the above
             <script src="~/Scripts/ValidaCamposVazios.js"></script>
             <script src="~/Scripts/FiltroLogs.js"></script>
             <script src="~/Scripts/filtros.js"></script>
-
+            <script src="~/Scripts/paginaSelecionada.js"></script>
             <!-- END PAGE LEVEL SCRIPTS -->
             <script>
                 jQuery(document).ready(function () {

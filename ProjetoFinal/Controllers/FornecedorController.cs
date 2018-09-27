@@ -12,9 +12,10 @@ using System.Web.Script.Serialization;
 namespace ProjetoFinal.Controllers
 {
     [LoginFilter]
+    
     public class FornecedorController : Controller
     {
-        // GET: Fornecedor
+
         public ActionResult Index()
         {
             FornecedoresDAO dao = new FornecedoresDAO();
@@ -100,7 +101,7 @@ namespace ProjetoFinal.Controllers
 
         public ActionResult RealizaPedido(int id,Produto[] model, double valorTotal)
         {
-            
+
             FornecedoresDAO fDAO = new FornecedoresDAO();
             Fornecedor fornecedor = fDAO.BuscaPorId(id);
             ProdutosDAO pDAO = new ProdutosDAO();
@@ -109,7 +110,7 @@ namespace ProjetoFinal.Controllers
             {
                 ValorTotal = valorTotal
             };
-            
+
             foreach (Produto produto in model)
             {
                 Produto produtoAdd = pDAO.BuscaPorId(produto.Id);
@@ -117,7 +118,7 @@ namespace ProjetoFinal.Controllers
                 produtoAdd.Quantidade = produto.Quantidade;
                 pedido.IncluiProduto(produtoAdd);
             }
-            
+
             dao.Adiciona(pedido);
 
             AcompanhamentoFornecedoresDAO acDAO = new AcompanhamentoFornecedoresDAO();
@@ -131,12 +132,12 @@ namespace ProjetoFinal.Controllers
                 ValorTotal = valorTotal,
             };
 
-            
+
             acDAO.Adiciona(acompanhamento);
-            
+
             RegistrarLog(fornecedor, "registrou pedido n");
 
-            return RedirectToAction("Index","Fornecedor");
+            return Json("success");
         }
 
         public void RegistrarLog(Fornecedor fornecedor, string modificacao)

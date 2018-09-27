@@ -4283,6 +4283,7 @@
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery.mask.js" />
     <Content Include="Scripts\mudarUsuario.js" />
+    <Content Include="Scripts\paginaSelecionada.js" />
     <Content Include="Scripts\pedidosProdutos.js" />
     <Content Include="Scripts\teste.js" />
     <Content Include="Scripts\ValidaCamposVazios.js" />

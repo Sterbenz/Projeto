@@ -52,17 +52,17 @@ namespace ProjetoFinal.Controllers
         public void Testes()
         {
             //PedidosDAO da = new PedidosDAO();
-            //////var p1 = new Produto() { Nome = "Suco de Laranja",  PrecoPorUnidade = 4.50 , Quantidade = 10, FamiliaProdutoId = 1};
-            //////var p2 = new Produto() { Nome = "Café", PrecoPorUnidade = 10.50, Quantidade = 10, FamiliaProdutoId = 1 };
-            //////var p3 = new Produto() { Nome = "Macarrão", PrecoPorUnidade = 13.50, Quantidade = 10, FamiliaProdutoId = 1 };
+            ////////var p1 = new Produto() { Nome = "Suco de Laranja",  PrecoPorUnidade = 4.50 , Quantidade = 10, FamiliaProdutoId = 1};
+            ////////var p2 = new Produto() { Nome = "Café", PrecoPorUnidade = 10.50, Quantidade = 10, FamiliaProdutoId = 1 };
+            ////////var p3 = new Produto() { Nome = "Macarrão", PrecoPorUnidade = 13.50, Quantidade = 10, FamiliaProdutoId = 1 };
             //ProdutosDAO prods = new ProdutosDAO();
             //Produto p1 = prods.BuscaPorId(12002);
             //var pedido = new Pedido();
             //pedido.ValorTotal = 200;
 
             //pedido.IncluiProduto(p1);
-            ////pedido.IncluiProduto(p2);
-            ////pedido.IncluiProduto(p3);
+            //////pedido.IncluiProduto(p2);
+            //////pedido.IncluiProduto(p3);
 
             //da.Adiciona(pedido);
         }

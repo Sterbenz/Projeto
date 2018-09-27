@@ -22,7 +22,10 @@ namespace ProjetoFinal.Models
         {
             this.Produtos.Add
                 (
-                    new PedidoProdutos() { Produto = produto }
+                    new PedidoProdutos() {
+                        ProdutoId = produto.Id,
+                        
+                    }
                 );
         }
     }
