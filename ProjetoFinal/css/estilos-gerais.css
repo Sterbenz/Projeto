@@ -25,3 +25,6 @@
     display: none;
     color: red;
 }
+th, td, table{
+    text-align: center;
+}

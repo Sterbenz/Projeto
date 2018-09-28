@@ -4278,6 +4278,7 @@
     <Content Include="Scripts\ConfirmarEntrega.js" />
     <Content Include="Scripts\FiltroLogs.js" />
     <Content Include="Scripts\filtros.js" />
+    <Content Include="Scripts\jquery.maskMoney.js" />
     <Content Include="Scripts\Mascaras.js" />
     <Content Include="Scripts\Deletar.js" />
     <Content Include="Scripts\FecharIframe.js" />
@@ -4309,6 +4310,7 @@
     <Compile Include="DAO\LogFamiliasDAO.cs" />
     <Compile Include="DAO\LogFornecedoresDAO.cs" />
     <Compile Include="DAO\PedidosDAO.cs" />
+    <Compile Include="DAO\ProdutosPedidosDAO.cs" />
     <Compile Include="DAO\UsuariosDAO.cs" />
     <Compile Include="DAO\LogPessoasDAO.cs" />
     <Compile Include="DAO\LogProdutosDAO.cs" />
@@ -4368,6 +4370,10 @@
     <Compile Include="Migrations\20180928151031_quantidadePedidoProduto.cs" />
     <Compile Include="Migrations\20180928151031_quantidadePedidoProduto.designer.cs">
       <DependentUpon>20180928151031_quantidadePedidoProduto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\20180928181501_daoPP.cs" />
+    <Compile Include="Migrations\20180928181501_daoPP.designer.cs">
+      <DependentUpon>20180928181501_daoPP.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\LojaContextModelSnapshot.cs" />
     <Compile Include="Models\AcompanhamentoFornecedores.cs" />

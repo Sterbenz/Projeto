@@ -6,9 +6,15 @@
         type: "post",
         dataType: "Json",
         success: function (resposta) {
-            $("#estado-pedido").Text("Entregue");
+            $("#estado-pedido").text("Entregue");
             $("#botao-confirma-entrega").attr("disabled", true);
             console.log(true);
         }
     });
+}
+
+function texte() {
+    $("#estado-pedido").text("Entregue");
+    $("#botao-confirma-entrega").attr("disabled", true);
+    console.log(true);
 }

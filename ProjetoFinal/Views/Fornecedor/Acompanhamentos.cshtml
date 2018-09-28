@@ -43,7 +43,7 @@
             <th class="data">@acompanhamento.DataEmissao</th>
             <th class="data">@acompanhamento.DataEntrega</th>
             <th>@acompanhamento.PedidoId</th>
-            <th class="dinheiro">@acompanhamento.ValorTotal</th>
+            <th>R$ <span class="dinheiro">@acompanhamento.ValorTotal</span></th>
             @if (acompanhamento.Entregue == false)
             {
                 <th id="estado-pedido">Em espera</th>

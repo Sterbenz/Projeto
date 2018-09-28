@@ -40,7 +40,7 @@
         <tr class="produto" id="@produto.Id">
             <th>@produto.Id</th>
             <th class="prod-nome ">@produto.Nome</th>
-            <th class="dinheiro">@produto.PrecoPorUnidade</th>
+            <th>R$ <span  class="dinheiro">@produto.PrecoPorUnidade</span></th>
             <th>@produto.Quantidade</th>
             <th>@produto.Complemento</th>
             @foreach (var tipos in ViewBag.Tipos)

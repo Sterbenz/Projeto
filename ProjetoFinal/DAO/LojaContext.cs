@@ -35,6 +35,8 @@ namespace ProjetoFinal.DAO
 
         public DbSet<AcompanhamentoFornecedores> Acompanhamentos { get; set; }
 
+        public DbSet<PedidoProdutos> PedidosProdutos { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder

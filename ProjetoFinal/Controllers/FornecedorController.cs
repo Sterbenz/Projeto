@@ -154,18 +154,17 @@ namespace ProjetoFinal.Controllers
         {
             AcompanhamentoFornecedoresDAO acompDAO = new AcompanhamentoFornecedoresDAO();
             AcompanhamentoFornecedores acompanhamento = acompDAO.BuscaPorId(id);
-            PedidosDAO pedidosDAO = new PedidosDAO();
-            Pedido pedido = pedidosDAO.BuscaPorId(acompanhamento.PedidoId);
-            ViewBag.ProdutosDoPedido = pedidosDAO.ListaProdutosDoPedido(acompanhamento.PedidoId);
+            ProdutosPedidosDAO ppDAO = new ProdutosPedidosDAO();
+            IList<PedidoProdutos> PdP = ppDAO.ListaProdutosDoPedido(acompanhamento.PedidoId);
             ProdutosDAO produtoDAO = new ProdutosDAO();
             
-            foreach(PedidoProdutos produtoInPedido in pedido.Produtos)
+            foreach(PedidoProdutos produtoInPedido in PdP)
             {
                 Produto produto = produtoDAO.BuscaPorId(produtoInPedido.ProdutoId);
-                produto.Quantidade = produtoInPedido.Quantidade;
+                produto.Quantidade += produtoInPedido.Quantidade;
                 produtoDAO.Atualiza(produto);
             }
-            throw new DivideByZeroException();
+            
             acompanhamento.Entregue = true;
             acompDAO.Atualiza(acompanhamento);
             return Json(id);
