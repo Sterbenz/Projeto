@@ -1,11 +1,13 @@
 ﻿var produtos = [];
 var total = 0;
-var produtosAdicionados = ["vazio"];
+var produtosAdicionados = [];
+
 $("#adicionar-produto-pedidos").click(function (event) {
     var teste = $("#produtos-lista-pedidos :selected").text();
-    var Ntem = verificaItem(teste);
+    var tem = verificaItem(teste);
+    console.log(tem);
 
-    if (Ntem == false) {
+    if (tem == true) {
         alert("Esse produto já foi adicionado");
     }
     else {
@@ -13,7 +15,6 @@ $("#adicionar-produto-pedidos").click(function (event) {
             alert("Essa opção não é um produto selecionavel");
         }
         else {
-            produtosAdicionados.push(teste);
             var valor = document.querySelector("#valor-produto-pedido").value;
             valor = valor.replace(/[^\d]/g, '');
             var quantidade = document.querySelector("#quantidade-produto-pedido").value;
@@ -29,7 +30,6 @@ $("#adicionar-produto-pedidos").click(function (event) {
                     valor = valor.replace(/[^\d]/g, '');
                     $("#nada-no-pedido").remove();
                     if ($("#valor-total-pedido").length) {
-                        console.log(true);
                         $("#valor-total-pedido").remove();
                     }
                     $("#tabela-pedidos-fornecedores").append("<tr id =" + id + "><td>" + resposta.Nome +
@@ -52,24 +52,28 @@ $("#adicionar-produto-pedidos").click(function (event) {
 function adicionaListaPedidos(resposta, valor, quantidade) {   
 
     resposta.Quantidade = quantidade;
-    resposta.PrecoPorUnidade = valor;   
+    resposta.PrecoPorUnidade = valor;
+    produtosAdicionados.push(resposta.Id);
     produtos.push(resposta);
     
 }
 
 function verificaItem(produtoParaAdicionar) {
-    var NTem = false;
+    var Tem = false;
 
-    for (var i = 0; i < produtosAdicionados.length; i++) {
-        if (produtoParaAdicionar == produtosAdicionados[i]) {
-            NTem = false;
-            break;
-        } else {
-            NTem = true;
-        }
-        console.log(NTem);
+    if (produtosAdicionados.length == 0) {
+        var Tem = false;
     }
-    return NTem;
+    else {
+        for (var i = 0; i < produtosAdicionados.length; i++) {
+            var id = document.querySelector("#produtos-lista-pedidos").value;
+
+            if (id == produtosAdicionados[i]) {
+                Tem = true;
+            }
+        }
+    }
+    return Tem;
 }
 
 
@@ -81,11 +85,7 @@ $("#tabela-pedidos").dblclick(function (event) {
         selec.remove();
         for (var i = 0; i < produtos.length; i++) {
             if (produtos[i].Id == selec.id) {
-                console.log(produtos.PrecoPorUnidade);
-                console.log(total);
-                console.log(total - (produtos[i].PrecoPorUnidade * produtos[i].Quantidade));
                 total = total - (produtos[i].PrecoPorUnidade * produtos[i].Quantidade);
-                console.log("Total " + total);
                 produtos.splice(i, 1);
                 produtosAdicionados.splice(i, 1);
                 if ($("#valor-total-pedido").length) {
@@ -103,8 +103,6 @@ $("#tabela-pedidos").dblclick(function (event) {
 
 $("#btn-registra-pedido").click(function () {
     var id = $("#id-fornecedor").text();
-    var json = JSON.stringify(produtos);
-    console.log(json);
     if (total == null || produtos.length == 0) {
         alert("Nenhum produto adicionado ao pedido!");
     }
@@ -115,7 +113,6 @@ $("#btn-registra-pedido").click(function () {
             type: "post",
             dataType: "Json",
             success: function (resposta) {
-                console.log("TESTEEEEEEEE");
                 location.href = "/Fornecedor";
             }
         });

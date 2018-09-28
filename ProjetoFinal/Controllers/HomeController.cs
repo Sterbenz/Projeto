@@ -15,7 +15,6 @@ namespace ProjetoFinal.Controllers
         // GET: Home
         public ActionResult Index()
         {
-            Testes();
             return View();
         }
 

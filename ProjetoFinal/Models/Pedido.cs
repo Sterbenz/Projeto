@@ -24,7 +24,7 @@ namespace ProjetoFinal.Models
                 (
                     new PedidoProdutos() {
                         ProdutoId = produto.Id,
-                        
+                        Quantidade = produto.Quantidade
                     }
                 );
         }

@@ -118,7 +118,7 @@ namespace ProjetoFinal.Controllers
                 produtoAdd.Quantidade = produto.Quantidade;
                 pedido.IncluiProduto(produtoAdd);
             }
-
+            
             dao.Adiciona(pedido);
 
             AcompanhamentoFornecedoresDAO acDAO = new AcompanhamentoFornecedoresDAO();
@@ -140,6 +140,37 @@ namespace ProjetoFinal.Controllers
             return Json("success");
         }
 
+        public ActionResult Acompanhamentos()
+        {
+            AcompanhamentoFornecedoresDAO dao = new AcompanhamentoFornecedoresDAO();
+            FornecedoresDAO fornDAO = new FornecedoresDAO();
+            ViewBag.Acompanhamentos = dao.Lista();
+            ViewBag.Fornecedores = fornDAO.Lista();
+
+            return View();
+        }
+
+        public ActionResult ConfirmarEntrega(int id)
+        {
+            AcompanhamentoFornecedoresDAO acompDAO = new AcompanhamentoFornecedoresDAO();
+            AcompanhamentoFornecedores acompanhamento = acompDAO.BuscaPorId(id);
+            PedidosDAO pedidosDAO = new PedidosDAO();
+            Pedido pedido = pedidosDAO.BuscaPorId(acompanhamento.PedidoId);
+            ViewBag.ProdutosDoPedido = pedidosDAO.ListaProdutosDoPedido(acompanhamento.PedidoId);
+            ProdutosDAO produtoDAO = new ProdutosDAO();
+            
+            foreach(PedidoProdutos produtoInPedido in pedido.Produtos)
+            {
+                Produto produto = produtoDAO.BuscaPorId(produtoInPedido.ProdutoId);
+                produto.Quantidade = produtoInPedido.Quantidade;
+                produtoDAO.Atualiza(produto);
+            }
+            throw new DivideByZeroException();
+            acompanhamento.Entregue = true;
+            acompDAO.Atualiza(acompanhamento);
+            return Json(id);
+        }
+
         public void RegistrarLog(Fornecedor fornecedor, string modificacao)
         {
             Pessoa user = (Pessoa)Session["UsuarioLogado"];
@@ -151,7 +182,7 @@ namespace ProjetoFinal.Controllers
                 FornecedorId = fornecedor.Id,
                 FornecedorNome = fornecedor.DenominacaoSocial,
                 DataModificacao = DateTime.Now,
-                Descricao = "Funcionario " + user.Nome +" "+ modificacao + "a fornecedora " + fornecedor.DenominacaoSocial
+                Descricao = "Funcionario " + user.Nome + " " + modificacao + "a fornecedora " + fornecedor.DenominacaoSocial
             };
             dao.Adiciona(log);
         }

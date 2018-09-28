@@ -14,10 +14,10 @@ $(document).ready(function () {
     if (/Fornecedor/.test(url)) {
         removeSelecoesMenus();
         sel_fornecedor.addClass("active");
-        if (/^null|$/.test(url)) {
+        if (!/Acompanhamentos/.test(url)) {
             sel_fornecedor_index.addClass("active");
         }
-        else if (/Pedidos/.test(url)) {
+        else if (/Acompanhamentos/.test(url)) {
             sel_fornecedor_pedidos.addClass("active");
         }
     }
