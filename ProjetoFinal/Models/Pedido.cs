@@ -13,6 +13,8 @@ namespace ProjetoFinal.Models
         
         public Double ValorTotal { get; set; }
 
+        public string Tipo { get; set; }
+
         public Pedido()
         {
             this.Produtos = new List<PedidoProdutos>();

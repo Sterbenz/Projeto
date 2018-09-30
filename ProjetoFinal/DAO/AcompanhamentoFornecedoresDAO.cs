@@ -25,6 +25,16 @@ namespace ProjetoFinal.DAO
             }
         }
 
+        public IList<AcompanhamentoFornecedores> ListaPendentes()
+        {
+            using (var contexto = new LojaContext())
+            {
+                return contexto.Acompanhamentos
+                    .Where(af => af.Entregue == false)
+                    .ToList();
+            }
+        }
+
         public AcompanhamentoFornecedores BuscaPorId(int id)
         {
             using (var contexto = new LojaContext())

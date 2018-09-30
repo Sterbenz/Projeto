@@ -15,6 +15,10 @@ namespace ProjetoFinal.Controllers
         // GET: Home
         public ActionResult Index()
         {
+            AcompanhamentoFornecedoresDAO dao = new AcompanhamentoFornecedoresDAO();
+            FornecedoresDAO fornDAO = new FornecedoresDAO();
+            ViewBag.Acompanhamentos = dao.ListaPendentes();
+            ViewBag.Fornecedores = fornDAO.Lista();
             return View();
         }
 
@@ -23,6 +27,13 @@ namespace ProjetoFinal.Controllers
             ProdutosDAO dao = new ProdutosDAO();
             Produto produto = dao.BuscaPorId(id);
             return Json(produto);
+        }
+
+        public ActionResult BuscaCliente(int id)
+        {
+            PessoasDAO dao = new PessoasDAO();
+            Pessoa cliente = dao.BuscaPorId(id);
+            return Json(cliente);
         }
 
         [AutorizacaoUsuarioFilter]

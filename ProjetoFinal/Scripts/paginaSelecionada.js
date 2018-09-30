@@ -7,6 +7,8 @@ var sel_fornecedor = $("#selecao-fornecedor");
 var sel_funcionario = $("#selecao-funcionario");
 var sel_fornecedor_pedidos = $("#selecao-fornecedor-pedidos");
 var sel_fornecedor_index = $("#selecao-fornecedor-lista");
+var sel_compra = $("#selecao-compra");
+
 
 $(document).ready(function () {
     var url = window.location.href;
@@ -31,7 +33,6 @@ $(document).ready(function () {
         sel_familia.addClass("active");
     }
 
-
     else if (/Funcionario/.test(url)) {
         removeSelecoesMenus();
         sel_funcionario.addClass("active");
@@ -40,6 +41,11 @@ $(document).ready(function () {
     else if (/Produto/.test(url)) {
         removeSelecoesMenus();
         sel_produto.addClass("active");
+    }
+
+    else if (/Compra/.test(url)) {
+        removeSelecoesMenus();
+        sel_compra.addClass("active");
     }
 
     else if (/Logs/.test(url)) {
@@ -64,6 +70,7 @@ function removeSelecoesMenus() {
     sel_cliente.removeClass("active");
     sel_familia.removeClass("active");
     sel_fornecedor.removeClass("active");
+    sel_compra.removeClass("active");
     sel_funcionario.removeClass("active");
 }
 

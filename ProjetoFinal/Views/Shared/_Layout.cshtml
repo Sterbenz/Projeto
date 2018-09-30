@@ -182,7 +182,7 @@ License: You must have a valid license purchased only from themeforest(the above
                         </a>
                         <ul class="sub-menu">
                             <li id="selecao-fornecedor-lista">
-                                <a href="@Url.Action("Index","Fornecedor")">                                    
+                                <a href="@Url.Action("Index","Fornecedor")">
                                     Lista de fornecedores
                                 </a>
                             </li>
@@ -204,6 +204,9 @@ License: You must have a valid license purchased only from themeforest(the above
                     </li>
                     <li id="selecao-cliente">
                         <a href="@Url.Action("Index","Cliente")"><i class="icon-star"></i><span class="title">Clientes</span></a>
+                    </li>
+                    <li id="selecao-compra">
+                        <a href="@Url.Action("Index","Compra")"><i class="icon-book-open"></i><span class="title">Realizar venda</span></a>
                     </li>
                     <li id="selecao-logs">
                         <a href="@Url.Action("Logs","Home")"><i class="icon-support"></i><span class="title">Registros</span></a>
@@ -335,7 +338,8 @@ License: You must have a valid license purchased only from themeforest(the above
             <script src="~/Scripts/filtros.js"></script>
             <script src="~/Scripts/paginaSelecionada.js"></script>
             <script src="~/Scripts/ConfirmarEntrega.js"></script>
-            
+            <script src="~/Scripts/vendas.js"></script>
+
             <!-- END PAGE LEVEL SCRIPTS -->
             <script>
                 jQuery(document).ready(function () {

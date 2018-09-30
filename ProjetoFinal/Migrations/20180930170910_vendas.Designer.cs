@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ProjetoFinal.DAO;
 
 namespace ProjetoFinal.Migrations
 {
     [DbContext(typeof(LojaContext))]
-    partial class LojaContextModelSnapshot : ModelSnapshot
+    [Migration("20180930170910_vendas")]
+    partial class vendas
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -207,38 +209,11 @@ namespace ProjetoFinal.Migrations
                     b.ToTable("LogProdutos");
                 });
 
-            modelBuilder.Entity("ProjetoFinal.Models.LogVenda", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("ClienteId");
-
-                    b.Property<string>("ClienteNome");
-
-                    b.Property<DateTime>("DataDaVenda");
-
-                    b.Property<string>("Descricao");
-
-                    b.Property<int>("PessoaId");
-
-                    b.Property<string>("PessoaNome");
-
-                    b.Property<int>("VendaId");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("LogVendas");
-                });
-
             modelBuilder.Entity("ProjetoFinal.Models.Pedido", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Tipo");
 
                     b.Property<double>("ValorTotal");
 

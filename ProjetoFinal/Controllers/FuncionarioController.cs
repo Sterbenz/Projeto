@@ -28,6 +28,7 @@ namespace ProjetoFinal.Models
             return View();
         }
 
+        [AutorizacaoUsuarioFilter]
         public ActionResult Form()
         {
             IList<TipoPessoa> tipoPessoas = new List<TipoPessoa>();
@@ -44,6 +45,7 @@ namespace ProjetoFinal.Models
         }
 
         [HttpPost]
+        [AutorizacaoUsuarioFilter]
         public ActionResult Adiciona(Pessoa funcionario)
         {
             if (ModelState.IsValid)
@@ -73,6 +75,7 @@ namespace ProjetoFinal.Models
             }
         }
 
+        [AutorizacaoUsuarioFilter]
         public ActionResult Editar(int id)
         {
             PessoasDAO dao = new PessoasDAO();
@@ -84,6 +87,7 @@ namespace ProjetoFinal.Models
             return View();
         }
 
+        [AutorizacaoUsuarioFilter]
         public ActionResult Edita(int id, Pessoa funcionario)
         {
             if (ModelState.IsValid)
@@ -107,6 +111,7 @@ namespace ProjetoFinal.Models
             }
         }
 
+        [AutorizacaoUsuarioFilter]
         public ActionResult Remover(int id)
         {
             PessoasDAO pessoaDAO = new PessoasDAO();
@@ -115,6 +120,7 @@ namespace ProjetoFinal.Models
             RegistrarLog(funcionario, "DELETOU");
             return Json(funcionario.Id);
         }
+
 
         public void RegistrarLog(Pessoa funcionario, string modificacao)
         {

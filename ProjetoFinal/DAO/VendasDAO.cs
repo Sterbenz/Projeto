@@ -1,50 +1,52 @@
-﻿using System.Collections.Generic;
+﻿using ProjetoFinal.Models;
+using System;
+using System.Collections.Generic;
 using System.Linq;
-using ProjetoFinal.Models;
+using System.Web;
 
 namespace ProjetoFinal.DAO
 {
-    public class PedidosDAO
+    public class VendasDAO
     {
-        public void Adiciona(Pedido pedido)
+        public void Adiciona(Venda vendas)
         {
             using (var context = new LojaContext())
             {
-                context.Pedidos.Add(pedido);
+                context.Vendas.Add(vendas);
                 context.SaveChanges();
             }
         }
 
-        public IList<Pedido> Lista()
+        public IList<Venda> Lista()
         {
             using (var contexto = new LojaContext())
             {
-                return contexto.Pedidos.ToList();
+                return contexto.Vendas.ToList();
             }
         }
 
-        public Pedido BuscaPorId(int id)
+        public Venda BuscaPorId(int id)
         {
             using (var contexto = new LojaContext())
             {
-                return contexto.Pedidos.Find(id);
+                return contexto.Vendas.Find(id);
             }
         }
 
-        public void Atualiza(Pedido pedido)
+        public void Atualiza(Venda vendas)
         {
             using (var contexto = new LojaContext())
             {
-                contexto.Pedidos.Update(pedido);
+                contexto.Vendas.Update(vendas);
                 contexto.SaveChanges();
             }
         }
 
-        public void Remover(Pedido pedido)
+        public void Remover(Venda vendas)
         {
             using (var contexto = new LojaContext())
             {
-                contexto.Pedidos.Remove(pedido);
+                contexto.Vendas.Remove(vendas);
                 contexto.SaveChanges();
             }
 

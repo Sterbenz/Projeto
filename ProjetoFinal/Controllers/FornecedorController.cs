@@ -12,7 +12,7 @@ using System.Web.Script.Serialization;
 namespace ProjetoFinal.Controllers
 {
     [LoginFilter]
-    
+    [AutorizacaoUsuarioFilter]
     public class FornecedorController : Controller
     {
 
@@ -108,7 +108,8 @@ namespace ProjetoFinal.Controllers
             PedidosDAO dao = new PedidosDAO();
             Pedido pedido = new Pedido
             {
-                ValorTotal = valorTotal
+                ValorTotal = valorTotal,
+                Tipo = "Compra"
             };
 
             foreach (Produto produto in model)

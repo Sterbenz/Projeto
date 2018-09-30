@@ -33,12 +33,32 @@ namespace ProjetoFinal.DAO
             }
         }
 
+        public Pessoa BuscaPorEmail(string email)
+        {
+            using (var contexto = new LojaContext())
+            {
+                return contexto.Pessoas
+                    .Where(p => p.Email == email)
+                    .FirstOrDefault();
+            }
+        }
+
         public void Atualiza(Pessoa pessoa)
         {
             using (var contexto = new LojaContext())
             {
                 contexto.Pessoas.Update(pessoa);
                 contexto.SaveChanges();
+            }
+        }
+
+        public IList<Pessoa> ListaClientes()
+        {
+            using (var contexto = new LojaContext())
+            {
+                return contexto.Pessoas
+                    .Where(p => p.TipoPessoaId == 1)
+                    .ToList();
             }
         }
 
