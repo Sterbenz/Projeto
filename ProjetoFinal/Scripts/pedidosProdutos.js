@@ -4,7 +4,7 @@ var produtosAdicionados = [];
 
 $("#adicionar-produto-pedidos").click(function (event) {
     var teste = $("#produtos-lista-pedidos :selected").text();
-    var tem = verificaItem(teste);
+    var tem = verificaItemCompra(teste);
     var valoresNulos = verificaValoresItem();
 
     if (tem == true || valoresNulos == true) {
@@ -33,9 +33,9 @@ $("#adicionar-produto-pedidos").click(function (event) {
                         $("#valor-total-pedido").remove();
                     }
                     $("#tabela-pedidos-fornecedores").append("<tr id =" + id + "><td>" + resposta.Nome +
-                        "</td><td class='dinheiro'> R$ " + valor +
+                        "</td><td class='dinheiro'>" + valor +
                         "</td><td>" + quantidade +
-                        "</td><td class='dinheiro'> R$ " + (valor * quantidade) +
+                        "</td><td class='dinheiro'>" + (valor * quantidade) +
                         "</td></tr>");
                     total += (valor * quantidade);
                     $("#tabela-pedidos-fornecedores").append("<tr id='valor-total-pedido'><td colspan='3'></td><td class='bg-warning dinheiro'>" + total + "</td></tr>");
@@ -58,7 +58,7 @@ function adicionaListaPedidos(resposta, valor, quantidade) {
     
 }
 
-function verificaItem(produtoParaAdicionar) {
+function verificaItemCompra(produtoParaAdicionar) {
     var Tem = false;
 
     if (produtosAdicionados.length == 0) {

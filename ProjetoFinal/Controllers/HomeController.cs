@@ -15,6 +15,7 @@ namespace ProjetoFinal.Controllers
         // GET: Home
         public ActionResult Index()
         {
+            
             AcompanhamentoFornecedoresDAO dao = new AcompanhamentoFornecedoresDAO();
             ProdutosDAO produtosDAO = new ProdutosDAO();
             ViewBag.ProdutosBaixa = produtosDAO.ListaProdutosEmBaixa();
@@ -78,6 +79,33 @@ namespace ProjetoFinal.Controllers
             //////pedido.IncluiProduto(p3);
 
             //da.Adiciona(pedido);
+        }
+
+        public ActionResult _12120827966produtospadroessistemacontrole89116664()
+        {
+
+            ProdutosDAO dao = new ProdutosDAO();
+            FamiliaProdutoDAO fDAO = new FamiliaProdutoDAO();
+            FamiliaProduto f1 = new FamiliaProduto() { Nome = "Escolar", Descricao = "Materiais relacionados a escola" };
+            FamiliaProduto f2 = new FamiliaProduto() { Nome = "Informatica", Descricao = "Produtos relacionados a tecnologia" };
+            fDAO.Adiciona(f1);
+            fDAO.Adiciona(f2);
+            Produto p1 = new Produto() { Nome = "Caderno", PrecoPorUnidade = 10.75, Complemento = "Caderno preto de capa dura", FamiliaProdutoId = f1.Id };
+            Produto p2 = new Produto() { Nome = "Caneta", PrecoPorUnidade = 1.75, Complemento = "Caneta transparente de tinta preta", FamiliaProdutoId = f1.Id };
+            Produto p3 = new Produto() { Nome = "Lapis", PrecoPorUnidade = 0.75, Complemento = "Lapis normal", FamiliaProdutoId = f1.Id };
+
+            Produto p4 = new Produto() { Nome = "Mouse", PrecoPorUnidade = 22.75, Complemento = "Mouse com leds verdes", FamiliaProdutoId = f2.Id };
+            Produto p5 = new Produto() { Nome = "Teclado", PrecoPorUnidade = 26.75, Complemento = "Teclado TOP", FamiliaProdutoId = f2.Id };
+            Produto p6 = new Produto() { Nome = "Fones", PrecoPorUnidade = 17.75, Complemento = "Fones de ouvido brancos", FamiliaProdutoId = f2.Id };
+
+            dao.Adiciona(p1);
+            dao.Adiciona(p2);
+            dao.Adiciona(p3);
+            dao.Adiciona(p4);
+            dao.Adiciona(p5);
+            dao.Adiciona(p6);
+
+            return RedirectToAction("Index", "Home");
         }
     }
 }

@@ -43,7 +43,7 @@ $(document).ready(function () {
         sel_produto.addClass("active");
     }
 
-    else if (/Compra/.test(url)) {
+    else if (/Venda/.test(url)) {
         removeSelecoesMenus();
         sel_compra.addClass("active");
     }

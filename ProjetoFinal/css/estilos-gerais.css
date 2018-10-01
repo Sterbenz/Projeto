@@ -33,3 +33,15 @@ th, td, table{
     max-height: 200px;
     overflow-y: scroll;   
 }
+.divisao-menu-principal {
+    border-top: 1px solid #8c8b8b;
+    border-bottom: 1px solid #fff;
+}
+
+.divisao-menu-principal:after {
+    content: '';
+    display: block;
+    margin-top: 2px;
+    border-top: 1px solid #8c8b8b;
+    border-bottom: 1px solid #fff;
+}

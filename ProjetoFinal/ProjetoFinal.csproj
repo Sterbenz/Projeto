@@ -4290,6 +4290,7 @@
     <Content Include="Scripts\pedidosProdutos.js" />
     <Content Include="Scripts\teste.js" />
     <Content Include="Scripts\ValidaCamposVazios.js" />
+    <Content Include="Scripts\ValidaCNPJ.js" />
     <Content Include="Scripts\ValidaCPF.js" />
     <Content Include="Scripts\vendas.js" />
     <Content Include="Web.config">

@@ -8,10 +8,8 @@ $("#fechar-modal-esquecisenha").click(function () {
 })
 
 $("#btn-confirma-esquecisenha").click(function () {
-    $("#loading").toggle();
     $("#span-email-nao-encontrado").addClass("invisible");
     $("#span-email-enviado").addClass("invisible");
-    $("#loading").addClass("filtro-ativo");
     var email = $("#email").val();
     $.ajax({
         url: "/Login/Verifica_Email",
@@ -22,15 +20,14 @@ $("#btn-confirma-esquecisenha").click(function () {
         success: function (resposta) {
             if (resposta == 0)
             {
-                $("#loading").toggle();
                 $("#span-email-nao-encontrado").removeClass("invisible");
             }
             else
             {
-                $("#loading").removeClass("filtro-ativo");
                 $("#span-email-enviado").removeClass("invisible");
-            }
                 realizaEnvioEmail(email);
+            }
+                
             
             
         }

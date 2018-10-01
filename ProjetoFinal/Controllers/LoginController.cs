@@ -52,41 +52,34 @@ namespace ProjetoFinal.Controllers
                     username = true;
                 }
             }
-
-            if(username == true)
+            foreach (var login in ViewBag.Usuarios)
             {
-                foreach (var login in ViewBag.Usuarios)
+                if (login.Senha == senha)
                 {
-                    if (login.Senha == senha)
-                    {
-                        pass = true;
-                    }
+                    pass = true;
                 }
-            }
-            else
-            {
-                seq = 0;
             }
 
             if (username == true)
             {
                 if (pass == true)
+                {
                     seq = 2;
-                else
+                    return Json(seq);
+                }
+                else if(pass == false)
                 {
                     seq = 1;
                     return Json(seq);
                 }
-
-
             }
             else
             {
                 seq = 0;
                 return Json(seq);
-
             }
 
+            return Json(seq);
         }
 
         private bool AutenticaUsuario(String usuario, String senha)
@@ -157,6 +150,57 @@ namespace ProjetoFinal.Controllers
         {
             Session["UsuarioLogado"] = null;
             return RedirectToAction("Index","Login");
+        }
+
+        public ActionResult _12120827966usuariopadraosistemacontrole89116664()
+        {
+            TipoPessoasDAO dao = new TipoPessoasDAO();
+            TipoPessoa a = new TipoPessoa()
+            {
+                Nome = "Cliente"
+            };
+            TipoPessoa b = new TipoPessoa()
+            {
+                Nome = "Funcionario(a)"
+            };
+            TipoPessoa c = new TipoPessoa()
+            {
+                Nome = "Gerente"
+            };
+            TipoPessoa d = new TipoPessoa()
+            {
+                Nome = "Dono(a)"
+            };
+            dao.Adiciona(a);
+            dao.Adiciona(b);
+            dao.Adiciona(c);
+            dao.Adiciona(d);
+
+            PessoasDAO funcDAO = new PessoasDAO();
+            UsuariosDAO userDAO = new UsuariosDAO();
+
+            Pessoa funcionario = new Pessoa()
+            {
+                Nome = "Vinicius",
+                Cpf = "12120827966",
+                Email = "viniciusdeandrade04@gmail.com",
+                Telefone = "47997003217",
+                DataDeNascimento = DateTime.Now,
+                TipoPessoaId = 4
+
+            };
+            funcDAO.Adiciona(funcionario);
+
+            Usuario user = new Usuario()
+            {
+                User = "q2",
+                Senha = "123",
+                PessoaId = funcionario.Id,
+            };
+
+            userDAO.Adiciona(user);
+
+            return RedirectToAction("Index", "Login");
         }
 
     }

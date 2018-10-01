@@ -38,11 +38,6 @@ $(".form-validacao-familia").submit(function () {
     }
 });
 
-
-
-
-
-
 /////////////////////////////////////////////////////////////////////////////////////////////////
 
 function pegaCampos() {   
@@ -60,9 +55,14 @@ function pegaCampos() {
     campoUsuarioMudar = validaUsuarioMudar();
     campoSenhaMudar = validaSenhaMudar();
     campoConfirmaSenhaMudar = validaConfirmaSenhaMudar();
+    
 }
 function pegaCpf() {
     campoCpf = validaCpf();
+}
+
+function pegaCnpj() {
+    campoCnpj = validaCnpj();
 }
 
 /////////////////////////////////////////////////////////////////////////////////////////////////
@@ -97,8 +97,10 @@ function validaCamposCategoria() {
 }
 
 function validaCamposFornecedor() {
+    pegaCnpj();
     pegaCampos();
-    if (campoNome == true) {
+    if (campoNome == true && campoBairro == true && campoCep == true && campoCidade == true && campoCnpj == true && campoDataEntrega == true
+        && campoEndereco == true && campoEmail == true) {
         return true;
     } else {
         return false;
@@ -142,6 +144,23 @@ function validaCpf() {
     else {
         cpfClass.removeClass(" invalido");
         cpfClass.addClass(" valido");
+        return true;
+    }
+}
+
+function validaCnpj() {
+    
+    var cnpjClass = $(".form-cnpj");
+    var cnpjText = $(".form-cnpj").val();
+    cnpjValido = VerificaCNPJValido();
+    if (cnpjText == "" || cnpjValido == false) {
+        cnpjClass.removeClass(" valido");
+        cnpjClass.addClass(" invalido");
+        return false;
+    }
+    else {
+        cnpjClass.removeClass(" invalido");
+        cnpjClass.addClass(" valido");
         return true;
     }
 }

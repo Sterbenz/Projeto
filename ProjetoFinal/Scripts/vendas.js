@@ -143,7 +143,7 @@ $("#produtos-lista-venda").change(function () {
                 "max": resposta.Quantidade,
                 "min": 0
             });
-            $("#quantidade-produto-venda").val(1);
+            $("#quantidade-produto-venda").val(0);
             $("#valor-produto-venda").val(1);
 
         },
