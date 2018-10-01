@@ -10,7 +10,7 @@ using System.Web.Mvc;
 namespace ProjetoFinal.Controllers
 {
     [LoginFilter]
-    public class CompraController : Controller
+    public class VendaController : Controller
     {
         // GET: Compra
         public ActionResult Index()

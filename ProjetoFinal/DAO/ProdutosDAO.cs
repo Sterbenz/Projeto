@@ -26,6 +26,16 @@ namespace ProjetoFinal.DAO
             }
         }
 
+        public IList<Produto> ListaProdutosEmBaixa()
+        {
+            using (var contexto = new LojaContext())
+            {
+                return contexto.Produtos
+                    .Where(p => p.Quantidade < 5)
+                    .ToList();
+            }
+        }
+
         public Produto BuscaPorId(int id)
         {
             using (var contexto = new LojaContext())

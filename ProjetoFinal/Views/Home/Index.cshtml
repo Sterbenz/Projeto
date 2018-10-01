@@ -4,7 +4,15 @@
     {
         count++;
     }
+
+    var countProdutos = 0;
+    foreach (var teste in ViewBag.ProdutosBaixa)
+    {
+        countProdutos++;
+    }
 }
+
+<h1>Informações da loja</h1>
 
 <div class="col-md-6">
     <!-- Begin: life time stats -->
@@ -15,51 +23,106 @@
             </div>            
         </div>
         <div class="portlet-body">
-            @if (count > 0)
-            {
-                <table class="table table-striped table-hover table-bordered">
-                <thead>
-                    <tr>
-                        <th>
-                            Fornecedor
-                        </th>
-                        <th>
-                            Pedido ID
-                        </th>
-                        <th>
-                            Valor total
-                        </th>
-                    </tr>
-                </thead>
-                <tbody>
-
-                    @foreach (var pendentes in ViewBag.Acompanhamentos)
-                    {
-
-
-                        <tr>
-                            @foreach (var fornecedor in ViewBag.Fornecedores)
-                            {
-                                if (fornecedor.Id == pendentes.FornecedorId)
-                                {
-                                    <th>@fornecedor.DenominacaoSocial</th>
-                                }
-                            }
-                            <th>@pendentes.PedidoId</th>
-                            <th>R$ <span class="dinheiro">@pendentes.ValorTotal</span></th>
-                        </tr>
-
-                    }
-                </tbody>
-            </table>
-            }
-            else
-            {
-                <h3 class="text-center">SEM PEDIDOS PENDENTES!</h3>
-            }
             
+                @if (count > 0)
+                {
+                    <table class="table table-striped table-hover table-bordered">
+                        <thead>
+                            <tr>
+                                <th>
+                                    Fornecedor
+                                </th>
+                                <th>
+                                    Pedido ID
+                                </th>
+                                <th>
+                                    Valor total
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
 
+                            @foreach (var pendentes in ViewBag.Acompanhamentos)
+                            {
+
+
+                                <tr>
+                                    @foreach (var fornecedor in ViewBag.Fornecedores)
+                                    {
+                                        if (fornecedor.Id == pendentes.FornecedorId)
+                                        {
+                                            <th>@fornecedor.DenominacaoSocial</th>
+                                        }
+                                    }
+                                    <th>@pendentes.PedidoId</th>
+                                    <th>R$ <span class="dinheiro">@pendentes.ValorTotal</span></th>
+                                </tr>
+
+                            }
+                        </tbody>
+                    </table>
+                }
+                else
+                {
+                    <h3 class="text-center">SEM PEDIDOS PENDENTES!</h3>
+                }
+
+             
+            </div>
         </div>
+</div>
+
+<div class="col-md-6">
+    <!-- Begin: life time stats -->
+    <div class="portlet box red-sunglo">
+        <div class="portlet-title">
+            <div class="caption">
+                <i class="fa fa-bar-chart-o"></i>Produtos em baixa
+            </div>
+        </div>
+        <div class="portlet-body">
+            <div class="tab-content">
+                <div class="scrolling-table">
+                    @if (countProdutos > 0)
+                    {
+                        <table class="table table-striped table-hover table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        ID
+                                    </th>
+                                    <th>
+                                        Produto
+                                    </th>
+                                    <th>
+                                        Quantidade em estoque
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                                @foreach (var prodBaixa in ViewBag.ProdutosBaixa)
+                                {
+
+
+                                    <tr>
+                                        <th>@prodBaixa.Id</th>
+                                        <th>@prodBaixa.Nome</th>
+                                        <th>@prodBaixa.Quantidade</th>
+                                    </tr>
+
+                                }
+                            </tbody>
+                        </table>
+                    }
+                    else
+                    {
+                        <h3 class="text-center">SEM PRODUTOS EM BAIXA!</h3>
+                    }
+                </div>
+              </div>
+          </div>
     </div>
+    <!-- End: life time stats -->
 </div>
 <!-- End: life time stats -->

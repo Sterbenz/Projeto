@@ -28,14 +28,14 @@
 <!-- END SAMPLE PORTLET CONFIGURATION MODAL FORM-->
 <!-- BEGIN PAGE HEADER-->
 <h3 class="page-title">
-    Compras <small>realizar compras</small>
+    Venda <small>realizar venda</small>
 </h3>
 
 <div class="col-md-6 col-sm-12">
     <div class="portlet blue-hoki box">
         <div class="portlet-title">
             <div class="caption">
-                <i class="fa fa-cogs"></i>Informações do fornecedor
+                <i class="fa fa-cogs"></i>Informações do cliente
             </div>
         </div>
         <div class="portlet-body">
@@ -104,7 +104,7 @@
             <label>Quantidade em estoque:</label>
             <input type="text" class="form-control" id="quantidade-produto-estoque-venda" disabled /><br />
             <label>Quantidade:</label>
-            <input type="number" min="0" class="form-control" value="0" id="quantidade-produto-venda" /><br />
+            <input type="number" min="0" max="" class="form-control" value="0" id="quantidade-produto-venda" /><br />
             <label>Valor:</label>
             <input type="text" class="form-control dinheiro" value="0" id="valor-produto-venda" placeholder="000.000,00" /><br />
             <button id="adicionar-produto-venda" class="form-control btn green">Adicionar</button>
@@ -133,7 +133,7 @@
                                     Valor por unidade
                                 </th>
                                 <th>
-                                    Quantidade para compra
+                                    Quantidade para venda
                                 </th>
                                 <th>
                                     Total

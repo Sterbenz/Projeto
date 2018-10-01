@@ -15,7 +15,6 @@ function configurarUsuario(id) {
 
     var usuario = $("#newUsuario").val();
     var senha = $("#newSenha").val();
-    console.log(true);
     $.ajax({
 
         url: "/Funcionario/ConfiguracaoUsuario",
@@ -27,7 +26,6 @@ function configurarUsuario(id) {
         type: "post",
         dataType: "Json",
         success: function () {
-            console.log(true);
             $(".operacao-concluida").show();
             setTimeout(function () {
                 $(".operacao-concluida").hide();

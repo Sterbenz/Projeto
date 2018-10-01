@@ -16,9 +16,12 @@ namespace ProjetoFinal.Controllers
         public ActionResult Index()
         {
             AcompanhamentoFornecedoresDAO dao = new AcompanhamentoFornecedoresDAO();
+            ProdutosDAO produtosDAO = new ProdutosDAO();
+            ViewBag.ProdutosBaixa = produtosDAO.ListaProdutosEmBaixa();
             FornecedoresDAO fornDAO = new FornecedoresDAO();
             ViewBag.Acompanhamentos = dao.ListaPendentes();
             ViewBag.Fornecedores = fornDAO.Lista();
+            
             return View();
         }
 

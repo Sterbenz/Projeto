@@ -1,11 +1,9 @@
 ﻿$(".form-validacao-pessoa").submit(function () {
 
     if (!validaCampos()) {
-        console.log("fase 1");
             return false;
      }
     else {
-        console.log("fase 2");
         return true;
      }
 });
@@ -13,11 +11,9 @@
 $(".form-validacao-produto").submit(function () {
 
     if (!validaCamposProduto()) {
-        console.log("fase 1");
         return false;
     }
     else {
-        console.log("fase 2");
         return true;
     }
 });
@@ -25,11 +21,9 @@ $(".form-validacao-produto").submit(function () {
 $(".form-validacao-fornecedores").submit(function () {
 
     if (!validaCamposFornecedor()) {
-        console.log("fase 1");
         return false;
     }
     else {
-        console.log("fase 2");
         return true;
     }
 });
@@ -37,11 +31,9 @@ $(".form-validacao-fornecedores").submit(function () {
 $(".form-validacao-familia").submit(function () {
 
     if (!validaCamposCategoria()) {
-        console.log("fase 1");
         return false;
     }
     else {
-        console.log("fase 2");
         return true;
     }
 });
@@ -128,7 +120,6 @@ function validaNome() {
     if (nomeText == "") {
         nomeClass.removeClass(" valido");
         nomeClass.addClass(" invalido");
-        console.log(0);
         return false;
     }
     else {

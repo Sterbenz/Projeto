@@ -2,11 +2,13 @@
 var total = 0;
 var produtosAdicionados = [];
 
+// Chama metodo para buscar o cliente
 $("#clientes-compras").change(function () {
     var cli_id = $("#clientes-compras :selected").val();
     BuscaCliente(cli_id);
 });
 
+// Busca dados do cliente selecionado
 function BuscaCliente(id) {
     var url = "/Home/BuscaCliente";
     $.ajax({
@@ -22,13 +24,14 @@ function BuscaCliente(id) {
     });
 }
 
+// Adiciona o produto na tabela
 $("#adicionar-produto-venda").click(function (event) {
     var teste = $("#produtos-lista-venda :selected").text();
     var tem = verificaItem();
-    console.log(tem);
+    var valoresNulos = verificaValoresItem();
 
-    if (tem == true) {
-        alert("Esse produto já foi adicionado");
+    if (tem == true || valoresNulos == true) {
+        alert("Esse produto já foi adicionado ou valores incorretos");
     }
     else {
         if (teste == "Produtos") {
@@ -69,6 +72,7 @@ $("#adicionar-produto-venda").click(function (event) {
     }
 });
 
+// Adiciona o produto no Array da venda
 function adicionaListaPedidos(resposta, valor, quantidade) {
 
     resposta.Quantidade = quantidade;
@@ -78,6 +82,7 @@ function adicionaListaPedidos(resposta, valor, quantidade) {
 
 }
 
+// Verifica se o produto já esta no pedido
 function verificaItem() {
     var Tem = false;
 
@@ -96,7 +101,7 @@ function verificaItem() {
     return Tem;
 }
 
-
+// Apaga item da tabela
 $("#tabela-venda").dblclick(function (event) {
     var selec = event.target.parentNode;
     selec.classList.add("fadeOut");
@@ -121,25 +126,7 @@ $("#tabela-venda").dblclick(function (event) {
 
 });
 
-$("#btn-registra-venda").click(function () {
-    var id = $("#clientes-compras :selected").val();
-    
-    if(total == null || produtos.length == 0){
-        alert("Nenhum produto adicionado ao pedido!");
-    }
-    else {
-        $.ajax({
-            url: "/Compra/RealizaVenda",
-            data: { id: id, model: produtos, valorTotal: total },
-            type: "post",
-            dataType: "Json",
-            success: function (resposta) {
-                location.href = "/Home";
-            }
-        });
-    }
-});
-
+// Pega dados sobre o produto escolhido
 $("#produtos-lista-venda").change(function () {
     var id = document.querySelector("#produtos-lista-venda").value;
     var url = "/Home/BuscaProduto";
@@ -152,6 +139,10 @@ $("#produtos-lista-venda").change(function () {
         dataType: "Json",
         success: function (resposta) {
             $("#quantidade-produto-estoque-venda").val(resposta.Quantidade);
+            $("#quantidade-produto-venda").attr({
+                "max": resposta.Quantidade,
+                "min": 0
+            });
             $("#quantidade-produto-venda").val(1);
             $("#valor-produto-venda").val(1);
 
@@ -161,4 +152,46 @@ $("#produtos-lista-venda").change(function () {
         }
     });
 
+});
+
+// Muda quantidade automaticamente ao exeder quantidade em estoque
+$("#quantidade-produto-venda").blur(function () {
+    var quantidade = $("#quantidade-produto-estoque-venda").val();
+    var quantidadeVenda = $("#quantidade-produto-venda").val();
+    if (parseInt(quantidadeVenda) > parseInt(quantidade)) {
+
+        $("#quantidade-produto-venda").val(quantidade);
+    }
+});
+
+// Verifica valores nulos
+function verificaValoresItem() {
+    var quantidade = $("#quantidade-produto-venda").val();
+    var valor = $("#valor-produto-venda").val();
+    if (quantidade == "" || valor == "") {
+        return true;
+    }
+    else {
+        return false;
+    }
+}
+
+// Finaliza a compra
+$("#btn-registra-venda").click(function () {
+    var id = $("#clientes-compras :selected").val();
+
+    if (total == null || produtos.length == 0) {
+        alert("Nenhum produto adicionado ao pedido!");
+    }
+    else {
+        $.ajax({
+            url: "/Venda/RealizaVenda",
+            data: { id: id, model: produtos, valorTotal: total },
+            type: "post",
+            dataType: "Json",
+            success: function (resposta) {
+                location.href = "/Home";
+            }
+        });
+    }
 });

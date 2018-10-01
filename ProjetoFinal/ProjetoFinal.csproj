@@ -4261,10 +4261,12 @@
     <Content Include="Content\assets\global\plugins\zoom\jquery.zoom.min.js" />
     <Content Include="Content\assets\global\scripts\datatable.js" />
     <Content Include="Content\assets\global\scripts\metronic.js" />
+    <Content Include="Content\BAxY.gif" />
     <Content Include="Content\favicon.png" />
     <Content Include="Content\icons8-d-52.png" />
     <Content Include="Content\icons8-f-52.png" />
     <Content Include="Content\icons8-g-52.png" />
+    <Content Include="Content\loading.gif" />
     <Content Include="Content\Logo.svg" />
     <Content Include="css\estilos-gerais.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -4277,6 +4279,7 @@
     <Content Include="Scripts\FiltroLogs.js" />
     <Content Include="Scripts\filtros.js" />
     <Content Include="Scripts\jquery.maskMoney.js" />
+    <Content Include="Scripts\login.js" />
     <Content Include="Scripts\Mascaras.js" />
     <Content Include="Scripts\Deletar.js" />
     <Content Include="Scripts\FecharIframe.js" />
@@ -4298,7 +4301,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\CategoriaController.cs" />
     <Compile Include="Controllers\ClienteController.cs" />
-    <Compile Include="Controllers\CompraController.cs" />
+    <Compile Include="Controllers\VendaController.cs" />
     <Compile Include="Controllers\FornecedorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
@@ -4678,8 +4681,8 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Home\Errors.cshtml" />
     <Content Include="Views\Fornecedor\Acompanhamentos.cshtml" />
-    <Content Include="Views\Compra\Index.cshtml" />
-    <Content Include="Views\Compra\_ViewStart.cshtml" />
+    <Content Include="Views\Venda\Index.cshtml" />
+    <Content Include="Views\Venda\_ViewStart.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

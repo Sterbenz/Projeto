@@ -28,3 +28,8 @@
 th, td, table{
     text-align: center;
 }
+
+.scrolling-table {
+    max-height: 200px;
+    overflow-y: scroll;   
+}

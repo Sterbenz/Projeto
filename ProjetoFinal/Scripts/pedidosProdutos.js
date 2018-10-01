@@ -5,10 +5,10 @@ var produtosAdicionados = [];
 $("#adicionar-produto-pedidos").click(function (event) {
     var teste = $("#produtos-lista-pedidos :selected").text();
     var tem = verificaItem(teste);
-    console.log(tem);
+    var valoresNulos = verificaValoresItem();
 
-    if (tem == true) {
-        alert("Esse produto já foi adicionado");
+    if (tem == true || valoresNulos == true) {
+        alert("Esse produto já foi adicionado ou valores incorretos");
     }
     else {
         if (teste == "Produtos") {
@@ -101,23 +101,6 @@ $("#tabela-pedidos").dblclick(function (event) {
 
 });
 
-$("#btn-registra-pedido").click(function () {
-    var id = $("#id-fornecedor").text();
-    if (total == null || produtos.length == 0) {
-        alert("Nenhum produto adicionado ao pedido!");
-    }
-    else {    
-        $.ajax({
-            url: "/Fornecedor/RealizaPedido",
-            data: { id: id, model: produtos, valorTotal: total },
-            type: "post",
-            dataType: "Json",
-            success: function (resposta) {
-                location.href = "/Fornecedor";
-            }
-        });
-    }
-});
 
 $("#produtos-lista-pedidos").change(function () {
     var id = document.querySelector("#produtos-lista-pedidos").value;
@@ -141,6 +124,34 @@ $("#produtos-lista-pedidos").change(function () {
     });
     
 });
-$("#produtos-lista-pedidos").change(function () {
-    var teste = $("#produtos-lista-pedidos :selected").text();
+
+// Verifica valores nulos
+function verificaValoresItem() {
+    var quantidade = $("#quantidade-produto-pedido").val();
+    var valor = $("#valor-produto-pedido").val();
+    if (quantidade == "" || valor == "") {
+        return true;
+    }
+    else {
+        return false;
+    }
+}
+
+// Finaliza compra
+$("#btn-registra-pedido").click(function () {
+    var id = $("#id-fornecedor").text();
+    if (total == null || produtos.length == 0) {
+        alert("Nenhum produto adicionado ao pedido!");
+    }
+    else {
+        $.ajax({
+            url: "/Fornecedor/RealizaPedido",
+            data: { id: id, model: produtos, valorTotal: total },
+            type: "post",
+            dataType: "Json",
+            success: function (resposta) {
+                location.href = "/Fornecedor";
+            }
+        });
+    }
 });

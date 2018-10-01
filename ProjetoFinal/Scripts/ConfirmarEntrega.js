@@ -8,7 +8,6 @@
         success: function (resposta) {
             $("#estado-pedido").text("Entregue");
             $("#botao-confirma-entrega").attr("disabled", true);
-            console.log(true);
         }
     });
 }
@@ -16,5 +15,4 @@
 function texte() {
     $("#estado-pedido").text("Entregue");
     $("#botao-confirma-entrega").attr("disabled", true);
-    console.log(true);
 }

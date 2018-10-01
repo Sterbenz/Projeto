@@ -1,10 +1,4 @@
-﻿$("#btn-login").click(function () {
-    console.log("aaaaaaa");
-    $("#login-form").submit();
-})
-
-
-
+﻿
 $("#esqueci-senha").click(function () {
     $("#modal-login").show();
 })
@@ -14,27 +8,34 @@ $("#fechar-modal-esquecisenha").click(function () {
 })
 
 $("#btn-confirma-esquecisenha").click(function () {
+    $("#loading").toggle();
     $("#span-email-nao-encontrado").addClass("invisible");
+    $("#span-email-enviado").addClass("invisible");
+    $("#loading").addClass("filtro-ativo");
     var email = $("#email").val();
-    console.log(email);
     $.ajax({
         url: "/Login/Verifica_Email",
         data: { email: email },
         type: "post",
         dataType: "Json",
+        
         success: function (resposta) {
             if (resposta == 0)
             {
+                $("#loading").toggle();
                 $("#span-email-nao-encontrado").removeClass("invisible");
             }
             else
             {
-                realizaEnvioEmail(email);
+                $("#loading").removeClass("filtro-ativo");
+                $("#span-email-enviado").removeClass("invisible");
             }
+                realizaEnvioEmail(email);
+            
             
         }
     });
-})
+});
 
 function realizaEnvioEmail(email) {
     $.ajax({

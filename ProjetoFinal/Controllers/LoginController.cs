@@ -23,7 +23,7 @@ namespace ProjetoFinal.Controllers
         public ActionResult Validar(String usuario, String senha)
         {
 
-            if (UsuarioExiste(usuario, senha))
+            if (AutenticaUsuario(usuario, senha))
             {
 
                 return RedirectToAction("Index", "Home");
@@ -33,8 +33,63 @@ namespace ProjetoFinal.Controllers
                 return RedirectToAction("Index", "Login");
             }
         }
+        
+        public ActionResult UsuarioExiste(string usuario, string senha)
+        {
+            // 0 - usuario não encontrado //1 - usuario encontrado e senha errada // 2 - login completo
+            int seq = 0;
+            bool username = false;
+            bool pass = false;
+            UsuariosDAO dao = new UsuariosDAO();
+            Usuario user = new Usuario();
+            PessoasDAO pessDAO = new PessoasDAO();
+            ViewBag.Usuarios = dao.Lista();
 
-        private bool UsuarioExiste(String usuario, String senha)
+            foreach (var login in ViewBag.Usuarios)
+            {
+                if (login.User == usuario)
+                {
+                    username = true;
+                }
+            }
+
+            if(username == true)
+            {
+                foreach (var login in ViewBag.Usuarios)
+                {
+                    if (login.Senha == senha)
+                    {
+                        pass = true;
+                    }
+                }
+            }
+            else
+            {
+                seq = 0;
+            }
+
+            if (username == true)
+            {
+                if (pass == true)
+                    seq = 2;
+                else
+                {
+                    seq = 1;
+                    return Json(seq);
+                }
+
+
+            }
+            else
+            {
+                seq = 0;
+                return Json(seq);
+
+            }
+
+        }
+
+        private bool AutenticaUsuario(String usuario, String senha)
         {
 
             UsuariosDAO dao = new UsuariosDAO();
@@ -76,22 +131,24 @@ namespace ProjetoFinal.Controllers
             Usuario user = usuariosDAO.BuscaPorIdFuncionario(emailAchado.Id);
 
             string enviaMensagem = "Seu usuario é: " + user.User +
-                                   "Sua senha é: " + user.Senha ;
+                                   "    Sua senha é: " + user.Senha ;
 
-            // cria uma mensagem
-            MailMessage mensagemEmail = new MailMessage("boolzrandom@gmail.com", emailDestinatario, "Seu login do sistema", enviaMensagem);
+                                  // cria uma mensagem        // De                        // Para           // Assunto               // Mensagem
+            MailMessage mensagemEmail = new MailMessage("testeenviaemail.proj@gmail.com", emailDestinatario, "Seu login do sistema", enviaMensagem);
 
-            SmtpClient client = new SmtpClient("smtp.gmail.com", 465);
-            client.EnableSsl = true;
+            using (var smtp = new SmtpClient("smtp.gmail.com"))
+            {
+                smtp.EnableSsl = true; // GMail requer SSL
+                smtp.Port = 587;       // porta para SSL
+                smtp.DeliveryMethod = SmtpDeliveryMethod.Network; // modo de envio
+                smtp.UseDefaultCredentials = false; // Utilizar credenciais especificas
 
-            NetworkCredential cred = new NetworkCredential("boolzrandom@gmail.com", "V1n1c1us12!@");
-            client.Credentials = cred;
+                // seu usuário e senha para autenticação
+                smtp.Credentials = new NetworkCredential("testeenviaemail.proj@gmail.com", "suportprojtest");
 
-            // inclui as credenciais
-            client.UseDefaultCredentials = false;
-
-            // envia a mensagem
-            client.Send(mensagemEmail);
+                // envia o e-mail
+                smtp.Send(mensagemEmail);
+            }
 
             return Json("success");
         }
