@@ -52,5 +52,24 @@ namespace ProjetoFinal.DAO
                     .ToList();
             }
         }
+
+        public IList<PedidoProdutos> ListaProdutosDosPedidos(IList<Venda> vendas)
+        {
+            using (var contexto = new LojaContext())
+            {
+                IList<PedidoProdutos> vendasPP = new List<PedidoProdutos>();
+                foreach (Venda venda in vendas)
+                {
+                    int pedidoId =(int) venda.PedidoId;
+                    IList<PedidoProdutos> produtosPP = ListaProdutosDoPedido(pedidoId);
+                    foreach(var prodPP in produtosPP)
+                    {
+                        vendasPP.Add(prodPP);
+                    }                 
+                }
+
+                return vendasPP;
+            }
+        }
     }
 }

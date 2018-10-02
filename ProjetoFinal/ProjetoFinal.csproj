@@ -4274,6 +4274,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Scripts\Chart.js" />
     <Content Include="Scripts\ConfirmarEntrega.js" />
     <Content Include="Scripts\esqueci_senha.js" />
     <Content Include="Scripts\FiltroLogs.js" />
@@ -4288,6 +4289,7 @@
     <Content Include="Scripts\mudarUsuario.js" />
     <Content Include="Scripts\paginaSelecionada.js" />
     <Content Include="Scripts\pedidosProdutos.js" />
+    <Content Include="Scripts\produtosMaisVendidos.js" />
     <Content Include="Scripts\teste.js" />
     <Content Include="Scripts\ValidaCamposVazios.js" />
     <Content Include="Scripts\ValidaCNPJ.js" />
@@ -4393,9 +4395,18 @@
     <Compile Include="Migrations\20180930202453_logVendas.designer.cs">
       <DependentUpon>20180930202453_logVendas.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\20181002190031_dataDeVenda.cs" />
+    <Compile Include="Migrations\20181002190031_dataDeVenda.designer.cs">
+      <DependentUpon>20181002190031_dataDeVenda.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\20181002192641_dataDoPedido.cs" />
+    <Compile Include="Migrations\20181002192641_dataDoPedido.designer.cs">
+      <DependentUpon>20181002192641_dataDoPedido.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\LojaContextModelSnapshot.cs" />
     <Compile Include="Models\AcompanhamentoFornecedores.cs" />
     <Compile Include="Models\LogVenda.cs" />
+    <Compile Include="Models\ProdutosMaisVendidos.cs" />
     <Compile Include="Models\Venda.cs" />
     <Compile Include="Models\FamiliaProduto.cs" />
     <Compile Include="Models\Endereco.cs" />

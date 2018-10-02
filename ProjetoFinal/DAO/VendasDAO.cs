@@ -51,5 +51,15 @@ namespace ProjetoFinal.DAO
             }
 
         }
+
+        public IList<Venda> ListaMaisVendidos()
+        {
+            using (var contexto = new LojaContext())
+            {
+                return contexto.Vendas
+                    .Where(v => v.DataDaVenda.Month == DateTime.Now.Month)
+                    .ToList();
+            }
+        }
     }
 }

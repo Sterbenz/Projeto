@@ -62,6 +62,16 @@ namespace ProjetoFinal.Controllers
             return View();
         }
 
+        public ActionResult MaisVendidosDoMes()
+        {
+            VendasDAO vendasDAO = new VendasDAO();
+            ProdutosPedidosDAO ppDAO = new ProdutosPedidosDAO();
+            IList<Venda> vendas = vendasDAO.ListaMaisVendidos();
+            IList<PedidoProdutos> pp = ppDAO.ListaProdutosDosPedidos(vendas);
+
+
+            return Json(pp);
+        }
 
         public void Testes()
         {

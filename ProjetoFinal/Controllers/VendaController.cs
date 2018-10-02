@@ -19,7 +19,8 @@ namespace ProjetoFinal.Controllers
             ProdutosDAO prodDAO = new ProdutosDAO();
             ViewBag.Clientes = dao.ListaClientes();
             ViewBag.Produtos = prodDAO.Lista();
-
+            VendasDAO vendDAO = new VendasDAO();
+            vendDAO.ListaMaisVendidos();
             return View();
         }
         public ActionResult RealizaVenda(int id, Produto[] model, double valorTotal)
@@ -66,6 +67,7 @@ namespace ProjetoFinal.Controllers
                 FuncionarioId = funcionario.Id,
                 PedidoId = pedido.Id,
                 ValorTotal = valorTotal,
+                DataDaVenda = DateTime.Now
             };
 
 

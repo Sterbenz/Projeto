@@ -1,9 +1,4 @@
-﻿.rodape-pagina {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-}
+﻿
 
 .operacao-concluida {
     text-align: center;
@@ -17,31 +12,37 @@
     padding-right: 0px;
 }
 
-.filtro-ativo{
+.filtro-ativo {
     display: none;
 }
 
-.senha-incorreta{
+.senha-incorreta {
     display: none;
     color: red;
 }
-th, td, table{
+
+th, td, table {
     text-align: center;
 }
 
 .scrolling-table {
     max-height: 200px;
-    overflow-y: scroll;   
+    overflow-y: scroll;
 }
+
 .divisao-menu-principal {
     border-top: 1px solid #8c8b8b;
     border-bottom: 1px solid #fff;
 }
 
-.divisao-menu-principal:after {
-    content: '';
-    display: block;
-    margin-top: 2px;
-    border-top: 1px solid #8c8b8b;
-    border-bottom: 1px solid #fff;
+    .divisao-menu-principal:after {
+        content: '';
+        display: block;
+        margin-top: 2px;
+        border-top: 1px solid #8c8b8b;
+        border-bottom: 1px solid #fff;
+    }
+
+.clear-left {
+    clear: left
 }

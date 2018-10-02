@@ -54,7 +54,7 @@ namespace ProjetoFinal.Controllers
             }
             foreach (var login in ViewBag.Usuarios)
             {
-                if (login.Senha == senha)
+                if (login.User == usuario && login.Senha == senha)
                 {
                     pass = true;
                 }
@@ -65,18 +65,15 @@ namespace ProjetoFinal.Controllers
                 if (pass == true)
                 {
                     seq = 2;
-                    return Json(seq);
                 }
                 else if(pass == false)
                 {
                     seq = 1;
-                    return Json(seq);
                 }
             }
             else
             {
                 seq = 0;
-                return Json(seq);
             }
 
             return Json(seq);
@@ -181,7 +178,7 @@ namespace ProjetoFinal.Controllers
 
             Pessoa funcionario = new Pessoa()
             {
-                Nome = "Vinicius",
+                Nome = "Dono",
                 Cpf = "12120827966",
                 Email = "viniciusdeandrade04@gmail.com",
                 Telefone = "47997003217",

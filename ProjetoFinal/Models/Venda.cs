@@ -23,5 +23,7 @@ namespace ProjetoFinal.Models
 
         public double ValorTotal { get; set; }
 
+        public DateTime DataDaVenda { get; set; }
+
     }
 }

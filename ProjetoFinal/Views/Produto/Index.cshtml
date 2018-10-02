@@ -14,7 +14,7 @@
     <li class="float-right navbar-right">
         <select id="tipo-filtro-produto" class="form-control">
             <option value="nome" selected>Nome</option>
-            <option value="familia">Familia</option>
+            <option value="familia">Categoria</option>
         </select>
     </li>
     <li class="float-right navbar-right">
@@ -30,7 +30,7 @@
             <th>Preco Unitario</th>
             <th>Quantidade</th>
             <th>Complemento</th>
-            <th>Familia</th>
+            <th>Categoria</th>
             <th colspan="2">Ações</th>
 
 
@@ -80,7 +80,7 @@
                 <h4 class="modal-title">Adicionar Produto</h4>
             </div>
             <div class="modal-body">
-                <iframe src="@Url.Action("Form", "Produto")" width="100%" height="700" frameborder="0"></iframe>
+                <iframe src="@Url.Action("Form", "Produto")" width="100" height="700" frameborder="0"></iframe>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" onclick="adicionarProdutoTabela();" data-dismiss="modal">Close</button>

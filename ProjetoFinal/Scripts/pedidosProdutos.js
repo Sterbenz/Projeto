@@ -129,7 +129,7 @@ $("#produtos-lista-pedidos").change(function () {
 function verificaValoresItem() {
     var quantidade = $("#quantidade-produto-pedido").val();
     var valor = $("#valor-produto-pedido").val();
-    if (quantidade == "" || valor == "") {
+    if (quantidade == "" || valor == "" || valor == 0 || quantidade == 0) {
         return true;
     }
     else {

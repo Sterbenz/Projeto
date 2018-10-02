@@ -168,7 +168,7 @@ $("#quantidade-produto-venda").blur(function () {
 function verificaValoresItem() {
     var quantidade = $("#quantidade-produto-venda").val();
     var valor = $("#valor-produto-venda").val();
-    if (quantidade == "" || valor == "") {
+    if (quantidade == "" || valor == "" || valor == 0 || quantidade == 0) {
         return true;
     }
     else {
