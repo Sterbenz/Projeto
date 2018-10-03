@@ -73,12 +73,12 @@ namespace ProjetoFinal.Controllers
 
             vendaDAO.Adiciona(venda);
 
-            RegistrarLog(venda, "realizou uma venda para o cliente ", valorTotal, clienteNome, cliente );
+            RegistrarLog(venda, "realizou uma venda para o cliente ", valorTotal, clienteNome, id );
 
             return Json("success");
         }
 
-        public void RegistrarLog(Venda venda, string modificacao, double valorTotal, string cliente, Pessoa clienteDados)
+        public void RegistrarLog(Venda venda, string modificacao, double valorTotal, string cliente, int id)
         {
             Pessoa user = (Pessoa)Session["UsuarioLogado"];
             LogVendasDAO dao = new LogVendasDAO();
@@ -88,7 +88,7 @@ namespace ProjetoFinal.Controllers
                 PessoaNome = user.Nome,
                 VendaId = venda.Id,
                 ClienteNome = cliente,
-                ClienteId = clienteDados.Id,
+                ClienteId = id,
                 DataDaVenda = DateTime.Now,
                 Descricao = "Funcionario " + user.Nome + " " + modificacao + cliente + " de R$" + valorTotal
             };

@@ -11,8 +11,6 @@ namespace ProjetoFinal.Models
 
         public int? ClienteId { get; set; }
 
-        public Pessoa Cliente { get; set; }
-
         public int? PedidoId { get; set; }
 
         public Pedido Pedido { get; set; }

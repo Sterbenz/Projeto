@@ -4403,6 +4403,10 @@
     <Compile Include="Migrations\20181002192641_dataDoPedido.designer.cs">
       <DependentUpon>20181002192641_dataDoPedido.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\20181003002132_remocaoFKpessoaVenda.cs" />
+    <Compile Include="Migrations\20181003002132_remocaoFKpessoaVenda.designer.cs">
+      <DependentUpon>20181003002132_remocaoFKpessoaVenda.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\LojaContextModelSnapshot.cs" />
     <Compile Include="Models\AcompanhamentoFornecedores.cs" />
     <Compile Include="Models\LogVenda.cs" />
