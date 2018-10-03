@@ -53,21 +53,43 @@ namespace ProjetoFinal.DAO
             }
         }
 
+        public IList<PedidoProdutos> ListaProdutosDoPedidoPorQuantidade(int id)
+        {
+            using (var contexto = new LojaContext())
+            {
+                return contexto.PedidosProdutos
+                    .Where(p => p.PedidoId == id)
+                    .OrderByDescending(p => p.Quantidade)
+                    .ToList();
+            }
+        }
+
+        public PedidoProdutos BuscaPorId(int id)
+        {
+            using (var contexto = new LojaContext())
+            {
+                return contexto.PedidosProdutos
+                    .Where(pp => pp.ProdutoId == id)
+                    .FirstOrDefault();
+            }
+        }
+
         public IList<PedidoProdutos> ListaProdutosDosPedidos(IList<Venda> vendas)
         {
             using (var contexto = new LojaContext())
             {
                 IList<PedidoProdutos> vendasPP = new List<PedidoProdutos>();
+                
                 foreach (Venda venda in vendas)
-                {
-                    int pedidoId =(int) venda.PedidoId;
-                    IList<PedidoProdutos> produtosPP = ListaProdutosDoPedido(pedidoId);
-                    foreach(var prodPP in produtosPP)
+                {                    
+                    int pedidoId = (int) venda.PedidoId;
+                    IList<PedidoProdutos> produtosPP = ListaProdutosDoPedidoPorQuantidade(pedidoId);
+                    
+                    foreach (var prodPP in produtosPP)
                     {
                         vendasPP.Add(prodPP);
                     }                 
                 }
-
                 return vendasPP;
             }
         }

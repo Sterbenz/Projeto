@@ -71,17 +71,12 @@ namespace ProjetoFinal.Controllers
             IList<Venda> vendas = vendasDAO.ListaMaisVendidos();
             IList<PedidoProdutos> pp = ppDAO.ListaProdutosDosPedidos(vendas);
 
-            var result = new
-            {
-                items = pp.Select(item => new
-                {
-                    name = item.PedidoId,
-                    index = item.Quantidade
-                })
-            };
+            IEnumerable<PedidoProdutos> maisVendidos = pp.OrderByDescending(p => p.Quantidade);
+            IList<PedidoProdutos> ppCrescent = maisVendidos.;
+
+            var result = ppCrescent.Select( item => new{ Nome = item.ProdutoNome, Quantidade = item.Quantidade });
 
             return Json(result, JsonRequestBehavior.AllowGet);
-            throw new DivideByZeroException();
         }
 
         public void Testes()

@@ -4407,6 +4407,10 @@
     <Compile Include="Migrations\20181003002132_remocaoFKpessoaVenda.designer.cs">
       <DependentUpon>20181003002132_remocaoFKpessoaVenda.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\20181003163631_pedidoProdutosComNome.cs" />
+    <Compile Include="Migrations\20181003163631_pedidoProdutosComNome.designer.cs">
+      <DependentUpon>20181003163631_pedidoProdutosComNome.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\LojaContextModelSnapshot.cs" />
     <Compile Include="Models\AcompanhamentoFornecedores.cs" />
     <Compile Include="Models\LogVenda.cs" />

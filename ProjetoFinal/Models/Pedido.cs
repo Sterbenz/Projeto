@@ -26,6 +26,7 @@ namespace ProjetoFinal.Models
                 (
                     new PedidoProdutos() {
                         ProdutoId = produto.Id,
+                        ProdutoNome = produto.Nome,
                         Quantidade = produto.Quantidade,
                         DiaDoPedido = DateTime.Now
                     }

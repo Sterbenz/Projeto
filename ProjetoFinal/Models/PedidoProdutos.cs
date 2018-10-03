@@ -8,6 +8,7 @@ namespace ProjetoFinal.Models
     public class PedidoProdutos
     {
         public int ProdutoId { get; set; }
+        public string ProdutoNome { get; set; }
         public Produto Produto { get; set; }
         public int PedidoId { get; set; }
         public Pedido Pedido { get; set; }
