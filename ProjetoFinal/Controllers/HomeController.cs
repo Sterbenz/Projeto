@@ -70,17 +70,17 @@ namespace ProjetoFinal.Controllers
             ProdutosPedidosDAO ppDAO = new ProdutosPedidosDAO();
             IList<Venda> vendas = vendasDAO.ListaMaisVendidos();
             IList<PedidoProdutos> pp = ppDAO.ListaProdutosDosPedidos(vendas);
-            
-           
-            foreach(PedidoProdutos pedpro in pp)
-            {
-                Produto produto = produtosDAO.BuscaPorId(pedpro.ProdutoId);
-                var result = new { Nome = produto.Nome, Quantidade = pedpro.Quantidade };
-                return Json(result, JsonRequestBehavior.AllowGet);
 
-            }
-            
-            
+            var result = new
+            {
+                items = pp.Select(item => new
+                {
+                    name = item.PedidoId,
+                    index = item.Quantidade
+                })
+            };
+
+            return Json(result, JsonRequestBehavior.AllowGet);
             throw new DivideByZeroException();
         }
 
