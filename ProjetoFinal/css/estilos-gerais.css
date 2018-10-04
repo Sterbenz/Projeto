@@ -44,5 +44,19 @@ th, td, table {
     }
 
 .clear-left {
-    clear: left
+    clear: left;
 }
+
+.clear-right {
+    clear: right;
+}
+
+.height-200 {
+    height: 200px;
+}
+
+.scrolling-table-info {
+    max-height: 255px;
+    overflow-y: scroll;
+}
+

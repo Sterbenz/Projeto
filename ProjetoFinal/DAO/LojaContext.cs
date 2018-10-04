@@ -25,6 +25,8 @@ namespace ProjetoFinal.DAO
 
         public DbSet<LogFornecedor> LogFornecedores { get; set; }
 
+        public DbSet<LogCompra> LogCompras { get; set; }
+
         public DbSet<LogFamilia> LogFamilias { get; set; }
 
         public DbSet<Usuario> Usuarios { get; set; }

@@ -61,5 +61,19 @@ namespace ProjetoFinal.DAO
             }
 
         }
+
+        public IList<AcompanhamentoFornecedores> ListaGastos()
+        {
+            using (var contexto = new LojaContext())
+            {
+                var acompanhamentos = contexto.Acompanhamentos
+                    .Where(v => v.DataEmissao.Month > DateTime.Now.Month - 3 
+                                                                             &&
+                                v.DataEmissao.Month < DateTime.Now.Month + 3)
+                    .ToList();
+
+                return acompanhamentos;
+            }
+        }
     }
 }

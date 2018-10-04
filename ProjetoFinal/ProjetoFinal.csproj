@@ -4279,6 +4279,8 @@
     <Content Include="Scripts\esqueci_senha.js" />
     <Content Include="Scripts\FiltroLogs.js" />
     <Content Include="Scripts\filtros.js" />
+    <Content Include="Scripts\gastosXganhos.js" />
+    <Content Include="Scripts\InformacoesPedidos.js" />
     <Content Include="Scripts\jquery.maskMoney.js" />
     <Content Include="Scripts\login.js" />
     <Content Include="Scripts\Mascaras.js" />
@@ -4313,6 +4315,7 @@
     <Compile Include="DAO\FamiliaProdutoDAO.cs" />
     <Compile Include="DAO\EnderecosDAO.cs" />
     <Compile Include="DAO\FornecedoresDAO.cs" />
+    <Compile Include="DAO\LogComprasDAO.cs" />
     <Compile Include="DAO\LogFamiliasDAO.cs" />
     <Compile Include="DAO\LogFornecedoresDAO.cs" />
     <Compile Include="DAO\LogVendasDAO.cs" />
@@ -4411,8 +4414,13 @@
     <Compile Include="Migrations\20181003163631_pedidoProdutosComNome.designer.cs">
       <DependentUpon>20181003163631_pedidoProdutosComNome.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\20181004151243_logCompras.cs" />
+    <Compile Include="Migrations\20181004151243_logCompras.designer.cs">
+      <DependentUpon>20181004151243_logCompras.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\LojaContextModelSnapshot.cs" />
     <Compile Include="Models\AcompanhamentoFornecedores.cs" />
+    <Compile Include="Models\LogCompra.cs" />
     <Compile Include="Models\LogVenda.cs" />
     <Compile Include="Models\ProdutosMaisVendidos.cs" />
     <Compile Include="Models\Venda.cs" />
@@ -4703,6 +4711,7 @@
     <Content Include="Views\Fornecedor\Acompanhamentos.cshtml" />
     <Content Include="Views\Venda\Index.cshtml" />
     <Content Include="Views\Venda\_ViewStart.cshtml" />
+    <Content Include="Views\Funcionario\VisualizaPedido.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

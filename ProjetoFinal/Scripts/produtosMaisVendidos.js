@@ -1,5 +1,7 @@
 ﻿function ProdutosVendidosNoMes() {
-    var ctx = document.getElementById("myChart");
+    var ctx = document.getElementById("grafico-mais-vendidos");
+    ctx.width = 200;
+    ctx.height = 200;
     $.ajax({
         url: "Home/MaisVendidosDoMes",
         type: "post",
@@ -9,11 +11,11 @@
             var data = [];
             if (resultado.length === 0) {
                 var nenhumRegistro = "<h1>Nenhum registro este mês</h1>"
-                $("#myChart").before(nenhumRegistro);
-                $("#myChart").addClass("filtro-ativo");
+                $("#grafico-mais-vendidos").before(nenhumRegistro);
+                $("#grafico-mais-vendidos").addClass("filtro-ativo");
             }
             else {
-                $("#myChart").removeClass("filtro-ativo")
+                $("#grafico-mais-vendidos").removeClass("filtro-ativo")
                 for (var i = 0; i < resultado.length; i++) {
                     labels[i] = resultado[i].Nome;
                     data[i] = resultado[i].Quantidade;
@@ -43,15 +45,14 @@
                                 'rgba(153, 102, 255, 1)',
                                 'rgba(255, 159, 64, 1)'
                             ],
-                            borderWidth: 1
+                            borderWidth: 1,
+                            
                         }],
 
                     },
 
                 });
             }
-            
         }
     });
-    
 }

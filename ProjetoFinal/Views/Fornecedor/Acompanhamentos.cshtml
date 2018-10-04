@@ -4,15 +4,6 @@
 </h3>
 <ul class="nav nav-tabs">
     
-    <li class="float-right navbar-right">
-        <select id="tipo-filtro-acompanhamento" class="form-control">
-            <option value="nome" selected>Nome</option>
-            <option value="familia">Familia</option>
-        </select>
-    </li>
-    <li class="float-right navbar-right">
-        <input id="filtrar-produtos" class="form-control float-right" placeholder="Filtrar por " />
-    </li>
 </ul>
 
 <table class="table table-striped table-hover">
@@ -32,7 +23,7 @@
         @foreach (var acompanhamento in ViewBag.Acompanhamentos)
         {
         <tr>
-            <th>@acompanhamento.Id</th>
+            <th class="acompanhamento-id">@acompanhamento.Id</th>
             @foreach (var forn in ViewBag.Fornecedores)
             {
                 if (forn.Id == acompanhamento.FornecedorId)
@@ -48,17 +39,84 @@
             {
                 <th id="estado-pedido">Em espera</th>
                 <th>
-                    <button id="botao-confirma-entrega" class="btn default red-flamingo" onclick="ConfirmarEntregaFornecedores(@acompanhamento.Id)" type="submit">Confirmar entrega</button>
+                    <button id="@acompanhamento.Id" class="btn default red-flamingo" onclick="ConfirmarEntregaFornecedores(@acompanhamento.Id)" type="submit">Confirmar entrega</button>
                 </th>
             }
             else
             {
                 <th>Entregue</th>
                 <th>
-                    <button class="btn default red-flamingo" disabled onclick="ConfirmarEntregaFornecedores(@acompanhamento.Id)" type="submit">Confirmar entrega</button>
+                    <button class="btn default red-flamingo" disabled type="submit">Confirmar entrega</button>
                 </th>
             }
+                <th>
+                    <button id="info-pedido-acompanhamento" class="btn btn-info info-pedido-acompanhamento" name="@acompanhamento.Id" >Visualizar</button>
+                </th>
         </tr>
         }
     </tbody>
 </table>
+
+
+<div class="modal" tabindex="-1" role="dialog" id="modal-informacoes-acompanhamento">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="">Informações do pedido</h5>
+            </div>
+            <div class="modal-body" style="width:800px; height:700px">
+                <h3 class="page-title">
+                    Pedido:  <small id="id-pedido-informacao"></small>
+                </h3>
+                <ul class="nav nav-tabs"></ul>
+                <br />
+                <div class="col-sm-8">
+                    <div style="border:1px solid;">
+                        <label class="form-control" style="border:0;">Fornecedor: </label>
+                        <input disabled class="form-control" id="nome-fornecedor-informacoes">
+                    </div>
+                    <br />
+                    <br />
+                    <div style="border:1px solid;">
+                        <label class="form-control" style="border:0;">Status: </label>
+                        <input disabled class="form-control" id="status-pedido-informacoes">
+                    </div>
+                    <br />
+                    <br />
+                    <div style="border:1px solid;">
+                        <label class="form-control" style="border:0;">Produtos: </label>
+                        <br />
+                        <div class="scrolling-table-info">
+                            <table id="tabela-produtos-info" class="table table-striped table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>
+                                            ID
+                                        </th>
+                                        <th>
+                                            Nome
+                                        </th>
+                                        <th>
+                                            Quantidade
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody id="body-tabela-produtos-pedidos">
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <br />
+                    <div style="border:1px solid;">
+                        <label class="form-control" style="border:0;">Valor Total: </label>
+                        <input disabled class="form-control dinheiro" id="valor-Total-informacoes">
+                    </div>
+                    </div>
+                </div>
+            <div class="modal-footer">
+                <button type="button" id="fechar-modal-info-pedidos" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>

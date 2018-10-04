@@ -47,12 +47,17 @@ namespace ProjetoFinal.Controllers
             LogFornecedoresDAO forDAO = new LogFornecedoresDAO();
             LogPessoasDAO pesDAO = new LogPessoasDAO();
             LogFamiliasDAO famDAO = new LogFamiliasDAO();
-            LogProdutosDAO proDAO = new LogProdutosDAO();           
+            LogProdutosDAO proDAO = new LogProdutosDAO();       
+            LogVendasDAO venDAO = new LogVendasDAO();       
+            LogComprasDAO comDAO = new LogComprasDAO();       
+            
             
             ViewBag.LogPessoas = pesDAO.Lista();
             ViewBag.LogFornecedores = forDAO.Lista();
             ViewBag.LogFamilias = famDAO.Lista();
             ViewBag.LogProdutos = proDAO.Lista();
+            ViewBag.LogVendas = venDAO.Lista();
+            ViewBag.LogCompras = comDAO.Lista();
 
             return View();
         }
@@ -71,10 +76,50 @@ namespace ProjetoFinal.Controllers
             IList<Venda> vendas = vendasDAO.ListaMaisVendidos();
             IList<PedidoProdutos> pp = ppDAO.ListaProdutosDosPedidos(vendas);
 
-            IEnumerable<PedidoProdutos> maisVendidos = pp.OrderByDescending(p => p.Quantidade);
-            IList<PedidoProdutos> ppCrescent = maisVendidos.;
+            var junta = pp.GroupBy(p => p.ProdutoId)
+                .Select(x => new PedidoProdutos
+                {
+                    ProdutoNome = x.First().ProdutoNome,
+                    Quantidade = x.Sum(q => q.Quantidade),
+                });
+
+            IEnumerable<PedidoProdutos> maisVendidos = junta.OrderByDescending(p => p.Quantidade);
+            IList<PedidoProdutos> ppCrescent = maisVendidos.Take(5).ToList();
 
             var result = ppCrescent.Select( item => new{ Nome = item.ProdutoNome, Quantidade = item.Quantidade });
+
+            return Json(result, JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult GanhosEGastos()
+        {
+            VendasDAO vendasDAO = new VendasDAO();
+            AcompanhamentoFornecedoresDAO acDAO = new AcompanhamentoFornecedoresDAO();
+            IList<Venda> vendas = vendasDAO.ListaGanhos();
+            IList<AcompanhamentoFornecedores> acompanhamentos = acDAO.ListaGastos();
+
+            var juntaGanhos = vendas.GroupBy(v => v.DataDaVenda.Month)
+                .Select(x => new Venda
+                {
+                    DataDaVenda = x.First().DataDaVenda,
+                    ValorTotal = x.Sum(vt => vt.ValorTotal),
+                });
+
+            var juntaGastos = acompanhamentos.GroupBy(v => v.DataEmissao.Month)
+                .Select(x => new AcompanhamentoFornecedores
+                {
+                    DataEmissao = x.First().DataEmissao,
+                    ValorTotal = x.Sum(vt => vt.ValorTotal),
+                });
+
+            IEnumerable<Venda> Ganhos = juntaGanhos.OrderBy(p => p.DataDaVenda);
+            IEnumerable<AcompanhamentoFornecedores> Gastos = juntaGastos.OrderBy(p => p.DataEmissao);
+            IList<Venda> ganhosCrescent = Ganhos.ToList();
+            IList<AcompanhamentoFornecedores> gastosCrescent = Gastos.ToList();
+
+            var resultGanhos = ganhosCrescent.Select(item => new { Data = item.DataDaVenda.Month, ValorTotal = item.ValorTotal });
+            var resultGastos = gastosCrescent.Select(item => new { Data = item.DataEmissao.Month, ValorTotal = item.ValorTotal });
+            var result = new { Ganhos = resultGanhos, Gastos = resultGastos};
 
             return Json(result, JsonRequestBehavior.AllowGet);
         }

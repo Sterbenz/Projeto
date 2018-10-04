@@ -47,7 +47,37 @@ namespace ProjetoFinal.DAO
                 contexto.Pedidos.Remove(pedido);
                 contexto.SaveChanges();
             }
+        }
 
+        public IList<Pedido> ListaVendasDoPedido(int id)
+        {
+            using (var contexto = new LojaContext())
+            {
+                return contexto.Pedidos
+                    .Where(p => p.Id == id)
+                    .ToList();
+            }
+        }
+
+        public IList<Pedido> ListaProdutosDosPedidos(IList<Venda> vendas)
+        {
+            using (var contexto = new LojaContext())
+            {
+                IList<Pedido> vendasPP = new List<Pedido>();
+
+                foreach (Venda venda in vendas)
+                {
+                    int pedidoId = (int)venda.PedidoId;
+                    IList<Pedido> produtosPP = ListaVendasDoPedido(pedidoId);
+
+                    foreach (var prodPP in produtosPP)
+                    {
+                        vendasPP.Add(prodPP);
+                    }
+                }
+
+                return vendasPP;
+            }
         }
     }
 }

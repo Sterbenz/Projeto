@@ -3,6 +3,7 @@ using ProjetoFinal.Filters;
 using ProjetoFinal.Models;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -80,6 +81,7 @@ namespace ProjetoFinal.Controllers
 
         public void RegistrarLog(Venda venda, string modificacao, double valorTotal, string cliente, int id)
         {
+            var valorFormatado = string.Format(CultureInfo.GetCultureInfo("pt-BR"), "{0:C}", valorTotal);
             Pessoa user = (Pessoa)Session["UsuarioLogado"];
             LogVendasDAO dao = new LogVendasDAO();
             LogVenda log = new LogVenda()
@@ -90,7 +92,7 @@ namespace ProjetoFinal.Controllers
                 ClienteNome = cliente,
                 ClienteId = id,
                 DataDaVenda = DateTime.Now,
-                Descricao = "Funcionario " + user.Nome + " " + modificacao + cliente + " de R$" + valorTotal
+                Descricao = "Funcionario " + user.Nome + " " + modificacao + cliente + " de " + valorFormatado
             };
             dao.Adiciona(log);
         }

@@ -85,7 +85,7 @@ namespace ProjetoFinal.Models
             ViewBag.Funcionarios = funcionario;
 
             return View();
-        }
+        }        
 
         [AutorizacaoUsuarioFilter]
         public ActionResult Edita(int id, Pessoa funcionario)

@@ -15,15 +15,25 @@ namespace ProjetoFinal.Filters
         public override void OnActionExecuting(ActionExecutingContext filterContext)
         {
             Pessoa user = (Pessoa) filterContext.HttpContext.Session["UsuarioLogado"];
-            TipoPessoasDAO dao = new TipoPessoasDAO();
-            TipoPessoa cargo = dao.BuscaPorId(user.TipoPessoaId);
-            
 
-            if (cargo.Nome == "Funcionario")
+            if (user == null)
             {
                 filterContext.Result = new RedirectToRouteResult(
                             new RouteValueDictionary(
-                               new { action = "Errors", controller = "Home" }));
+                               new { action = "Index", controller = "Login" }));
+            }
+            else
+            {
+                TipoPessoasDAO dao = new TipoPessoasDAO();
+                TipoPessoa cargo = dao.BuscaPorId(user.TipoPessoaId);
+
+
+                if (cargo.Nome == "Funcionario")
+                {
+                    filterContext.Result = new RedirectToRouteResult(
+                                new RouteValueDictionary(
+                                   new { action = "Errors", controller = "Home" }));
+                }
             }
         }
     }

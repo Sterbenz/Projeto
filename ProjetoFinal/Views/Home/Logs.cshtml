@@ -9,6 +9,8 @@
             <option>Familias</option>
             <option>Produtos</option>
             <option>Fornecedores</option>
+            <option>Vendas</option>
+            <option>Compras</option>
         </select>
     </li>
 </ul>
@@ -37,7 +39,7 @@
 
         @foreach (var fornecedor in ViewBag.LogFornecedores)
         {
-    
+
             <tr class="filtro-ativo logs-fornecedores">
                 <th>Fornecedores</th>
                 <th>@fornecedor.Descricao</th>
@@ -58,11 +60,29 @@
 
         @foreach (var produto in ViewBag.LogProdutos)
         {
-            <tr  class="filtro-ativo logs-produtos">
+            <tr class="filtro-ativo logs-produtos">
                 <th>Produtos</th>
                 <th>@produto.Descricao</th>
                 <th>@produto.DataModificacao</th>
                 <th>@produto.PessoaId</th>
+            </tr>
+        }
+        @foreach (var vendas in ViewBag.LogVendas)
+        {
+            <tr class="filtro-ativo logs-vendas">
+                <th>Vendas</th>
+                <th>@vendas.Descricao</th>
+                <th>@vendas.DataDaVenda</th>
+                <th>@vendas.PessoaId</th>
+            </tr>
+        }
+        @foreach (var compras in ViewBag.LogCompras)
+        {
+            <tr class="filtro-ativo logs-compras">
+                <th>Compras</th>
+                <th>@compras.Descricao</th>
+                <th>@compras.DataDaVenda</th>
+                <th>@compras.PessoaId</th>
             </tr>
         }
     </tbody>

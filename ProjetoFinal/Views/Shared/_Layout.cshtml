@@ -86,7 +86,7 @@ License: You must have a valid license purchased only from themeforest(the above
         <div class="page-header-inner">
             <!-- BEGIN LOGO -->
             <div class="page-logo">
-                <a href="/Home/Index">
+                <a href="@Url.Action("Index","Home")">
                     <img src="~/Content/Logo.svg" alt="logo" class="logo-default" width="150" />
                 </a>
                 <div class="menu-toggler sidebar-toggler hide">
@@ -168,7 +168,7 @@ License: You must have a valid license purchased only from themeforest(the above
                     </li>
 
                     <li id="selecao-home">
-                        <a href="/Home/Index"><i class="icon-home"></i><span class="title">Inicio</span></a>
+                        <a href="@Url.Action("Index","Home")"><i class="icon-home"></i><span class="title">Inicio</span></a>
                     </li>
                     <li id="selecao-fornecedor">
                         <a href="javascript:;">
@@ -341,8 +341,9 @@ License: You must have a valid license purchased only from themeforest(the above
             <script src="~/Scripts/ValidaCNPJ.js"></script>
             <script src="~/Scripts/Chart.js"></script>
             <script src="~/Scripts/produtosMaisVendidos.js"></script>
-            <script src="~/Scripts/produtosMaisVendidos.js"></script>
-
+            <script src="~/Scripts/gastosXganhos.js"></script>
+            <script src="~/Scripts/InformacoesPedidos.js"></script>
+                     
             <!-- END PAGE LEVEL SCRIPTS -->
             <script>
                 jQuery(document).ready(function () {

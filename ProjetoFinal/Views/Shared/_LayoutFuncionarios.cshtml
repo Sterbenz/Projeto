@@ -171,6 +171,23 @@ License: You must have a valid license purchased only from themeforest(the above
                     <li id="selecao-home">
                         <a href="@Url.Action("Index","Home")"><i class="icon-home"></i><span class="title">Inicio</span></a>
                     </li>
+                    <li id="selecao-fornecedor">
+                        <a href="javascript:;">
+                            <i>
+                                <img width="20px" style="float:left" src="~/Content/assets/admin/layout/img/delivery-truck2.svg" />
+                            </i>
+                            <span class="title">Fornecedores</span>
+                            <span class="selected"></span>
+                            <span class="arrow open"></span>
+                        </a>
+                        <ul class="sub-menu">
+                            <li id="selecao-fornecedor-pedidos">
+                                <a href="@Url.Action("Acompanhamentos","Fornecedor")">
+                                    Acompanhamento
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
                     <li id="selecao-funcionario">
                         <a href="@Url.Action("Index","Funcionario")"><i class="icon-users"></i><span class="title">Funcionarios</span></a>
                     </li>

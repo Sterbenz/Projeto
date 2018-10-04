@@ -61,5 +61,18 @@ namespace ProjetoFinal.DAO
                     .ToList();
             }
         }
+
+        public IList<Venda> ListaGanhos()
+        {
+            using (var contexto = new LojaContext())
+            {
+                var vendas = contexto.Vendas
+                    .Where(v => v.DataDaVenda.Month > DateTime.Now.Month-3 && 
+                                v.DataDaVenda.Month < DateTime.Now.Month+3)
+                    .ToList();
+
+                return vendas;
+            }
+        }
     }
 }
