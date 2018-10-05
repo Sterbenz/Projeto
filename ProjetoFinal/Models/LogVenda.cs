@@ -19,6 +19,8 @@ namespace ProjetoFinal.Models
 
         public String PessoaNome { get; set; }
 
+        public double ValorVenda { get; set; }
+
         public String Descricao { get; set; }
 
         public DateTime DataDaVenda { get; set; }

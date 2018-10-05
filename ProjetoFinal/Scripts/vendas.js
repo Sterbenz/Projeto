@@ -5,7 +5,14 @@ var produtosAdicionados = [];
 // Chama metodo para buscar o cliente
 $("#clientes-compras").change(function () {
     var cli_id = $("#clientes-compras :selected").val();
-    BuscaCliente(cli_id);
+    if (cli_id == 0) {
+        $("#cpf-cliente").val(null);
+        $("#email-cliente").val(null);
+        $("#telefone-cliente").val(null);
+    }
+    else {
+        BuscaCliente(cli_id);
+    }
 });
 
 // Busca dados do cliente selecionado
@@ -144,11 +151,13 @@ $("#produtos-lista-venda").change(function () {
                 "min": 0
             });
             $("#quantidade-produto-venda").val(0);
-            $("#valor-produto-venda").val(1);
+            $("#valor-produto-venda").val("R$ "+resposta.PrecoPorUnidade);
 
         },
         error: function () {
-            alert("falhou");
+            $("#quantidade-produto-estoque-venda").val(null);
+            $("#quantidade-produto-venda").val(null);
+            $("#valor-produto-venda").val(null);
         }
     });
 

@@ -55,8 +55,6 @@ $(document).ready(function () {
 
     else if (/Home/.test(url) && !/Logs/.test(url) || /^null|$/.test(url) && !/Logs/.test(url)) {
         removeSelecoesMenus();
-        ProdutosVendidosNoMes();
-        GastosXGanhos();
         sel_home.addClass("active");
     }
 
@@ -76,3 +74,7 @@ function removeSelecoesMenus() {
     sel_funcionario.removeClass("active");
 }
 
+$(".carrega-graficos").click(function () {
+    ProdutosVendidosNoMes();
+    GastosXGanhos();
+});

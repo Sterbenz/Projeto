@@ -24,8 +24,8 @@ function verificaFiltro(filtro) {
         logs_produtos.removeClass("filtro-ativo");
         logs_familias.removeClass("filtro-ativo");
         logs_fornecedores.removeClass("filtro-ativo");
-        logs_vendas.addClass("filtro-ativo");
-        logs_compras.addClass("filtro-ativo");
+        logs_vendas.removeClass("filtro-ativo");
+        logs_compras.removeClass("filtro-ativo");
     }
     else if (filtro == "Pessoas") {
         logs_pessoas.removeClass("filtro-ativo");

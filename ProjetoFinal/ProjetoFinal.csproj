@@ -4418,6 +4418,10 @@
     <Compile Include="Migrations\20181004151243_logCompras.designer.cs">
       <DependentUpon>20181004151243_logCompras.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\20181005190657_mudancasFinais.cs" />
+    <Compile Include="Migrations\20181005190657_mudancasFinais.designer.cs">
+      <DependentUpon>20181005190657_mudancasFinais.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\LojaContextModelSnapshot.cs" />
     <Compile Include="Models\AcompanhamentoFornecedores.cs" />
     <Compile Include="Models\LogCompra.cs" />
@@ -4712,6 +4716,7 @@
     <Content Include="Views\Venda\Index.cshtml" />
     <Content Include="Views\Venda\_ViewStart.cshtml" />
     <Content Include="Views\Funcionario\VisualizaPedido.cshtml" />
+    <Content Include="Views\Home\Index_Funcionario.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

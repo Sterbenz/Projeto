@@ -1,4 +1,38 @@
-﻿function GastosXGanhos() {
+﻿$(document).ready(function () {
+    var url = window.location.href;
+
+    if (/Fornecedor/.test(url)) {
+        if (!/Acompanhamentos/.test(url)) {
+        }
+        else if (/Acompanhamentos/.test(url)) {
+        }
+    }
+    else if (/Cliente/.test(url)) {
+    }
+
+    else if (/Categoria/.test(url)) {
+    }
+
+    else if (/Funcionario/.test(url)) {
+    }
+
+    else if (/Produto/.test(url)) {
+    }
+
+    else if (/Venda/.test(url)) {
+    }
+
+    else if (/Logs/.test(url)) {
+    }
+
+    else if (/Home/.test(url) && !/Logs/.test(url) || /^null|$/.test(url) && !/Logs/.test(url)) {
+        ProdutosVendidosNoMes();
+        GastosXGanhos();
+    }
+
+});
+
+function GastosXGanhos() {
     var ctx = document.getElementById("myChart").getContext('2d');
 
     $.ajax({
@@ -67,20 +101,48 @@
                                 display: true,
                                 position: 'left',
                                 id: 'y-axis-1',
+                                ticks: {
+                                    beginAtZero: true,
+                                    callback: function (value, index, values) {
+                                        if (parseInt(value) >= 1000) {
+                                            return '$' + formatReal(value);
+                                        } else {
+                                            return '$' + value;
+                                        }
+                                    }
+                                }
                             }, {
                                 type: 'linear',
                                 display: true,
                                 position: 'right',
                                 id: 'y-axis-2',
-
+                                ticks: {
+                                    beginAtZero: true,
+                                    callback: function (value, index, values) {
+                                            if (parseInt(value) >= 1000) {
+                                                return '$' + formatReal(value);
+                                        } else {
+                                            return '$' + value;
+                                        }
+                                    }
+                                },
                                 gridLines: {
                                     drawOnChartArea: false,
                                 },
                             }],
-                        }
+                        },
                     }
                 });
             }
         }
     });
+}
+
+function formatReal(int) {
+    var tmp = int + '';
+    tmp = tmp.replace(/([0-9]{2})$/g, ",$1");
+    if (tmp.length > 6)
+        tmp = tmp.replace(/([0-9]{3}),([0-9]{2}$)/g, ".$1,$2");
+
+    return tmp;
 }

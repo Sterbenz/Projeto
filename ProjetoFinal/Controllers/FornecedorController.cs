@@ -13,10 +13,11 @@ using System.Globalization;
 namespace ProjetoFinal.Controllers
 {
     
-    [AutorizacaoUsuarioFilter]
+    
     public class FornecedorController : Controller
     {
         [LoginFilter]
+        [AutorizacaoUsuarioFilter]
         public ActionResult Index()
         {
             FornecedoresDAO dao = new FornecedoresDAO();
@@ -29,6 +30,7 @@ namespace ProjetoFinal.Controllers
             return View();
         }
         [LoginFilter]
+        [AutorizacaoUsuarioFilter]
         public ActionResult Adiciona(Fornecedor fornecedor)
         {
             if (ModelState.IsValid)
@@ -45,6 +47,7 @@ namespace ProjetoFinal.Controllers
             }
         }
         [LoginFilter]
+        [AutorizacaoUsuarioFilter]
         public ActionResult Editar(int id)
         {
             FornecedoresDAO dao = new FornecedoresDAO();
@@ -53,6 +56,7 @@ namespace ProjetoFinal.Controllers
             return View();
         }
         [LoginFilter]
+        [AutorizacaoUsuarioFilter]
         public ActionResult Edita(int id, Fornecedor fornecedor)
         {
             if (ModelState.IsValid)
@@ -80,6 +84,7 @@ namespace ProjetoFinal.Controllers
         }
 
         [LoginFilter]
+        [AutorizacaoUsuarioFilter]
         public ActionResult Remover(int id)
         {
             FornecedoresDAO dao = new FornecedoresDAO();
@@ -91,6 +96,7 @@ namespace ProjetoFinal.Controllers
         }
 
         [LoginFilter]
+        [AutorizacaoUsuarioFilter]
         public ActionResult ViewPedidos(int id)
         {
             FornecedoresDAO dao = new FornecedoresDAO();
@@ -101,6 +107,7 @@ namespace ProjetoFinal.Controllers
             return View();
         }
 
+        [LoginFilter]
         public ActionResult VisualizaPedido(int id)
         {
             AcompanhamentoFornecedoresDAO acDAO = new AcompanhamentoFornecedoresDAO();
@@ -128,6 +135,7 @@ namespace ProjetoFinal.Controllers
         }
 
         [LoginFilter]
+        [AutorizacaoUsuarioFilter]
         public ActionResult RealizaPedido(int id,Produto[] model, double valorTotal)
         {
 
@@ -170,6 +178,7 @@ namespace ProjetoFinal.Controllers
             return Json("success");
         }
 
+        [LoginFilter]
         public ActionResult Acompanhamentos()
         {
             AcompanhamentoFornecedoresDAO dao = new AcompanhamentoFornecedoresDAO();
@@ -220,15 +229,15 @@ namespace ProjetoFinal.Controllers
         {
             Pessoa user = (Pessoa)Session["UsuarioLogado"];
             LogComprasDAO dao = new LogComprasDAO();
-            var valorFormatado = string.Format(CultureInfo.GetCultureInfo("pt-BR"), "{0:C}", valorTotal);
             LogCompra log = new LogCompra()
             {
                 PessoaId = user.Id,
                 PessoaNome = user.Nome,
                 FornecedorId = fornecedor.Id,
                 FornecedorNome = fornecedor.DenominacaoSocial,
-                DataDaVenda = DateTime.Now,
-                Descricao = "Funcionario " + user.Nome + " " + modificacao + "na fornecedora " + fornecedor.DenominacaoSocial + " de valor total: "+ valorFormatado
+                DataDaCompra = DateTime.Now,
+                ValorCompra = valorTotal,
+                Descricao = "Funcionario " + user.Nome + " " + modificacao + "na fornecedora " + fornecedor.DenominacaoSocial + " de valor total: "
             };
             dao.Adiciona(log);
         }

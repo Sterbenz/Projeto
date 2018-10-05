@@ -71,7 +71,7 @@
         {
             <tr class="filtro-ativo logs-vendas">
                 <th>Vendas</th>
-                <th>@vendas.Descricao</th>
+                <th>@vendas.Descricao R$ <span class="dinheiro">@vendas.ValorVenda</span></th>
                 <th>@vendas.DataDaVenda</th>
                 <th>@vendas.PessoaId</th>
             </tr>
@@ -80,8 +80,8 @@
         {
             <tr class="filtro-ativo logs-compras">
                 <th>Compras</th>
-                <th>@compras.Descricao</th>
-                <th>@compras.DataDaVenda</th>
+                <th>@compras.Descricao R$ <span class="dinheiro">@compras.ValorCompra</span></th>
+                <th>@compras.DataDaCompra</th>
                 <th>@compras.PessoaId</th>
             </tr>
         }

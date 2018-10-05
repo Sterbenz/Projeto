@@ -16,7 +16,7 @@ function preencheCamposInfoPedido(id) {
     var status = $("#status-pedido-informacoes");
     var valorTotal = $("#valor-Total-informacoes");
     $("#body-tabela-produtos-pedidos tr").remove();
-
+    
     $.ajax({
         url: "/Fornecedor/VisualizaPedido",
         data: { id: id },
@@ -25,11 +25,10 @@ function preencheCamposInfoPedido(id) {
         success: function (resposta) {
             var acompanhamento = resposta.Acompanhamento;
             var produtos       = resposta.PP;
-
             $(pedidoId).text(acompanhamento[0].PedidoId);
             $(fornecedorNome).val(acompanhamento[0].Fornecedor);
-            $(valorTotal).val(acompanhamento[0].ValorTotal);
-            $(valorTotal).mask('000.000.000.000.000,00', { reverse: true });
+            $(valorTotal).val("R$ " + acompanhamento[0].ValorTotal);
+            
             if (acompanhamento[0].Status == true) {
                 $(status).val("Entregue");
             } else {

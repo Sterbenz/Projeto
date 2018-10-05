@@ -7,6 +7,7 @@ using ProjetoFinal.DAO;
 using ProjetoFinal.Filters;
 using ProjetoFinal.Models;
 using System.Web.Script.Serialization;
+using System.Globalization;
 
 namespace ProjetoFinal.Controllers
 {
@@ -23,8 +24,21 @@ namespace ProjetoFinal.Controllers
             FornecedoresDAO fornDAO = new FornecedoresDAO();
             ViewBag.Acompanhamentos = dao.ListaPendentes();
             ViewBag.Fornecedores = fornDAO.Lista();
-            
-            return View();
+
+            var user = (Pessoa)Session["UsuarioLogado"];
+            var Tipodao = new TipoPessoasDAO();
+            var cargo = Tipodao.BuscaPorId(user.TipoPessoaId);
+
+            if (cargo.Nome == "Funcionario" || cargo.Nome == "Funcionario(a)")
+            {
+                return View("Index_Funcionario");
+            }
+            else if (cargo.Nome == "Gerente" || cargo.Nome == "Dono(a)" || cargo.Nome == "Dono")
+            {
+                return View("Index");
+            }
+
+            return View();    
         }
 
         public ActionResult BuscaProduto(int id)
@@ -93,6 +107,8 @@ namespace ProjetoFinal.Controllers
 
         public ActionResult GanhosEGastos()
         {
+            CultureInfo culture = new CultureInfo("pt-BR");
+            DateTimeFormatInfo dtfi = culture.DateTimeFormat;
             VendasDAO vendasDAO = new VendasDAO();
             AcompanhamentoFornecedoresDAO acDAO = new AcompanhamentoFornecedoresDAO();
             IList<Venda> vendas = vendasDAO.ListaGanhos();
@@ -117,8 +133,8 @@ namespace ProjetoFinal.Controllers
             IList<Venda> ganhosCrescent = Ganhos.ToList();
             IList<AcompanhamentoFornecedores> gastosCrescent = Gastos.ToList();
 
-            var resultGanhos = ganhosCrescent.Select(item => new { Data = item.DataDaVenda.Month, ValorTotal = item.ValorTotal });
-            var resultGastos = gastosCrescent.Select(item => new { Data = item.DataEmissao.Month, ValorTotal = item.ValorTotal });
+            var resultGanhos = ganhosCrescent.Select(item => new { Data = culture.TextInfo.ToTitleCase(dtfi.GetMonthName(item.DataDaVenda.Month)), ValorTotal = item.ValorTotal });
+            var resultGastos = gastosCrescent.Select(item => new { Data = culture.TextInfo.ToTitleCase(dtfi.GetMonthName(item.DataEmissao.Month)), ValorTotal = item.ValorTotal });
             var result = new { Ganhos = resultGanhos, Gastos = resultGastos};
 
             return Json(result, JsonRequestBehavior.AllowGet);
